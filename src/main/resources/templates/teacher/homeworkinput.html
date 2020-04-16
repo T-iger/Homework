@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑作业</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui-calendar@0.0.8/dist/calendar.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+    <style type="text/css">
+        table {
+            width: 500px;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            height: 35px;
+            text-align: center;
+        }
+
+        th {
+            background-color: dodgerblue;
+        }
+
+        .newData {
+            background-color: white;
+            left: 29%;
+            top: 10%;
+            position: fixed;
+            display: none;
+        }
+
+        .TKnewData {
+            background-color: white;
+            left: 29%;
+            top: 10%;
+            position: fixed;
+            display: none;
+        }
+
+        .JDnewData {
+            background-color: white;
+            left: 29%;
+            top: 10%;
+            position: fixed;
+            display: none;
+        }
+
+        #span2 {
+            padding-right: 10px;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-td-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">教师管理页面</h2>
+            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="active m-item item m-mobile-hide"><i class="idea icon"></i>布置作业</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>批改作业</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400">Username01
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--二级标题-->
+<div class="ui attached pointing menu">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="#" class="item  teal">下发作业</a>
+            <a href="#" class="item active  teal">编辑作业</a>
+        </div>
+    </div>
+</div>
+<!--中间内容-->
+<div class="m-padded-tb-big m-container">
+
+    <div class="ui container">
+        <!--查询表单-->
+        <h2 class="ui header center aligned">编辑作业</h2>
+        <form action="#" method="post" class="ui form">
+            <!--标题--->
+            <div class="ui segment attached center aligned">
+                <label>标题：</label>
+                <div class="ui input left icon">
+                    <input type="text" placeholder="请输入标题">
+                </div>
+            </div>
+            <!-- 单选题-->
+            <div class="ui segment teal attached left aligned">
+                <label>一、单选题</label>
+                <table style=" vertical-align: middle; text-align: center; ">
+                    <thead id="tou" style="display: none">
+                    <tr>
+                        <th>题号</th>
+                        <th>单选内容</th>
+                        <th>A选项</th>
+                        <th>B选项</th>
+                        <th>C选项</th>
+                        <th>D选项</th>
+                        <th>答案</th>
+                        <th>分值</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="danxuan"></tbody>
+                </table>
+                <div class="ui top attached teal button addRadio" style="margin-top: 3em ;margin-bottom: 1em"
+                     tabindex="0">
+                    新增单选
+                </div>
+            </div>
+            <!--填空题-->
+            <div class="ui segment teal attached left aligned">
+                <label>二、填空题</label>
+                <table style=" vertical-align: middle; text-align: center; ">
+                    <thead id="TKtou" style="display: none">
+                    <tr>
+                        <th>题号</th>
+                        <th>填空题内容</th>
+                        <th>答案</th>
+                        <th>分值</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tiankong"></tbody>
+                </table>
+                <div class="ui top attached teal button addTK" style="margin-top: 3em;margin-bottom: 1em" tabindex="0">
+                    新增填空题
+                </div>
+            </div>
+            <!--解答题-->
+            <div class="ui segment teal attached left aligned">
+                <label>三、解答题</label>
+                <table style=" vertical-align: middle; text-align: center; ">
+                    <thead id="JDtou" style="display: none">
+                    <tr>
+                        <th>题号</th>
+                        <th>解答题内容</th>
+                        <th>分值</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="jieda"></tbody>
+                </table>
+                <div class="ui top attached teal button addJD" style="margin-top: 3em;margin-bottom: 1em" tabindex="0">
+                    新增解答题
+                </div>
+            </div>
+            <button class="ui fluid large orange submit button">保 存</button>
+        </form>
+
+    </div>
+</div>
+<!--单选内容 -->
+<div class="newData">
+    <div class="ui segment center aligned">
+        <form class="ui from" method="post" id="radioform" th:action="@{/addRadio}" target='ifr'>
+            <input class="type1" value="Radio" name="questiontype" id="questiontype" style="display: none">
+            <table>
+                <!--标题-->
+                <tr>
+                    <td colspan="2" class="center aligned">
+                        <p class="content radio_style">单选题</p>
+                        <p class="content TK_style">填空题</p>
+                        <p class="content JD_style">解答题</p>
+                    </td>
+                    <td colspan="2">
+                        <span id="span2">x</span>
+                    </td>
+                </tr>
+                <!--content id=content-->
+                <tr>
+                    <td class="radio_style">单选题目:</td>
+                    <td class="TK_style">填空题:</td>
+                    <td class="JD_style">解答题:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea class="content1" style="width: 35em;height: 10em" name="content"
+                                          id="content"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--RadioA id=radioA-->
+                <tr class="radio_style">
+                    <td>A:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea class="radioA1" style="width: 35em;height: 3em" name="radioA"
+                                          id="radioA"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--RadioB id=radioB-->
+                <tr class="radio_style">
+                    <td>B:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea style="width: 35em;height: 3em" class="radioB1" name="radioB"
+                                          id="radioB"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--RadioC id=radioC-->
+                <tr class="radio_style">
+                    <td>C:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea style="width: 35em;height: 3em" class="radioC1" name="radioC"
+                                          id="radioC"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--RadioD  id=radioD-->
+                <tr class="radio_style">
+                    <td>D:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea class="radioD1" style="width: 35em;height: 3em" name="radioD"
+                                          id="radioD"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <!--RadioAnswer id = -->
+                <tr class="radio_style">
+                    <td colspan="2">
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="gender">
+                            <i class="dropdown icon"></i>
+                            <div class="default text"></div>
+                            <div class="menu" id="studentradio">
+                                <div class="item xz" data-value="A">A</div>
+                                <div class="item xz" data-value="B">B</div>
+                                <div class="item xz" data-value="C">C</div>
+                                <div class="item xz" data-value="D">D</div>
+                            </div>
+                            正确答案
+                        </div>
+                        分值：<input class="ui input score1" name="score" type="text">分
+                    </td>
+                </tr>
+                <!--填空题答案 id=tk -->
+                <tr class="TK_style">
+                    <td>答案:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea class="tk1" style="width: 35em;height: 3em" name="tk" id="tk"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="bottom">
+                <button id="Radio1" class="ui button submit radio_style">提交</button>
+                <button id="TK1" class="ui button submit TK_style">提交</button>
+                <button id="JD1" class="ui button submit JD_style">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<iframe name='ifr' id="ifr" style='display: none;'></iframe>
+<!--填空-->
+<div class="TKnewData">
+    <div class="ui segment center aligned">
+        <form class="ui from" method="post" id="Tkform" th:action="@{/addTK}" target='ifr'>
+            <input value="TK" name="questiontype" style="display: none">
+            <table>
+                <tr>
+                    <td colspan="2" class="center aligned">
+                        <p class="content">填空题</p>
+                    </td>
+                    <td colspan="2">
+                        <span id="TK_span">x</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>填空题:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea style="width: 35em;height: 10em" name="content" id="TK_input1"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>答案:</td>
+                    <td>
+                        <div class="ui fluid input">
+                            <div class="field">
+                                <textarea style="width: 35em;height: 3em" id="TK_input2"></textarea>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="bottom">
+                <button id="TK11" class="ui button">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--解答题-->
+<div class="JDnewData">
+    <div class="ui segment center aligned">
+        <table>
+            <tr>
+                <td colspan="2" class="center aligned">
+                    <p class="content">解答题</p>
+                </td>
+                <td colspan="2">
+                    <span id="JD_span">x</span>
+                </td>
+            </tr>
+            <tr>
+                <td>解答题:</td>
+                <td>
+                    <div class="ui fluid input">
+                        <div class="field">
+                            <textarea style="width: 35em;height: 10em" id="JD_input1"></textarea>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="bottom">
+            <button id="JD11" class="ui button">提交</button>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">111</h4>
+                <p>希望。。。。。。</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">个人网站</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui-calendar@0.0.8/dist/calendar.min.js"></script>
+<script type="text/javascript">
+    //阻止提交form后刷新
+    var iframe = document.getElementById("ifr");
+    iframe.onload = function () {
+        var bodycontent = iframe.contentDocument.body.innerHTML;
+        //console.log(bodycontent);
+        //处理获取到的内容；
+        $(".content1,.radioA1,.radioB1,.radioC1,.radioD1,.score1").val("");
+    }
+
+
+    var count = 0;
+    $(document).ready(function () {
+        $(".addRadio").click(function () {
+            $(".bgc").show();
+            $(".newData").show();
+            $(".radio_style").show();
+            $(".JD_style").hide();
+            $('.TK_style').hide();
+            $(".tk1").attr('id','').attr('name','');
+            $(".type1").attr('value','Radio');
+
+        });
+        $(".addTK").click(function () {
+            $(".bgc").show();
+            $(".newData").show();
+            $(".radio_style").hide();
+            $('.TK_style').show();
+            $(".JD_style").hide();
+            $(".radioA1,.radioB1,.radioC1,.radioD1").attr('id','').attr('name','');
+            $(".type1").attr('value','TK');
+
+        });
+        $(".addJD").click(function () {
+            $(".bgc").show();
+            $(".newData").show();
+            $(".radio_style").hide();
+            $('.TK_style').hide();
+            $(".JD_style").show();
+            $(".radioA1,.radioB1,.radioC1,.radioD1,.tk1").attr('id','').attr('name','');
+            $(".type1").attr('value','JD');
+        });
+
+        $("#span2").click(function () {
+            $(".newData").hide();
+            $(".bgc").hide();
+        });
+
+        $("a").click(function () {
+            $(this).parent("td").parent("tr").remove();
+        });
+
+        //点击增加单选题
+        $("#Radio1").click(function () {
+            if ($(".content1").val() === "" || $(".radioA1").val() === "" || $(".radioB1").val() === "" || $(".radioC1").val() === "" || $(".radioD1").val() === "" || $(".score1").val() === "") {
+                alert("输入值不能为空");
+                return;
+            }
+            var td1 = $(".content1").val();
+            var td2 = $(".radioA1").val();
+            var td3 = $(".radioB1").val();
+            var td4 = $(".radioC1").val();
+            var td5 = $(".radioD1").val();
+            var td6 = $(".cc").data("value");
+            var td7 = $(".score1").val();
+            var tr = $("<tr></tr>");
+            count++;
+            tr.html("<td>" + count + "</td><td>" + td1 + "</td><td>" + td2 + "</td><td>" + td3 + "</td><td>" + td4 + "</td><td>" + td5 + "</td><td>" + td6 + "</td><td>" + td7 + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+            $("#danxuan").append(tr);
+            tr.find("a").click(function () {
+                $(this).parent("td").parent("tr").remove();
+            });
+            $(".newData").hide();
+            $(".bgc").hide();
+            $("#tou").show();
+
+        });
+        //点击增加填空题
+        $("#TK1").click(function () {
+            if ($(".content1").val() === "" || $(".tk1").val() === "" ){
+                alert("输入值不能为空");
+                return;
+            }
+            var TK1 = $(".content1").val();
+            var TK2 = $(".tk1").val();
+            var tr = $("<tr></tr>");
+            count++;
+            tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td>" + TK2 + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+            $("#tiankong").append(tr);
+            tr.find("a").click(function () {
+                $(this).parent("td").parent("tr").remove();
+            });
+            $("#TK_input1,TK_input2").val("");
+            $(".newData").hide();
+            $(".bgc").hide();
+            $("#TKtou").show();
+        })
+        //点击增加解答题
+        $("#JD1").click(function () {
+            if ($(".content1").val()){
+                alert("输入值不能为空");
+                return;
+            }
+            var TK1 = $(".content1").val();
+            var tr = $("<tr></tr>");
+            count++;
+            tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+            $("#jieda").append(tr);
+            tr.find("a").click(function () {
+                $(this).parent("td").parent("tr").remove();
+            });
+            $("#JD_input1").val("");
+            $(".newData").hide();
+            $(".bgc").hide();
+            $("#JDtou").show();
+        })
+    });
+
+    /*    $('#Radio1').click(function () {
+            var boo = $('#radioform').form('validate form');
+            if (boo) {
+                console.log('校验成功');
+                //postData();
+            } else {
+                console.log('校验失败');
+            }
+        });*/
+
+
+</script>
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+</script>
+</body>
+</html>

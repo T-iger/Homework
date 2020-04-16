@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>学生端</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-td-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">作业管理系统</h2>
+            <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
+            <div class="right item m-item m-mobile-hide">
+                <!--  inverted transparent 让搜索框变黑色-->
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400">Username01
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="m-padded-tb-big m-container">
+    <div class="ui container">
+        <div class="ui grid">
+
+            <!-左侧的列-->
+            <div class="eleven wide column">
+                <!--header-->
+                <div class="ui segment top attached">
+                    <div class="ui grid two column">
+                        <div class="column">
+                            <h2 class="ui teal header">作业信息</h2>
+                        </div>
+                        <div class="column right aligned">
+                            共<h2 class="ui  orange header m-inline-block m-text-thin">14</h2>个
+                        </div>
+                    </div>
+                </div>
+
+                <!--content--->
+                <div class="ui attached segment">
+                    <!--<div class="ui padded  segment vertical  m-padded-tb-big">-->
+                    <div class="ui padded  segment vertical  m-padded-tb-big ">
+                        <div class="ui mobile reversed stackable grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">2020.4.1 数学作业</h3>
+                                <p class="m-text">完成截止时间：2020.4.2 12：00</p>
+                                <br>
+                                <br>
+
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui link list mini horizontal">
+                                            <div class="item">
+                                                <h5 class="content">发布者:</h5>
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://picsum.photos/id/1/100/100" alt=""
+                                                     class="ui avatar image">
+                                                <div class="content">
+                                                    <a href="#" class="header">数学老师1</a>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020.4.1
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>200
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" target="" class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="https://picsum.photos/id/1/800/450" alt="" class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded  segment vertical  m-padded-tb-big ">
+                        <div class="ui mobile reversed stackable grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">2020.4.1 数学作业</h3>
+                                <p class="m-text">完成截止时间：2020.4.2 12：00</p>
+                                <br>
+                                <br>
+
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui link list mini horizontal">
+                                            <div class="item">
+                                                <h5 class="content">发布者:</h5>
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://picsum.photos/id/1/100/100#1025" alt=""
+                                                     class="ui avatar image">
+                                                <div class="content">
+                                                    <a href="#" class="header">数学老师1</a>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020.4.1
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>200
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" target="" class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="https://picsum.photos/id/1/800/450#1025" alt="" class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded  segment vertical  m-padded-tb-big ">
+                        <div class="ui mobile reversed stackable grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">2020.4.1 数学作业</h3>
+                                <p class="m-text">完成截止时间：2020.4.2 12：00</p>
+                                <br>
+                                <br>
+
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui link list mini horizontal">
+                                            <div class="item">
+                                                <h5 class="content">发布者:</h5>
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://picsum.photos/id/1/100/100#1025" alt=""
+                                                     class="ui avatar image">
+                                                <div class="content">
+                                                    <a href="#" class="header">数学老师1</a>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020.4.1
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>200
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" target="" class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="https://picsum.photos/id/1/800/450#1025" alt="" class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui padded  segment vertical  m-padded-tb-big ">
+                        <div class="ui mobile reversed stackable grid">
+                            <div class="eleven wide column">
+                                <h3 class="ui header">2020.4.1 数学作业</h3>
+                                <p class="m-text">完成截止时间：2020.4.2 12：00</p>
+                                <br>
+                                <br>
+
+                                <div class="ui grid">
+                                    <div class="eleven wide column">
+                                        <div class="ui link list mini horizontal">
+                                            <div class="item">
+                                                <h5 class="content">发布者:</h5>
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://picsum.photos/id/1/100/100#1025" alt=""
+                                                     class="ui avatar image">
+                                                <div class="content">
+                                                    <a href="#" class="header">数学老师1</a>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <i class="calendar icon"></i>2020.4.1
+                                            </div>
+                                            <div class="item">
+                                                <i class="eye icon"></i>200
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right aligned five wide column">
+                                        <a href="#" target="" class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="five wide column">
+                                <a href="#" target="_blank">
+                                    <img src="https://picsum.photos/id/1/800/450#1025" alt="" class="ui rounded image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--footer -->
+                <div class="ui attached segment">
+                    <div class="ui grid two column">
+                        <div class="column">
+                            <a href="#" class="ui button teal basic mini">上一页</a>
+                        </div>
+                        <div class="column right aligned">
+                            <a href="#" class="ui button teal basic mini">下一页</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-右侧的top-->
+            <div class="five wide column">
+
+                <!-分类--->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>分类
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <div class="ui menu fluid vertical">
+                            <a href="#" class="item">
+                                数学
+                                <div class="ui teal  label">12</div>
+                            </a>
+                            <a href="#" class="item">
+                                语文
+                                <div class="ui teal  label">11</div>
+                            </a>
+                            <a href="#" class="item">
+                                英语
+                                <div class="ui teal  label">10</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-待完成项--->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>待完成
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <div class="ui menu fluid vertical">
+                            <a href="#" class="item">
+                                数学(未做)
+                                <div class="ui teal  label">12</div>
+                            </a>
+                            <a href="#" class="item">
+                                语文(未做)
+                                <div class="ui teal  label">11</div>
+                            </a>
+                            <a href="#" class="item">
+                                英语(未做)
+                                <div class="ui teal  label">10</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-常错题-->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>常错标签
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            知识点
+                            <div class="detail">23</div>
+                        </a>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            知识点
+                            <div class="detail">23</div>
+                        </a>
+                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                            知识点
+                            <div class="detail">23</div>
+                        </a>
+                    </div>
+                </div>
+                <!-推荐-->
+                <div class="ui segments">
+                    <div class="ui secondary segment ">
+                        <i class="bookmark icon"></i>推荐
+                    </div>
+                    <div class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">1、1231231</a>
+                    </div>
+                    <div class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">2、</a>
+                    </div>
+                    <div class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
+                    </div>
+                    <div class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
+                    </div>
+                    <div class="ui segment">
+                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">111</h4>
+                <p>希望。。。。。。</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">个人网站</p>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+</script>
+
+</body>
+</html>

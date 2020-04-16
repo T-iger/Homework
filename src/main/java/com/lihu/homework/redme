@@ -1,0 +1,46 @@
+1、做了异常处理
+    拦截所有Controller注解异常，然后判断是否为资源找不到
+        资源不存在：进入404
+        程序错误：进入error，并可以通过网页源码，查看到异常和请求url
+2、日志处理
+    a、记录日志内容
+        请求url
+        访问者ip
+        调用方法classMethod
+        参数args
+        返回内容
+3、创建实体类、设计实体关系
+    课程（Course）：          private Long course_id;
+                             private String course_name;  //课程名称
+
+    作业题（Homework）：      private Long id;
+                             private String question_type; //问题类型（单选、主观题）
+                             private String main;  //题目内容
+                             private String student_answer; //学生回答主观题的答案
+                             private String radio_answer; //学生回答的单选题答案
+                             private String radio; //单选正确答案
+                             private int initial_score; //题目初始分值
+                             private int score; //该题得分
+                             private String note; //一些介绍
+
+    知识点（Knowledge）：     private Long id;
+                             private String subject;
+                             private String property;
+                             private String object;
+
+    发布（PublicHomework）：    private Long id;
+                                private String public_name;  //发布名称
+                                private Date update_time;  //一套作业更新时间
+                                private Date start_time;  //发布时间
+                                private Date end_time;  //截止时间
+                                private String note;  //记录名称
+                                private boolean is_publish;  //是否发布
+
+    用户（User）： private Long user_id;
+                  private String user_name;  //用户姓名
+                  private String role;  //用户身份
+                  private String password;  //用户密码
+                 private Date birthday;  //用户生日
+                 private String sex;  //用户性别
+                 private String phone;  //用户手机号码
+                 private String user_class;  //用户班级
