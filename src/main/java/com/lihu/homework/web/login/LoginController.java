@@ -38,7 +38,7 @@ public class LoginController {
             user.setPassword(null);
             session.setAttribute("user", user);
             if ("teacher".equals(role)) {
-                return "teacher/homeworkinput";
+                return "/teacher/homeworkinput";
             } else if ("student".equals(role)) {
                 return "/index";
             } else {

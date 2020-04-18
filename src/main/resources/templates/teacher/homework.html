@@ -13,9 +13,12 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">教师管理页面</h2>
-            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
-            <a href="#" class="active m-item item m-mobile-hide"><i class="idea icon"></i>布置作业</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>批改作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherIndex}" class=" m-item item m-mobile-hide"><i
+                    class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class="active m-item item m-mobile-hide"><i
+                    class="idea icon"></i>布置作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherPublic}" class="m-item item m-mobile-hide"><i
+                    class="clone icon"></i>批改作业</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
@@ -34,172 +37,147 @@
     <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
         <i class="sidebar icon"></i>
     </a>
-    </nav>
-    <div class="ui attached pointing menu">
-        <div class="ui container">
-            <div class="right menu">
-                <a href="#" class="item">下发作业</a>
-                <a href="#" class="item active teal">编辑作业</a>
-            </div>
-        </div>
-
-    </div>
-    <!--中间内容-->
-    <div class="m-padded-tb-big m-container">
-        <div class="ui container">
-            <!--查询表单-->
-            <form action="#" method="post" class="ui segment form">
-                <div class="inline fields center aligned">
-                    <div class="field">
-                        <input type="text" name="title" placeholder="标题">
-                    </div>
-                    <div class="field">
-                        <div class="ui selection dropdown">
-                            <input type="hidden" name="type">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">分类</div>
-                            <div class="menu">
-                                <div class="item" data-value="1">语文</div>
-                                <div class="item" data-value="2">数学</div>
-                                <div class="item" data-value="3">英语</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filed">
-                        <div class="ui checkbox">
-                            <input type="checkbox" id="rx" name="rx">
-                            <label for="rx">推荐</label>
-                        </div>
-                    </div>
-                    <div class="filed">
-                        <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
-                    </div>
-                </div>
-            </form>
-
-            <table class="ui celled table">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>标题</th>
-                    <th>更新时间</th>
-                    <th>难易</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                        <a href="#" class="ui mini teal basic button">编辑</a>
-                        <a href="#" class="ui mini red basic button">删除</a>
-                    </td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th colspan="6">
-                        <div class="ui pagination menu">
-                            <a class="item">上一页</a>
-                            <a class="item">下一页</a>
-                        </div>
-                        <a href="#" th:herf="@{/}" class="ui  right floated teal basic button" >新增</a>
-                    </th>
-                </tr>
-                </tfoot>
-            </table>
+</nav>
+<div class="ui attached pointing menu">
+    <div class="ui container">
+        <div class="right menu">
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class=" active teal item">作业总览</a>
+            <a href="#" th:href="@{/login/teacher/homeworkPublic}" class=" item">下发作业</a>
+            <a href="#" th:href="@{/login/teacher/addHomework}" class="item ">编辑作业</a>
         </div>
     </div>
-    <br>
-    <br>
-
-    <!--底部footer-->
-    <footer class="ui inverted segment vertical m-padded-tb-massive">
-        <div class="ui center aligned container">
-            <div class="ui grid divided stackable inverted">
-                <div class="three wide  column">
-                    <h4 class="ui inverted header">111</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">xxx</a>
-                        <a href="#" class="item">xxx</a>
-                        <a href="#" class="item">xxx</a>
+</div>
+<!--中间内容-->
+<div class="m-padded-tb-big m-container">
+    <div class="ui container">
+        <!--查询表单-->
+        <form action="#" method="post" class="ui segment form">
+            <div class="inline fields center aligned">
+                <div class="field">
+                    <input type="text" name="title" placeholder="标题">
+                </div>
+                <div class="field">
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="type">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">分类</div>
+                        <div class="menu">
+                            <div class="item" data-value="1">语文</div>
+                            <div class="item" data-value="2">数学</div>
+                            <div class="item" data-value="3">英语</div>
+                        </div>
                     </div>
                 </div>
-                <div class="three wide  column">
-                    <h4 class="ui inverted header">111</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">xxx</a>
-                        <a href="#" class="item">xxx</a>
-                        <a href="#" class="item">xxx</a>
+                <div class="filed">
+                    <div class="ui checkbox">
+                        <input type="checkbox" id="rx" name="rx">
+                        <label for="rx">推荐</label>
                     </div>
                 </div>
-                <div class="three wide  column">
-                    <h4 class="ui inverted header">111</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">xxx</a>
-                        <a href="#" class="item">xxx</a>
-                        <a href="#" class="item">xxx</a>
-                    </div>
-                </div>
-                <div class="seven wide column">
-                    <h4 class="ui inverted header">111</h4>
-                    <p>希望。。。。。。</p>
+                <div class="filed">
+                    <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
                 </div>
             </div>
-            <div class="ui inverted section divider"></div>
-            <p class="m-text-thin m-text-spaced">个人网站</p>
+        </form>
+
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>标题</th>
+                <th>更新时间</th>
+                <th>状态</th>
+                <th>开始时间</th>
+                <th>截止时间</th>
+                <th>..</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="homework,iterStat :${page.content}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${homework.note}">1</td>
+                <td th:text="${homework.updatetime}">1</td>
+                <td th:text="${homework.ispublish}">未发布</td>
+                <td>..</td>
+                <td>..</td>
+                <td>..</td>
+                <td>
+                    <a href="#" th:href="@{/login/teacher/{id}/input(id=${homework.id})}" class="ui mini teal basic button">编辑</a>
+                    <a href="#" th:href="@{/login/teacher/{id}/publish(id=${homework.id})}" class="ui mini orange basic button">发布</a>
+                    <a href="#" th:href="@{/login/teacher/{id}/delete(id=${homework.id})}" class="ui mini red basic button">删除</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="8">
+                    <div class="ui pagination menu">
+                        <a th:href="@{/login/teacher/teacherHomework(page=${page.number}-1)}" th:unless="${page.first}" class="item">上一页</a>
+                        <a th:href="@{/login/teacher/teacherHomework(page=${page.number}+1)}" th:unless="${page.last}" class="item">下一页</a>
+                    </div>
+                    <a href="#" th:href="@{/login/teacher/addHomework}"
+                       class="ui  right floated teal basic button">新增</a>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<br>
+<br>
+
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">111</h4>
+                <p>希望。。。。。。</p>
+            </div>
         </div>
-    </footer>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">个人网站</p>
+    </div>
+</footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-    <script src="../../static/Semantic/semantic.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main1'));
-        // 指定图表的配置项和数据
-        var option = {
-            title: {
-                left: 'center',
-                text: '作业完成情况',
-                top: 20,
-                textStyle: {
-                    color: '#611',
-                }
-            },
-            xAxis: {
-                type: 'category',
-                name: '时间',
-                data: ['2020.4.1', '2020.4.2', '2020.4.3', '2020.4.4', '2020.4.5', '2020.4.6', '2020.4.7']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                data: [120, 200, 150, 80, 70, 110, 130],
-                type: 'bar',
-                showBackground: true,
-                backgroundStyle: {
-                    color: 'rgba(220, 220, 220, 0.8)'
-                }
-            }]
-        };
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
 
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
-    <script>
-        $(".menu.toggle").click(function () {
-            $(".m-item").toggleClass("m-mobile-hide");
-        });
-        $('.ui.dropdown').dropdown({
-            on: 'hover'//鼠标移上去就触发
-        });
-    </script>
-    <!--<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>-->
-    </body>
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+</script>
+<!--<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>-->
+</body>
 </html>

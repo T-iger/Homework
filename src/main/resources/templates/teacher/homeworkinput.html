@@ -63,9 +63,9 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">教师管理页面</h2>
-            <a href="#" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
-            <a href="#" class="active m-item item m-mobile-hide"><i class="idea icon"></i>布置作业</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>批改作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherIndex}" class=" m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class="active m-item item m-mobile-hide"><i class="idea icon"></i>布置作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherPublic}"  class="m-item item m-mobile-hide"><i class="clone icon"></i>批改作业</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
@@ -89,8 +89,9 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" class="item  teal">下发作业</a>
-            <a href="#" class="item active  teal">编辑作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherHomework}"  class=" item">作业总览</a>
+            <a href="#" th:href="@{/login/teacher/homeworkPublic}"  class="item">下发作业</a>
+            <a href="#" th:href="@{/login/teacher/addHomework}" class="item active teal">编辑作业</a>
         </div>
     </div>
 </div>
@@ -105,7 +106,7 @@
             <div class="ui segment attached center aligned">
                 <label>标题：</label>
                 <div class="ui input left icon">
-                    <input type="text" placeholder="请输入标题">
+                    <input type="text" id="note2" placeholder="请输入标题">
                 </div>
             </div>
             <!-- 单选题-->
@@ -179,6 +180,7 @@
     <div class="ui segment center aligned">
         <form class="ui from" method="post" id="radioform" th:action="@{/addRadio}" target='ifr'>
             <input class="type1" value="Radio" name="questiontype" id="questiontype" style="display: none">
+            <input class="note1" value="" name="note" id="note" style="display: none">
             <table>
                 <!--标题-->
                 <tr>
@@ -268,7 +270,6 @@
                             </div>
                             正确答案
                         </div>
-                        分值：<input class="ui input score1" name="score" type="text">分
                     </td>
                 </tr>
                 <!--填空题答案 id=tk -->
@@ -282,6 +283,10 @@
                         </div>
                     </td>
                 </tr>
+                <div class="ui right labeled input focus">
+                    <input class="score1" name="score" type="text" placeholder="分值">
+                    <div class="ui basic label">分 </div>
+                </div>
             </table>
             <div class="bottom">
                 <button id="Radio1" class="ui button submit radio_style">提交</button>
@@ -418,40 +423,61 @@
         var bodycontent = iframe.contentDocument.body.innerHTML;
         //console.log(bodycontent);
         //处理获取到的内容；
-        $(".content1,.radioA1,.radioB1,.radioC1,.radioD1,.score1").val("");
+        $(".content1,.radioA1,.radioB1,.radioC1,.radioD1,.score1,.tk1").val("");
     }
-
 
     var count = 0;
     $(document).ready(function () {
         $(".addRadio").click(function () {
+            if ($("#note2").val() === ""){
+                alert("请先输入标题");
+                return false;
+            }
             $(".bgc").show();
             $(".newData").show();
             $(".radio_style").show();
             $(".JD_style").hide();
             $('.TK_style').hide();
-            $(".tk1").attr('id','').attr('name','');
-            $(".type1").attr('value','Radio');
-
+            $(".tk1").attr('id', '').attr('name', '');
+            $(".radioA1").attr('id', 'radioA').attr('name', 'radioA');
+            $(".radioB1").attr('id', 'radioB').attr('name', 'radioB');
+            $(".radioC1").attr('id', 'radioC').attr('name', 'radioC');
+            $(".radioD1").attr('id', 'radioD').attr('name', 'radioD');
+            $(".type1").attr('value', 'Radio');
+            var notevalue = $("#note2").val();
+            $(".note1").attr('value', notevalue);
         });
         $(".addTK").click(function () {
+            if ($("#note2").val() === ""){
+                alert("请先输入标题");
+                return false;
+            }
             $(".bgc").show();
             $(".newData").show();
             $(".radio_style").hide();
             $('.TK_style').show();
             $(".JD_style").hide();
-            $(".radioA1,.radioB1,.radioC1,.radioD1").attr('id','').attr('name','');
-            $(".type1").attr('value','TK');
-
+            $(".radioA1,.radioB1,.radioC1,.radioD1").attr('id', '').attr('name', '');
+            $(".tk1").attr('id', 'tk').attr('name', 'tk');
+            $(".type1").attr('value', 'TK');
+            var notevalue = $("#note2").val();
+            $(".note1").attr('value', notevalue);
         });
+
         $(".addJD").click(function () {
+            if ($("#note2").val() === ""){
+                alert("请先输入标题");
+                return false;
+            }
             $(".bgc").show();
             $(".newData").show();
             $(".radio_style").hide();
             $('.TK_style').hide();
             $(".JD_style").show();
-            $(".radioA1,.radioB1,.radioC1,.radioD1,.tk1").attr('id','').attr('name','');
-            $(".type1").attr('value','JD');
+            $(".radioA1,.radioB1,.radioC1,.radioD1,.tk1").attr('id', '').attr('name', '');
+            $(".type1").attr('value', 'JD');
+            var notevalue = $("#note2").val();
+            $(".note1").attr('value', notevalue);
         });
 
         $("#span2").click(function () {
@@ -462,12 +488,12 @@
         $("a").click(function () {
             $(this).parent("td").parent("tr").remove();
         });
-
+    });
         //点击增加单选题
         $("#Radio1").click(function () {
             if ($(".content1").val() === "" || $(".radioA1").val() === "" || $(".radioB1").val() === "" || $(".radioC1").val() === "" || $(".radioD1").val() === "" || $(".score1").val() === "") {
                 alert("输入值不能为空");
-                return;
+                return false;
             }
             var td1 = $(".content1").val();
             var td2 = $(".radioA1").val();
@@ -486,19 +512,20 @@
             $(".newData").hide();
             $(".bgc").hide();
             $("#tou").show();
-
         });
+
         //点击增加填空题
         $("#TK1").click(function () {
-            if ($(".content1").val() === "" || $(".tk1").val() === "" ){
+            if ($(".content1").val() === "" || $(".tk1").val() === "" ||$(".score1").val()===""){
                 alert("输入值不能为空");
-                return;
+                return false;
             }
             var TK1 = $(".content1").val();
             var TK2 = $(".tk1").val();
+            var TKscore = $(".score1").val();
             var tr = $("<tr></tr>");
             count++;
-            tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td>" + TK2 + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+            tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td>" + TK2 + "</td><td>" + TKscore + "</td><td><a href='javascript:void(0)'>删除</a></td>");
             $("#tiankong").append(tr);
             tr.find("a").click(function () {
                 $(this).parent("td").parent("tr").remove();
@@ -507,17 +534,19 @@
             $(".newData").hide();
             $(".bgc").hide();
             $("#TKtou").show();
-        })
+        });
+
         //点击增加解答题
         $("#JD1").click(function () {
-            if ($(".content1").val()){
+             if ($(".content1").val()==""||$(".score1").val()===""){
                 alert("输入值不能为空");
-                return;
+                return false;
             }
-            var TK1 = $(".content1").val();
+            var JD1 = $(".content1").val();
+            var JDsocre = $(".score1").val();
             var tr = $("<tr></tr>");
             count++;
-            tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+            tr.html("<td>" + count + "</td><td>" + JD1 + "</td><td>" + JDsocre + "</td><td><a href='javascript:void(0)'>删除</a></td>");
             $("#jieda").append(tr);
             tr.find("a").click(function () {
                 $(this).parent("td").parent("tr").remove();
@@ -526,10 +555,9 @@
             $(".newData").hide();
             $(".bgc").hide();
             $("#JDtou").show();
-        })
-    });
+        });
 
-    /*    $('#Radio1').click(function () {
+        $('#Radio1').click(function () {
             var boo = $('#radioform').form('validate form');
             if (boo) {
                 console.log('校验成功');
@@ -537,8 +565,7 @@
             } else {
                 console.log('校验失败');
             }
-        });*/
-
+        });
 
 </script>
 <script>

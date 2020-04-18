@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Li
  **/
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login/teacher")
 public class AddHomeworkController {
 
     @Autowired

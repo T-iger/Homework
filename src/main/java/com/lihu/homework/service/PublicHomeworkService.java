@@ -1,15 +1,14 @@
 package com.lihu.homework.service;
 
 import com.lihu.homework.po.Homework;
+import com.lihu.homework.po.PublishHomework;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 
 /**
  * @author Li
  **/
-public interface HomeworkService {
-    Homework addHomework(Homework homework);
+public interface PublicHomeworkService {
 
-    /*Page<Homework> listHomework(Pageable pageable);*/
+    Page<PublishHomework> listPublic(Pageable pageable);
 }
