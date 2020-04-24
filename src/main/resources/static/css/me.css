@@ -67,6 +67,12 @@ body{
 .m-setting-color{
     background: #333!important;
 }
+.m-true{
+    color: green!important;
+}
+.m-false{
+    color: red!important;
+}
 /*---position---*/
 .m-right-top{
     position: absolute!important;

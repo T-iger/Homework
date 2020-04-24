@@ -1,4 +1,4 @@
-package com.lihu.homework.web;
+package com.lihu.homework.webcontroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

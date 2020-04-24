@@ -1,8 +1,8 @@
 package com.lihu.homework.service;
 
 import com.lihu.homework.po.Homework;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import java.util.HashSet;
 
 
 /**
@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
  **/
 public interface HomeworkService {
     Homework addHomework(Homework homework);
+    HashSet findAll();
+
 
     /*Page<Homework> listHomework(Pageable pageable);*/
 }

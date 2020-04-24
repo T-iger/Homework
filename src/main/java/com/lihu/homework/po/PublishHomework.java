@@ -1,5 +1,7 @@
 package com.lihu.homework.po;
 
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +16,9 @@ public class PublishHomework {
     @Id
     @GeneratedValue
     private Long id;
+
     private String publicname;  //发布名称
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatetime;  //一套作业更新时间
     private Date starttime;  //发布时间
     private Date endtime;  //截止时间

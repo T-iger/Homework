@@ -22,7 +22,7 @@ public class LogAspect {
     private final Logger logger= LoggerFactory.getLogger(this.getClass());
 
     //定义一个切面
-    @Pointcut("execution(* com.lihu.homework.web.*.*(..))")    //execution规定哪些类
+    @Pointcut("execution(* com.lihu.homework.webcontroller.*.*(..))")    //execution规定哪些类
     public void log(){}
 
     @Before("log()")

@@ -14,9 +14,12 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">教师管理页面</h2>
-            <a href="#" th:href="@{/login/teacher/teacherIndex}" class=" m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
-            <a href="#" th:href="@{/login/teacher/teacherHomework}" class="active m-item item m-mobile-hide"><i class="idea icon"></i>布置作业</a>
-            <a href="#" th:href="@{/login/teacher/teacherPublic}"  class="m-item item m-mobile-hide"><i class="clone icon"></i>批改作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherIndex}" class=" m-item item m-mobile-hide"><i
+                    class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class="active m-item item m-mobile-hide"><i
+                    class="idea icon"></i>布置作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherPublic}" class="m-item item m-mobile-hide"><i
+                    class="clone icon"></i>批改作业</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
@@ -40,8 +43,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container">
         <div class="right menu">
-            <a href="#" th:href="@{/login/teacher/teacherHomework}"  class="item">作业总览</a>
-            <a href="#" th:href="@{/login/teacher/homeworkPublic}"  class="active teal item">下发作业</a>
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class="item">作业总览</a>
+            <a href="#" th:href="@{/login/teacher/homeworkPublic}" class="active teal item">下发作业</a>
             <a href="#" th:href="@{/login/teacher/addHomework}" class="item  ">编辑作业</a>
         </div>
     </div>
@@ -87,10 +90,83 @@
                 </div>
             </div>
             <div class="ui segment attached center aligned">
-
+                <div class="ui calendar m-padded-mini">
+                    <label>作业标题：</label>
+                    <div class="ui search dropdown  selection ">
+                        <input type="hidden" name="note">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择作业</div>
+                        <div class="menu" id="note">
+                            <div th:each="homework : ${homeworks}" th:text="${homework}" class="item" data-value="af">
+                                Afghanistan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="table-container">
+                    <table th:fragment="homeworkList" class="ui compact teal table">
+                        <thead>
+                        <tr >
+                            <td colspan="8"><h2>一、单选题</h2></td>
+                        </tr>
+                        <td colspan="8"></td>
+                        <tr>
+                            <th></th>
+                            <th>单选题目</th>
+                            <th>A选项</th>
+                            <th>B选项</th>
+                            <th>C选项</th>
+                            <th>D选项</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="homeworkList:${homeworkLists}">
+                            <td th:text="${iterStat.count}">1</td>
+                            <td th:text="">内容</td>
+                            <td th:text="">A</td>
+                            <td th:text="">B</td>
+                            <td th:text="">C</td>
+                            <td th:text="">D</td>
+                        </tr>
+                        </tbody>
+                        <td colspan="8"></td>
+                        <tr >
+                            <td colspan="8"><h2>二、填空题</h2></td>
+                        </tr>
+                        <td colspan="8"></td>
+                        <tr>
+                            <th></th>
+                            <th>填空题题目</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="homeworkList:${homeworkLists}">
+                            <td colspan="1" th:text="${iterStat.count}">1</td>
+                            <td colspan="7" th:text="">内容</td>
+                        </tr>
+                        </tbody>
+                        <td colspan="8"></td>
+                        <tr >
+                            <td colspan="8"><h2>三、解答题</h2></td>
+                        </tr>
+                        <td colspan="8"></td>
+                        <tr>
+                            <th></th>
+                            <th>解答题目</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="homeworkList:${homeworkLists}">
+                            <td colspan="1" th:text="${iterStat.count}">1</td>
+                            <td colspan="7" th:text="${blog.title}">内容</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </form>
     </div>
+
 </div>
 
 <br>
@@ -162,6 +238,11 @@
                 return year + '-' + month + '-' + day;
             }
         }
+    });
+</script>
+<script>
+    $("#note").click(function () {
+        $("#table-container").load(/*[[{/login/teacher/publishSearch}]]*/)
     });
 </script>
 </body>

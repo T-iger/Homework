@@ -1,4 +1,4 @@
-package com.lihu.homework.web.login;
+package com.lihu.homework.webcontroller.login;
 
 import com.lihu.homework.po.User;
 import com.lihu.homework.service.UserService;
@@ -38,7 +38,7 @@ public class LoginController {
             user.setPassword(null);
             session.setAttribute("user", user);
             if ("teacher".equals(role)) {
-                return "/teacher/homeworkinput";
+                return "/teacher/teacherindex";
             } else if ("student".equals(role)) {
                 return "/index";
             } else {

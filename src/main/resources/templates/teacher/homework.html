@@ -50,6 +50,11 @@
 <!--中间内容-->
 <div class="m-padded-tb-big m-container">
     <div class="ui container">
+        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}">恭喜，操作成功！</p>
+        </div>
         <!--查询表单-->
         <form action="#" method="post" class="ui segment form">
             <div class="inline fields center aligned">
@@ -60,26 +65,25 @@
                     <div class="ui selection dropdown">
                         <input type="hidden" name="type">
                         <i class="dropdown icon"></i>
-                        <div class="default text">分类</div>
+                        <div class="default text">状态</div>
                         <div class="menu">
-                            <div class="item" data-value="1">语文</div>
-                            <div class="item" data-value="2">数学</div>
-                            <div class="item" data-value="3">英语</div>
+                            <div class="item" data-value="1">已发布</div>
+                            <div class="item" data-value="2">未发布</div>
+                            <!--<div class="item" data-value="3">英语</div>-->
                         </div>
                     </div>
                 </div>
-                <div class="filed">
+                <!--<div class="filed">
                     <div class="ui checkbox">
                         <input type="checkbox" id="rx" name="rx">
                         <label for="rx">推荐</label>
                     </div>
-                </div>
+                </div>-->
                 <div class="filed">
                     <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
                 </div>
             </div>
         </form>
-
         <table class="ui celled table">
             <thead>
             <tr>
@@ -94,13 +98,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="homework,iterStat :${page.content}">
+            <tr th:each="homework,iterStat : ${page.content}">
                 <td th:text="${iterStat.count}">1</td>
                 <td th:text="${homework.note}">1</td>
                 <td th:text="${homework.updatetime}">1</td>
-                <td th:text="${homework.ispublish}">未发布</td>
-                <td>..</td>
-                <td>..</td>
+                <td th:text="${homework.ispublish}?'已发布':'未发布'" th:style="${homework.ispublish} ? 'color:green':'color:red'">未发布</td>
+                <td th:text="${homework.starttime}">..</td>
+                <td th:text="${homework.endtime}">..</td>
                 <td>..</td>
                 <td>
                     <a href="#" th:href="@{/login/teacher/{id}/input(id=${homework.id})}" class="ui mini teal basic button">编辑</a>
@@ -177,6 +181,14 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'//鼠标移上去就触发
     });
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+
 </script>
 <!--<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>-->
 </body>

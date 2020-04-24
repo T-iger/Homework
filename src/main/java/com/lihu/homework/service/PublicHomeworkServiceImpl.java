@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+
 /**
  * @author Li
  **/
@@ -23,4 +25,10 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
         return publicHomeworkRepository.findAll(pageable);
     }
 
+    @Transactional
+    @Override
+    public PublishHomework saveNotPublish(PublishHomework publishHomework) {
+        publishHomework.setUpdatetime(new Date());
+        return publicHomeworkRepository.save(publishHomework);
+    }
 }

@@ -1982,9 +1982,9 @@ Caused by: java.sql.SQLException: Failed to add the foreign key constraint. Miss
 2020-04-13 21:14:14.051  WARN 7868 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2020-04-13 21:14:14.457  INFO 7868 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2020-04-13 21:14:14.572  WARN 7868 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 2020-04-13 21:14:14.573  INFO 7868 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-04-13 21:14:14.575  INFO 7868 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2020-04-13 21:14:14.581  INFO 7868 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
@@ -1996,9 +1996,9 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-04-13 21:14:14.629 ERROR 7868 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
@@ -2022,9 +2022,9 @@ com.lihu.homework.web.IndexController#index() mapped.
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:633)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:600)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:318)
@@ -2067,9 +2067,9 @@ com.lihu.homework.web.IndexController#index() mapped.
 2020-04-13 21:15:35.566  WARN 11204 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2020-04-13 21:15:35.815  INFO 11204 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2020-04-13 21:15:35.894  WARN 11204 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 2020-04-13 21:15:35.895  INFO 11204 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-04-13 21:15:35.895  INFO 11204 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2020-04-13 21:15:35.899  INFO 11204 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
@@ -2081,9 +2081,9 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-04-13 21:15:35.940 ERROR 11204 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
@@ -2107,9 +2107,9 @@ com.lihu.homework.web.IndexController#index() mapped.
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:633)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:600)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:318)
@@ -2152,9 +2152,9 @@ com.lihu.homework.web.IndexController#index() mapped.
 2020-04-13 21:16:00.818  WARN 5612 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 2020-04-13 21:16:01.111  INFO 5612 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2020-04-13 21:16:01.187  WARN 5612 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 2020-04-13 21:16:01.187  INFO 5612 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-04-13 21:16:01.188  INFO 5612 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2020-04-13 21:16:01.192  INFO 5612 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
@@ -2166,9 +2166,9 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2020-04-13 21:16:01.234 ERROR 5612 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
@@ -2192,9 +2192,9 @@ com.lihu.homework.web.IndexController#index() mapped.
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'indexController' method 
-com.lihu.homework.web.IndexController#student()
+com.lihu.homework.webcontroller.IndexController#student()
 to {GET /student}: There is already 'indexController' bean method
-com.lihu.homework.web.IndexController#index() mapped.
+com.lihu.homework.webcontroller.IndexController#index() mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:633)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:600)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:318)
@@ -3036,7 +3036,7 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
 	at java.base/java.lang.Thread.run(Thread.java:834)
 
 2020-04-13 22:01:07.559  WARN 17336 --- [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2020-04-13 22:01:25.550  INFO 17336 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/student', ip='127.0.0.1', classMethod='com.lihu.homework.web.IndexController.student', args=[]}
+2020-04-13 22:01:25.550  INFO 17336 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/student', ip='127.0.0.1', classMethod='com.lihu.homework.webcontroller.IndexController.student', args=[]}
 2020-04-13 22:01:25.560  INFO 17336 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
 2020-04-13 22:01:25.560  INFO 17336 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : index
 2020-04-13 22:02:33.451  INFO 17336 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

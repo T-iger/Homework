@@ -124,6 +124,108 @@
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
 <script type="text/javascript">
+/*    var myChart = echarts.init(document.getElementById('main1'));
+    var webkitDep = {
+        "type": "force",
+        "categories": [ //关系网类别，可以写多组
+            {
+                "name": "甲公司", //关系网名称
+                "keyword": {},
+                "base": "网格关系"
+            },
+            {
+                "name": "乙公司", //关系网名称
+                "keyword": {},
+                "base": "网格关系"
+            },
+        ],
+        "nodes": [ //展示的节点
+            {
+                "name": "0", //节点名称
+
+                "symbolSize": 40,
+                "category": 0 //与关系网类别索引对应，此处只有一个关系网所以这里写0
+
+            },
+            {
+                "name": "1",
+
+                "symbolSize": 25,
+                "category": 0,
+                itemStyle: {
+                    color: '#3398db'
+                }
+            },
+            {
+                "name": "2",
+
+                "symbolSize": 25,
+                "category": 0,
+                itemStyle: {
+                    color: '#3398db'
+                }
+            }
+        ],
+        "links": [ //节点之间连接
+            {
+                "source": 0, //起始节点，0表示第一个节点
+                "target": 1 ,//目标节点，1表示与索引为1的节点进行连接
+                "name":'11'
+            },
+            {
+                "source": 0,
+                "target": 2,
+                "des": 'link01des',
+                "name":22
+            },
+
+        ]
+    };
+    myChart.hideLoading();
+
+  var  option = {
+        legend: {
+            data: ['甲公司', '乙公司'] //此处的数据必须和关系网类别中name相对应
+        },
+        series: [{
+            type: 'graph',
+            layout: 'force',
+            animation: false,
+            label: {
+                normal: {
+                    show: true,
+                    position: 'right'
+                }
+            },
+            draggable: true,
+            data: webkitDep.nodes.map(function(node, idx) {
+                node.id = idx;
+                return node;
+            }),
+            categories: webkitDep.categories,
+            force: {
+                edgeLength: 80, //连线的长度
+                repulsion: 100 //子节点之间的间距
+            },
+            label : {
+                normal : {
+                    show : true,
+                    textStyle : {}
+                }
+            },
+            edgeLabel : {
+                normal : {
+                    show : true,
+                    formatter : function(x) {
+                        return x.data.name;
+                    }
+                }
+            },
+            edges: webkitDep.links
+        }]
+    };*/
+
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main1'));
     // 指定图表的配置项和数据

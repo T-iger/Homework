@@ -1,0 +1,1094 @@
+2020-04-19 00:02:11.613  INFO 13840 --- [Thread-18] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:02:12.100  INFO 13840 --- [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:02:12.259  INFO 13840 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2020-04-19 00:02:12.410  INFO 13840 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2020-04-19 00:02:14.359  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 13840 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-19 00:02:14.360 DEBUG 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-19 00:02:14.360  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-19 00:02:15.160  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-19 00:02:15.216  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54ms. Found 3 JPA repository interfaces.
+2020-04-19 00:02:15.808  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-19 00:02:15.809  INFO 13840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-19 00:02:15.810  INFO 13840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-19 00:02:15.848  INFO 13840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-19 00:02:15.848  INFO 13840 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1481 ms
+2020-04-19 00:02:16.009  INFO 13840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-19 00:02:16.025  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2020-04-19 00:02:16.025  WARN 13840 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-19 00:02:16.183  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2020-04-19 00:02:16.184  INFO 13840 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-19 00:02:16.700  INFO 13840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-19 00:02:16.700  INFO 13840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:02:16.764  INFO 13840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-19 00:02:17.180  WARN 13840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-19 00:02:17.418  INFO 13840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:02:17.469  INFO 13840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-19 00:02:17.829  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-19 00:02:17.830  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 3.569 seconds (JVM running for 437.142)
+2020-04-19 00:02:17.831  INFO 13840 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-19 00:02:22.145  INFO 13840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-19 00:02:22.148  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-19 00:02:22.176  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 27 ms
+2020-04-19 00:02:24.650  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-19 00:02:24.775  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:02:24.775  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/homeworkinput
+2020-04-19 00:02:28.480  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-19 00:02:28.530  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:02:28.531  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/homeworkinput
+2020-04-19 00:03:24.217  INFO 13840 --- [Thread-23] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:03:24.255  INFO 13840 --- [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:03:24.334  INFO 13840 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2020-04-19 00:03:24.412  INFO 13840 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2020-04-19 00:03:26.901  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 13840 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-19 00:03:26.901 DEBUG 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-19 00:03:26.902  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-19 00:03:27.945  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-19 00:03:27.991  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 3 JPA repository interfaces.
+2020-04-19 00:03:28.801  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-19 00:03:28.803  INFO 13840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-19 00:03:28.804  INFO 13840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-19 00:03:28.951  INFO 13840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-19 00:03:28.951  INFO 13840 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2043 ms
+2020-04-19 00:03:29.444  INFO 13840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-19 00:03:29.563  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2020-04-19 00:03:29.563  WARN 13840 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-19 00:03:30.156  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2020-04-19 00:03:30.161  INFO 13840 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-19 00:03:30.934  INFO 13840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-19 00:03:30.935  INFO 13840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:03:31.032  INFO 13840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-19 00:03:31.977  WARN 13840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-19 00:03:33.469  INFO 13840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:03:33.734  INFO 13840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-19 00:03:34.841  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-19 00:03:34.855  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 8.071 seconds (JVM running for 514.166)
+2020-04-19 00:03:34.857  INFO 13840 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-19 00:03:40.882  INFO 13840 --- [http-nio-8080-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-19 00:03:40.884  INFO 13840 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-19 00:03:40.897  INFO 13840 --- [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed initialization in 13 ms
+2020-04-19 00:03:40.908  INFO 13840 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-19 00:03:41.036  INFO 13840 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:03:41.036  INFO 13840 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-19 00:03:41.093 ERROR 13840 --- [http-nio-8080-exec-10] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-10] Exception processing template "/teacher/homework": An error happened during template parsing (template: "class path resource [templates//teacher/homework.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//teacher/homework.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "page.content" (template: "/teacher/homework" - line 101, col 17)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393)
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
+	... 48 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "page.content" (template: "/teacher/homework" - line 101, col 17)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:290)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardEachTagProcessor.doProcess(StandardEachTagProcessor.java:73)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278)
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124)
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109)
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297)
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402)
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159)
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
+	... 50 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'content' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:337)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	... 70 common frames omitted
+
+2020-04-19 00:03:41.106 ERROR 13840 --- [http-nio-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//teacher/homework.html]")] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'content' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:337)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardEachTagProcessor.doProcess(StandardEachTagProcessor.java:73)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278)
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124)
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109)
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297)
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402)
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159)
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+2020-04-19 00:08:23.019  INFO 13840 --- [Thread-28] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:08:23.065  INFO 13840 --- [Thread-28] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:08:23.275  INFO 13840 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2020-04-19 00:08:23.794  INFO 13840 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2020-04-19 00:08:29.308  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 13840 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-19 00:08:29.309 DEBUG 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-19 00:08:29.310  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-19 00:08:32.466  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-19 00:08:32.749  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 282ms. Found 3 JPA repository interfaces.
+2020-04-19 00:08:33.863  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-19 00:08:33.866  INFO 13840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-19 00:08:33.866  INFO 13840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-19 00:08:33.930  INFO 13840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-19 00:08:33.930  INFO 13840 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4596 ms
+2020-04-19 00:08:34.113  INFO 13840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-19 00:08:34.127  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2020-04-19 00:08:34.127  WARN 13840 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-19 00:08:34.328  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2020-04-19 00:08:34.332  INFO 13840 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-19 00:08:35.024  INFO 13840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-19 00:08:35.026  INFO 13840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:08:35.122  INFO 13840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-19 00:08:35.749  WARN 13840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-19 00:08:36.051  INFO 13840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:08:36.112  INFO 13840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-19 00:08:36.407  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-19 00:08:36.412  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 7.425 seconds (JVM running for 815.723)
+2020-04-19 00:08:36.414  INFO 13840 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-19 00:08:45.037  INFO 13840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-19 00:08:45.039  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-19 00:08:45.058  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 19 ms
+2020-04-19 00:08:45.080  INFO 13840 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-19 00:08:45.204  INFO 13840 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:08:45.205  INFO 13840 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : redirect:/
+2020-04-19 00:09:14.462  INFO 13840 --- [Thread-33] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:09:14.471  INFO 13840 --- [Thread-33] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:09:14.575  INFO 13840 --- [Thread-33] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2020-04-19 00:09:15.665  INFO 13840 --- [Thread-33] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2020-04-19 00:09:20.811  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 13840 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-19 00:09:20.812 DEBUG 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-19 00:09:20.813  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-19 00:09:21.742  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-19 00:09:21.827  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84ms. Found 3 JPA repository interfaces.
+2020-04-19 00:09:22.623  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-19 00:09:22.627  INFO 13840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-19 00:09:22.630  INFO 13840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-19 00:09:22.701  INFO 13840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-19 00:09:22.701  INFO 13840 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1881 ms
+2020-04-19 00:09:22.867  INFO 13840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-19 00:09:22.878  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2020-04-19 00:09:22.878  WARN 13840 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-19 00:09:22.994  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2020-04-19 00:09:22.995  INFO 13840 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-19 00:09:23.518  INFO 13840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-19 00:09:23.519  INFO 13840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:09:23.599  INFO 13840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-19 00:09:24.304  WARN 13840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-19 00:09:24.505  INFO 13840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:09:24.603  INFO 13840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-19 00:09:25.055  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-19 00:09:25.057  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 4.476 seconds (JVM running for 864.369)
+2020-04-19 00:09:25.059  INFO 13840 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-19 00:09:30.679  INFO 13840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-19 00:09:30.681  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-19 00:09:30.701  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms
+2020-04-19 00:09:30.722  INFO 13840 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-19 00:09:30.821  INFO 13840 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:09:30.821  INFO 13840 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/homework
+2020-04-19 00:11:31.964  INFO 13840 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-19 00:11:31.980  INFO 13840 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:11:31.980  INFO 13840 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-19 00:13:09.356  INFO 13840 --- [Thread-38] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:13:09.415  INFO 13840 --- [Thread-38] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:13:09.684  INFO 13840 --- [Thread-38] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2020-04-19 00:13:09.830  INFO 13840 --- [Thread-38] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2020-04-19 00:13:12.645  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 13840 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-19 00:13:12.646 DEBUG 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-19 00:13:12.647  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-19 00:13:13.436  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-19 00:13:13.561  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 123ms. Found 3 JPA repository interfaces.
+2020-04-19 00:13:13.989  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-19 00:13:13.991  INFO 13840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-19 00:13:13.991  INFO 13840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-19 00:13:14.043  INFO 13840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-19 00:13:14.044  INFO 13840 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1394 ms
+2020-04-19 00:13:14.185  INFO 13840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-19 00:13:14.197  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2020-04-19 00:13:14.198  WARN 13840 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-19 00:13:14.314  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2020-04-19 00:13:14.315  INFO 13840 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-19 00:13:14.779  INFO 13840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-19 00:13:14.780  INFO 13840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:13:14.855  INFO 13840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-19 00:13:15.203  WARN 13840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-19 00:13:15.429  INFO 13840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:13:15.653  INFO 13840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-19 00:13:15.908  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-19 00:13:15.910  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 3.357 seconds (JVM running for 1095.221)
+2020-04-19 00:13:15.911  INFO 13840 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-19 00:13:19.625  INFO 13840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-19 00:13:19.630  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-19 00:13:19.664  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 34 ms
+2020-04-19 00:13:22.465  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-19 00:13:22.470  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:13:22.471  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-19 00:13:25.184  INFO 13840 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-19 00:13:25.317  INFO 13840 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:13:25.317  INFO 13840 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/homework
+2020-04-19 00:20:19.864  INFO 13840 --- [Thread-43] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:20:19.916  INFO 13840 --- [Thread-43] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:20:20.028  INFO 13840 --- [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2020-04-19 00:20:20.104  INFO 13840 --- [Thread-43] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2020-04-19 00:20:23.018  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 13840 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-19 00:20:23.019 DEBUG 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-19 00:20:23.019  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-19 00:20:23.793  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-19 00:20:23.842  INFO 13840 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49ms. Found 3 JPA repository interfaces.
+2020-04-19 00:20:24.619  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-19 00:20:24.620  INFO 13840 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-19 00:20:24.621  INFO 13840 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-19 00:20:24.673  INFO 13840 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-19 00:20:24.673  INFO 13840 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1648 ms
+2020-04-19 00:20:24.797  INFO 13840 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-19 00:20:24.810  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2020-04-19 00:20:24.811  WARN 13840 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-19 00:20:25.004  INFO 13840 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2020-04-19 00:20:25.006  INFO 13840 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-19 00:20:25.625  INFO 13840 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-19 00:20:25.626  INFO 13840 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 00:20:25.685  INFO 13840 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-19 00:20:26.150  WARN 13840 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-19 00:20:26.324  INFO 13840 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-19 00:20:26.427  INFO 13840 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-19 00:20:26.684  INFO 13840 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-19 00:20:26.685  INFO 13840 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 4.095 seconds (JVM running for 1525.996)
+2020-04-19 00:20:26.686  INFO 13840 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-19 00:20:32.880  INFO 13840 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-19 00:20:32.883  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-19 00:20:32.898  INFO 13840 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-04-19 00:20:39.965  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-19 00:20:40.008  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:20:40.008  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-19 00:20:43.650  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-19 00:20:43.651  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:20:43.651  INFO 13840 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-19 00:20:46.612  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='2020作业', is_publish=false}, {}]}
+2020-04-19 00:20:46.711  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:20:46.711  INFO 13840 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/homework
+2020-04-19 00:21:04.107  INFO 13840 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.home', args=[]}
+2020-04-19 00:21:04.108  INFO 13840 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-19 00:21:04.108  INFO 13840 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-19 00:21:04.115 ERROR 13840 --- [http-nio-8080-exec-5] org.thymeleaf.TemplateEngine             : [THYMELEAF][http-nio-8080-exec-5] Exception processing template "/teacher/homework": An error happened during template parsing (template: "class path resource [templates//teacher/homework.html]")
+
+org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//teacher/homework.html]")
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:241)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.attoparser.ParseException: Exception evaluating SpringEL expression: "page.content" (template: "/teacher/homework" - line 101, col 17)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:393)
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
+	... 48 common frames omitted
+Caused by: org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "page.content" (template: "/teacher/homework" - line 101, col 17)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:290)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardEachTagProcessor.doProcess(StandardEachTagProcessor.java:73)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278)
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124)
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109)
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297)
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402)
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159)
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
+	... 50 common frames omitted
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'content' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:337)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	... 70 common frames omitted
+
+2020-04-19 00:21:04.116 ERROR 13840 --- [http-nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: An error happened during template parsing (template: "class path resource [templates//teacher/homework.html]")] with root cause
+
+org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'content' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:337)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:125)
+	at org.thymeleaf.standard.processor.StandardEachTagProcessor.doProcess(StandardEachTagProcessor.java:73)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.TemplateHandlerAdapterMarkupHandler.handleOpenElementEnd(TemplateHandlerAdapterMarkupHandler.java:304)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler$InlineMarkupAdapterPreProcessorHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:278)
+	at org.thymeleaf.standard.inline.OutputExpressionInlinePreProcessorHandler.handleOpenElementEnd(OutputExpressionInlinePreProcessorHandler.java:186)
+	at org.thymeleaf.templateparser.markup.InlinedOutputExpressionMarkupHandler.handleOpenElementEnd(InlinedOutputExpressionMarkupHandler.java:124)
+	at org.attoparser.HtmlElement.handleOpenElementEnd(HtmlElement.java:109)
+	at org.attoparser.HtmlMarkupHandler.handleOpenElementEnd(HtmlMarkupHandler.java:297)
+	at org.attoparser.MarkupEventProcessorHandler.handleOpenElementEnd(MarkupEventProcessorHandler.java:402)
+	at org.attoparser.ParsingElementMarkupUtil.parseOpenElement(ParsingElementMarkupUtil.java:159)
+	at org.attoparser.MarkupParser.parseBuffer(MarkupParser.java:710)
+	at org.attoparser.MarkupParser.parseDocument(MarkupParser.java:301)
+	at org.attoparser.MarkupParser.parse(MarkupParser.java:257)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parse(AbstractMarkupTemplateParser.java:230)
+	at org.thymeleaf.templateparser.markup.AbstractMarkupTemplateParser.parseStandalone(AbstractMarkupTemplateParser.java:100)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:666)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+2020-04-22 08:47:20.306  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 08:47:20.306 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 08:47:20.321  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 08:47:20.478  INFO 10504 --- [restartedMain] o.s.b.devtools.restart.ChangeableUrls    : The Class-Path manifest attribute in D:\IDEA\reposi\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar referenced one or more files that do not exist: file:/D:/IDEA/reposi/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.xml.bind-api-2.3.2.jar,file:/D:/IDEA/reposi/org/glassfish/jaxb/jaxb-runtime/2.3.2/txw2-2.3.2.jar,file:/D:/IDEA/reposi/org/glassfish/jaxb/jaxb-runtime/2.3.2/istack-commons-runtime-3.0.8.jar,file:/D:/IDEA/reposi/org/glassfish/jaxb/jaxb-runtime/2.3.2/stax-ex-1.8.1.jar,file:/D:/IDEA/reposi/org/glassfish/jaxb/jaxb-runtime/2.3.2/FastInfoset-1.2.16.jar,file:/D:/IDEA/reposi/org/glassfish/jaxb/jaxb-runtime/2.3.2/jakarta.activation-api-1.2.1.jar
+2020-04-22 08:47:20.478  INFO 10504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-04-22 08:47:20.478  INFO 10504 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-04-22 08:47:21.602  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 08:47:21.712  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86ms. Found 3 JPA repository interfaces.
+2020-04-22 08:47:22.602  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 08:47:22.618  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 08:47:22.618  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 08:47:22.743  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 08:47:22.743  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2265 ms
+2020-04-22 08:47:22.977  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 08:47:23.086  INFO 10504 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-04-22 08:47:23.274  INFO 10504 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-04-22 08:47:23.399  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-04-22 08:47:23.399  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 08:47:24.133  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-04-22 08:47:24.149  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 08:47:25.414  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 08:47:25.430  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 08:47:25.523  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 08:47:26.226  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 08:47:26.476  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 08:47:26.601  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 08:47:26.898  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 08:47:26.898  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 7.62 seconds (JVM running for 10.327)
+2020-04-22 08:48:15.680  INFO 10504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-22 08:48:15.682  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-22 08:48:15.703  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2020-04-22 08:48:26.960  WARN 10504 --- [http-nio-8080-exec-7] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [921] milliseconds.
+2020-04-22 08:48:30.451  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework;jsessionid=738020314F15B95568A8D7562EA9FF88', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:48:30.535  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:48:30.536  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:48:52.916  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 08:48:52.916  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:48:52.917  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 08:49:01.684  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addRadio', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.addRadio', args=[Homework{id=null, questiontype='Radio', content='1', radioA='1', radioB='1', radioC='1', radioD='1', studentanswer='null', studentradio='null', radio='null', tk='null', initialscore=0, score=1, note='1111'}]}
+2020-04-22 08:49:01.817  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:01.817  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Result : null
+2020-04-22 08:49:03.465  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='1111', is_publish=false}, {}]}
+2020-04-22 08:49:03.525  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:03.526  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/homework
+2020-04-22 08:49:08.372  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework;jsessionid=738020314F15B95568A8D7562EA9FF88', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:08.385  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:08.385  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:11.049  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework;jsessionid=738020314F15B95568A8D7562EA9FF88', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:11.063  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:11.063  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:12.936  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 1, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:12.952  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:12.953  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:19.693  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 2, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:19.710  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:19.710  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:21.894  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 3, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:21.909  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:21.909  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:23.553  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 4, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:23.564  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:23.564  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:25.093  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 5, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:25.104  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:25.104  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:26.662  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 6, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:26.668  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:26.669  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:28.276  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 5, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:28.288  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:28.288  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:30.861  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 4, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:30.873  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:30.873  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:32.222  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 3, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:32.234  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:32.234  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:33.396  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 2, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:33.407  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:33.407  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:34.733  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 1, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:34.747  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:34.747  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:36.098  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:36.111  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:36.111  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:42.377  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 08:49:42.377  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:42.377  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 08:49:50.503  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:50.515  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:50.516  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:51.502  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 08:49:51.503  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:51.503  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 08:49:52.755  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 08:49:52.756  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:52.756  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 08:49:54.194  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:54.207  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:54.207  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:49:55.424  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 08:49:55.424  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:55.424  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 08:49:56.439  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:49:56.452  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:49:56.452  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:52:25.991  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:52:26.003  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:52:26.003  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:52:54.522  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:52:54.535  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:52:54.536  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:54:12.700  INFO 10504 --- [Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 08:54:12.700  INFO 10504 --- [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 08:54:12.794  INFO 10504 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-04-22 08:54:12.872  INFO 10504 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-04-22 08:54:14.607  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 08:54:14.607 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 08:54:14.607  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 08:54:14.998  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 08:54:15.076  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79ms. Found 3 JPA repository interfaces.
+2020-04-22 08:54:15.451  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 08:54:15.451  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 08:54:15.451  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 08:54:15.498  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 08:54:15.498  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 875 ms
+2020-04-22 08:54:15.654  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 08:54:15.670  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-04-22 08:54:15.670  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 08:54:15.732  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-04-22 08:54:15.732  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 08:54:16.544  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 08:54:16.544  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 08:54:16.685  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 08:54:17.450  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 08:54:17.638  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 08:54:17.810  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 08:54:18.107  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 08:54:18.107  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 3.559 seconds (JVM running for 421.533)
+2020-04-22 08:54:18.107  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 08:54:21.971  INFO 10504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-22 08:54:21.973  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-22 08:54:21.985  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2020-04-22 08:54:21.988  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:54:22.013  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:54:22.013  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:54:25.003  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 08:54:25.004  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:54:25.004  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 08:54:31.344  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addRadio', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.addRadio', args=[Homework{id=null, questiontype='Radio', content='1', radioA='1', radioB='1', radioC='1', radioD='1', studentanswer='null', studentradio='null', radio='null', tk='null', initialscore=0, score=1, note='123'}]}
+2020-04-22 08:54:31.405  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:54:31.405  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : null
+2020-04-22 08:54:32.547  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='123', is_publish=false}, {}]}
+2020-04-22 08:54:32.578  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:54:32.579  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : redirect:/teacher/teacherHomework
+2020-04-22 08:54:58.096  INFO 10504 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 08:54:58.096  INFO 10504 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 08:54:58.096  INFO 10504 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2020-04-22 08:54:58.111  INFO 10504 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2020-04-22 08:54:59.290  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 08:54:59.290 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 08:54:59.290  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 08:54:59.727  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 08:54:59.758  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 3 JPA repository interfaces.
+2020-04-22 08:54:59.993  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 08:54:59.993  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 08:54:59.993  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 08:55:00.024  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 08:55:00.024  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 719 ms
+2020-04-22 08:55:00.118  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 08:55:00.118  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2020-04-22 08:55:00.118  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 08:55:00.133  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2020-04-22 08:55:00.133  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 08:55:00.477  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 08:55:00.477  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 08:55:00.540  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 08:55:01.102  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 08:55:01.336  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 08:55:01.414  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 08:55:01.696  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 08:55:01.696  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 2.542 seconds (JVM running for 465.12)
+2020-04-22 08:55:01.696  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 08:55:05.870  INFO 10504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-22 08:55:05.876  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-22 08:55:05.911  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 34 ms
+2020-04-22 08:55:09.987  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='123', is_publish=false}, {}]}
+2020-04-22 08:55:10.035  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:10.035  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Result : redirect:/login/teacher/teacherHomework
+2020-04-22 08:55:10.084  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {message=新增成功}]}
+2020-04-22 08:55:10.105  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:10.105  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:55:13.684  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 1, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:55:13.695  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:13.695  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:55:15.257  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 2, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:55:15.267  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:15.267  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:55:17.585  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 3, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:55:17.596  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:17.596  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:55:19.097  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 4, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:55:19.110  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:19.110  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:55:20.491  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 5, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:55:20.505  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:20.505  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 08:55:21.730  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 6, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 08:55:21.739  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 08:55:21.739  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:01:06.021  INFO 10504 --- [Thread-13] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:01:06.094  INFO 10504 --- [Thread-13] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:01:06.197  INFO 10504 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2020-04-22 09:01:06.319  INFO 10504 --- [Thread-13] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2020-04-22 09:01:08.733  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 09:01:08.734 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 09:01:08.734  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 09:01:09.273  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 09:01:09.400  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 125ms. Found 3 JPA repository interfaces.
+2020-04-22 09:01:10.189  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 09:01:10.192  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 09:01:10.192  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 09:01:10.677  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 09:01:10.677  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1939 ms
+2020-04-22 09:01:12.857  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 09:01:12.875  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2020-04-22 09:01:12.876  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 09:01:13.007  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2020-04-22 09:01:13.007  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 09:01:13.677  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 09:01:13.678  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:01:13.915  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 09:01:14.388  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 09:01:14.725  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:01:14.791  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 09:01:15.096  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 09:01:15.098  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 6.472 seconds (JVM running for 838.514)
+2020-04-22 09:01:15.101  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 09:01:51.583  INFO 10504 --- [Thread-18] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:01:51.641  INFO 10504 --- [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:01:51.732  INFO 10504 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2020-04-22 09:01:51.780  INFO 10504 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2020-04-22 09:01:53.331  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 09:01:53.332 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 09:01:53.332  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 09:01:54.087  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 09:01:54.128  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41ms. Found 3 JPA repository interfaces.
+2020-04-22 09:01:54.559  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 09:01:54.561  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 09:01:54.561  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 09:01:54.595  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 09:01:54.595  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1258 ms
+2020-04-22 09:01:54.721  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 09:01:54.730  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2020-04-22 09:01:54.730  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 09:01:54.756  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2020-04-22 09:01:54.757  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 09:01:55.233  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 09:01:55.234  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:01:55.309  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 09:01:56.019  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 09:01:56.497  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:01:56.802  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 09:01:57.239  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 09:01:57.241  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 4.019 seconds (JVM running for 880.657)
+2020-04-22 09:01:57.242  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 09:02:50.025  INFO 10504 --- [Thread-23] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:02:50.035  INFO 10504 --- [Thread-23] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:02:50.043  INFO 10504 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2020-04-22 09:02:50.069  INFO 10504 --- [Thread-23] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2020-04-22 09:02:52.231  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 09:02:52.232 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 09:02:52.233  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 09:02:53.157  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 09:02:53.187  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28ms. Found 3 JPA repository interfaces.
+2020-04-22 09:02:53.429  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 09:02:53.430  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 09:02:53.431  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 09:02:53.465  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 09:02:53.465  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1227 ms
+2020-04-22 09:02:53.672  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 09:02:53.684  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2020-04-22 09:02:53.684  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 09:02:53.712  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2020-04-22 09:02:53.713  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 09:02:54.213  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 09:02:54.214  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:02:54.273  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 09:02:55.289  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 09:02:55.760  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:02:55.997  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 09:02:56.394  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 09:02:56.395  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 4.254 seconds (JVM running for 939.811)
+2020-04-22 09:02:56.397  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 09:03:01.913  INFO 10504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-22 09:03:01.915  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-22 09:03:01.931  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2020-04-22 09:03:01.936  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:03:01.944  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:03:01.944  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:03:09.243  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addRadio', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.addRadio', args=[Homework{id=null, questiontype='Radio', content='11', radioA='1', radioB='1', radioC='1', radioD='1', studentanswer='null', studentradio='null', radio='null', tk='null', initialscore=0, score=1, note='12131'}]}
+2020-04-22 09:03:09.350  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:03:09.351  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : null
+2020-04-22 09:03:10.419  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='12131', is_publish=false}, {}]}
+2020-04-22 09:03:10.488  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:03:10.489  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : redirect:/login/teacher/teacherHomework
+2020-04-22 09:03:10.529  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {message=新增成功}]}
+2020-04-22 09:03:10.548  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:03:10.548  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:05:57.103  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 09:05:57.103  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:05:57.103  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 09:05:58.231  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:05:58.231  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:05:58.231  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:06:21.043  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:06:21.067  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:06:21.067  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:06:23.887  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 09:06:23.887  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:06:23.887  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 09:06:31.765 ERROR 10504 --- [http-nio-8080-exec-7] c.l.h.h.ControllerExceptionHandler       : Request URL : /login/,Exception : {}
+
+org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:213)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:422)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:367)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:110)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:59)
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:395)
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1234)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1016)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1594)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+2020-04-22 09:06:31.768  WARN 10504 --- [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2020-04-22 09:06:39.662  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:06:39.674  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:06:39.674  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:07:24.393  INFO 10504 --- [Thread-28] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:07:24.394  INFO 10504 --- [Thread-28] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:07:24.398  INFO 10504 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2020-04-22 09:07:24.417  INFO 10504 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2020-04-22 09:07:26.151  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 09:07:26.152 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 09:07:26.152  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 09:07:26.641  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 09:07:26.700  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58ms. Found 3 JPA repository interfaces.
+2020-04-22 09:07:27.100  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 09:07:27.102  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 09:07:27.102  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 09:07:27.142  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 09:07:27.142  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 987 ms
+2020-04-22 09:07:27.248  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 09:07:27.256  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2020-04-22 09:07:27.256  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 09:07:27.276  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2020-04-22 09:07:27.276  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 09:07:27.855  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 09:07:27.855  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:07:27.924  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 09:07:28.696  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 09:07:29.643  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:07:29.764  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 09:07:30.157  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 09:07:30.158  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 4.062 seconds (JVM running for 1213.573)
+2020-04-22 09:07:30.159  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 09:07:36.539  INFO 10504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-22 09:07:36.545  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-22 09:07:36.577  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 31 ms
+2020-04-22 09:07:38.310  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:07:38.328  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:07:38.328  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:07:48.871  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:07:48.883  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:07:48.883  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:08:11.765  INFO 10504 --- [Thread-33] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:08:11.766  INFO 10504 --- [Thread-33] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:08:11.770  INFO 10504 --- [Thread-33] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2020-04-22 09:08:11.792  INFO 10504 --- [Thread-33] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2020-04-22 09:08:13.195  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Starting HomeworkApplication on Smile with PID 10504 (D:\IDEA\homework\target\classes started by 小虎 in D:\IDEA\homework)
+2020-04-22 09:08:13.195 DEBUG 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-04-22 09:08:13.196  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : No active profile set, falling back to default profiles: default
+2020-04-22 09:08:13.750  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-22 09:08:13.843  INFO 10504 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93ms. Found 3 JPA repository interfaces.
+2020-04-22 09:08:14.185  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-04-22 09:08:14.186  INFO 10504 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-04-22 09:08:14.186  INFO 10504 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-04-22 09:08:14.227  INFO 10504 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-04-22 09:08:14.227  INFO 10504 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1026 ms
+2020-04-22 09:08:14.390  INFO 10504 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-04-22 09:08:14.403  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2020-04-22 09:08:14.403  WARN 10504 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2020-04-22 09:08:14.426  INFO 10504 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2020-04-22 09:08:14.427  INFO 10504 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-04-22 09:08:14.933  INFO 10504 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-04-22 09:08:14.934  INFO 10504 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-22 09:08:15.030  INFO 10504 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-04-22 09:08:15.943  WARN 10504 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-22 09:08:16.427  INFO 10504 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-22 09:08:16.569  INFO 10504 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-04-22 09:08:16.921  INFO 10504 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-22 09:08:16.923  INFO 10504 --- [restartedMain] com.lihu.homework.HomeworkApplication    : Started HomeworkApplication in 3.836 seconds (JVM running for 1260.338)
+2020-04-22 09:08:16.925  INFO 10504 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-04-22 09:08:23.985  INFO 10504 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-04-22 09:08:23.987  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-04-22 09:08:24.010  INFO 10504 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 22 ms
+2020-04-22 09:08:30.151  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:08:30.178  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:08:30.179  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:08:31.459  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherIndex', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherIndex', args=[]}
+2020-04-22 09:08:31.460  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:08:31.460  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Result : /teacher/teacherindex
+2020-04-22 09:08:33.596  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:08:33.605  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:08:33.605  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:08:35.238  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 09:08:35.239  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:08:35.239  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 09:08:36.394  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:08:36.395  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:08:36.395  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:08:37.319  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:08:37.331  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:08:37.331  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:21:36.061  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:21:36.083  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:21:36.083  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:51:51.517  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:51:51.663  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:51:51.664  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:51:57.390  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 1, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:51:57.403  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:51:57.403  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:52:07.002  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 2, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:52:07.016  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:07.017  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:52:15.293  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 09:52:15.294  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:15.294  INFO 10504 --- [http-nio-8080-exec-5] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 09:52:19.227  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:52:19.240  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:19.240  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:52:21.906  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:52:21.907  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:21.907  INFO 10504 --- [http-nio-8080-exec-1] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:52:23.862  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:52:23.878  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:23.878  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:52:30.387  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:52:30.387  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:30.388  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:52:48.424  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addRadio', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.addRadio', args=[Homework{id=null, questiontype='Radio', content='1', radioA='1', radioB='1', radioC='1', radioD='1', studentanswer='null', studentradio='null', radio='null', tk='null', initialscore=0, score=22, note='4.22作业'}]}
+2020-04-22 09:52:48.644  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:52:48.646  INFO 10504 --- [http-nio-8080-exec-2] com.lihu.homework.aspect.LogAspect       : Result : null
+2020-04-22 09:53:05.499  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addRadio', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.addRadio', args=[Homework{id=null, questiontype='TK', content='11', radioA='null', radioB='null', radioC='null', radioD='null', studentanswer='null', studentradio='null', radio='null', tk='1', initialscore=0, score=111, note='4.22作业'}]}
+2020-04-22 09:53:05.534  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:53:05.534  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : null
+2020-04-22 09:53:14.757  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addRadio', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.addRadio', args=[Homework{id=null, questiontype='JD', content='解答题', radioA='null', radioB='null', radioC='null', radioD='null', studentanswer='null', studentradio='null', radio='null', tk='null', initialscore=0, score=2, note='4.22作业'}]}
+2020-04-22 09:53:14.800  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:53:14.801  INFO 10504 --- [http-nio-8080-exec-3] com.lihu.homework.aspect.LogAspect       : Result : null
+2020-04-22 09:53:23.576  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/saveNotPublish', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.AddHomeworkController.saveHomework', args=[PublishHomework{id=null, public_name='null', update_time=null, start_time=null, end_time=null, note='4.22作业', is_publish=false}, {}]}
+2020-04-22 09:53:23.635  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:53:23.636  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : redirect:/login/teacher/teacherHomework
+2020-04-22 09:53:23.696  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {message=新增成功}]}
+2020-04-22 09:53:23.709  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:53:23.709  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:53:36.518  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 09:53:36.519  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:53:36.519  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 09:53:43.041  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:53:43.055  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:53:43.056  INFO 10504 --- [http-nio-8080-exec-9] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:54:24.505  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:54:24.506  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:54:24.507  INFO 10504 --- [http-nio-8080-exec-4] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:54:28.374  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:54:28.392  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:54:28.393  INFO 10504 --- [http-nio-8080-exec-7] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework
+2020-04-22 09:54:30.294  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/addHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.addHomework', args=[]}
+2020-04-22 09:54:30.295  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:54:30.295  INFO 10504 --- [http-nio-8080-exec-10] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkinput
+2020-04-22 09:54:33.575  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/homeworkPublic', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.homeworkPublic', args=[]}
+2020-04-22 09:54:33.576  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:54:33.577  INFO 10504 --- [http-nio-8080-exec-6] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homeworkpublic
+2020-04-22 09:54:34.698  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Request : RequestLog{url='/login/teacher/teacherHomework', ip='0:0:0:0:0:0:0:1', classMethod='com.lihu.homework.webcontroller.TeacherController.teacherHomework', args=[Page request [number: 0, size 5, sort: updatetime: DESC], {}]}
+2020-04-22 09:54:34.707  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : ----------After----------
+2020-04-22 09:54:34.708  INFO 10504 --- [http-nio-8080-exec-8] com.lihu.homework.aspect.LogAspect       : Result : /teacher/homework

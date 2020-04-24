@@ -305,7 +305,7 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
 
 java.lang.NullPointerException: null
 	at com.lihu.homework.service.UserServiceImpl.checkUser(UserServiceImpl.java:21)
-	at com.lihu.homework.web.login.LoginController.login(LoginController.java:35)
+	at com.lihu.homework.webcontroller.login.LoginController.login(LoginController.java:35)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -362,7 +362,7 @@ java.lang.NullPointerException: null
 
 java.lang.NullPointerException: null
 	at com.lihu.homework.service.UserServiceImpl.checkUser(UserServiceImpl.java:21)
-	at com.lihu.homework.web.login.LoginController.login(LoginController.java:35)
+	at com.lihu.homework.webcontroller.login.LoginController.login(LoginController.java:35)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -419,7 +419,7 @@ java.lang.NullPointerException: null
 
 java.lang.NullPointerException: null
 	at com.lihu.homework.service.UserServiceImpl.checkUser(UserServiceImpl.java:21)
-	at com.lihu.homework.web.login.LoginController.login(LoginController.java:35)
+	at com.lihu.homework.webcontroller.login.LoginController.login(LoginController.java:35)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -476,7 +476,7 @@ java.lang.NullPointerException: null
 
 java.lang.NullPointerException: null
 	at com.lihu.homework.service.UserServiceImpl.checkUser(UserServiceImpl.java:21)
-	at com.lihu.homework.web.login.LoginController.login(LoginController.java:35)
+	at com.lihu.homework.webcontroller.login.LoginController.login(LoginController.java:35)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -676,7 +676,7 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
 2020-04-15 10:53:25.179 ERROR 13464 --- [http-nio-8080-exec-6] c.l.h.h.ControllerExceptionHandler       : Request URL : /login,Exception : {}
 
 java.lang.NullPointerException: null
-	at com.lihu.homework.web.login.LoginController.login(LoginController.java:41)
+	at com.lihu.homework.webcontroller.login.LoginController.login(LoginController.java:41)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

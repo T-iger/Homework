@@ -11,4 +11,6 @@ import org.springframework.data.domain.Pageable;
 public interface PublicHomeworkService {
 
     Page<PublishHomework> listPublic(Pageable pageable);
+
+    PublishHomework saveNotPublish(PublishHomework publishHomework);
 }
