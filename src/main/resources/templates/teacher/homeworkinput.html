@@ -265,7 +265,7 @@
                 <tr class="radio_style">
                     <td colspan="2">
                         <div class="ui selection dropdown">
-                            <input type="hidden" name="radio">
+                            <input type="hidden" class="answerRadio" name="radio">
                             <i class="dropdown icon"></i>
                             <div class="default text radiotext"></div>
                             <div class="menu" id="studentradio">
@@ -460,6 +460,8 @@
             $(".radioB1").attr('id', 'radioB').attr('name', 'radioB');
             $(".radioC1").attr('id', 'radioC').attr('name', 'radioC');
             $(".radioD1").attr('id', 'radioD').attr('name', 'radioD');
+            $(".answerRadio").attr('name', 'radio');
+
             $(".type1").attr('value', 'Radio');
             var notevalue = $("#note2").val();
             $(".note1").attr('value', notevalue);
@@ -474,7 +476,7 @@
             $(".radio_style").hide();
             $('.TK_style').show();
             $(".JD_style").hide();
-            $(".radioA1,.radioB1,.radioC1,.radioD1").attr('id', '').attr('name', '');
+            $(".radioA1,.radioB1,.radioC1,.radioD1,.answerRadio").attr('id', '').attr('name', '');
             $(".tk1").attr('id', 'tk').attr('name', 'tk');
             $(".type1").attr('value', 'TK');
             var notevalue = $("#note2").val();
@@ -491,7 +493,7 @@
             $(".radio_style").hide();
             $('.TK_style').hide();
             $(".JD_style").show();
-            $(".radioA1,.radioB1,.radioC1,.radioD1,.tk1").attr('id', '').attr('name', '');
+            $(".radioA1,.radioB1,.radioC1,.radioD1,.tk1,answerRadio").attr('id', '').attr('name', '');
             $(".type1").attr('value', 'JD');
             var notevalue = $("#note2").val();
             $(".note1").attr('value', notevalue);

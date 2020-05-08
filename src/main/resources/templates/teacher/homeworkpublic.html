@@ -51,62 +51,61 @@
 </div>
 <!--中间内容-->
 <div class="m-padded-tb-big m-container">
-
-
     <div class="ui container">
         <!--查询表单-->
         <h2 class="ui header center aligned">下发作业</h2>
-        <form action="#" method="post" class="ui form">
-            <!--<div class="ui left labeled input">
-                <div class="ui selection dropdown label teal basic">
-                    <input type="hidden" value="xx">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">xx</div>
-                    <div class="menu">
-                        <div class="item" data-value="1">1</div>
-                        <div class="item" data-value="2">2</div>
-                        <div class="item" data-value="3">3</div>
-                    </div>
-                </div>
-            </div>
-            <div class="field">
-                <input type="text" name="title" placeholder="标题">
-            </div>-->
+        <form action="#" method="post" class="ui form" th:action="@{/login/teacher/publish}">
             <!-时间--->
-            <div class="ui segment attached center aligned">
-                <div class="ui calendar " id="example1">
+            <div class="ui segment attached center aligned ">
+                <div class="ui calendar starttime">
                     <label>起始时间：</label>
                     <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" placeholder="Date" value="">
+                        <input type="text" autocomplete="off" placeholder="Date" id="starttime" name="starttime">
                     </div>
                 </div>
-                <div class="ui calendar m-padded-mini" id="example2">
+                <div class="ui calendar m-padded-mini endtime">
                     <label>截止时间：</label>
                     <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input type="text" placeholder="Date" value="">
+                        <input autocomplete="off" id="endtime" name="endtime" type="text" placeholder="Date" >
                     </div>
                 </div>
-            </div>
-            <div class="ui segment attached center aligned">
-                <div class="ui calendar m-padded-mini">
-                    <label>作业标题：</label>
-                    <div class="ui search dropdown  selection ">
-                        <input type="hidden" name="note">
+                <div class="ui  m-padded-mini">
+                    <label>班级：</label>
+                    <div class="ui  search dropdown multiple selection dropdown">
+                        <input type="hidden" name="banji" id="banji">
                         <i class="dropdown icon"></i>
-                        <div class="default text">选择作业</div>
-                        <div class="menu" id="note">
-                            <div th:each="homework : ${homeworks}" th:text="${homework}" class="item" data-value="af">
-                                Afghanistan
+                        <div class="default text">选择班级</div>
+                        <div class="menu">
+                            <div th:each="userclass :${userclass}" th:data-value="${userclass}"
+                                 th:text="${userclass}" class="item" data-value="1">
+                                初二(1)班
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="ui segment attached center aligned">
+                <div class="ui  m-padded-mini">
+                    <label>作业标题：</label>
+                    <div class="ui search dropdown  selection ">
+                        <input type="hidden" id="note" name="note">
+                        <i class="dropdown icon"></i>
+                        <div class="default text textnote">选择作业</div>
+                        <div class="menu" id="note1">
+                            <div th:each="publish : ${publishHomeworks}" th:data-value="${publish.note}+','+${publish.id}"
+                                 th:text="${publish.note}" class="item" data-value="af">
+                                Afghanistan
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 <div id="table-container">
-                    <table th:fragment="homeworkList" class="ui compact teal table">
+                    <table id="zhanshi" th:fragment="homeworkList" class="ui compact teal table">
                         <thead>
-                        <tr >
+                        <tr>
                             <td colspan="8"><h2>一、单选题</h2></td>
                         </tr>
                         <td colspan="8"></td>
@@ -119,18 +118,18 @@
                             <th>D选项</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr th:each="homeworkList:${homeworkLists}">
-                            <td th:text="${iterStat.count}">1</td>
-                            <td th:text="">内容</td>
-                            <td th:text="">A</td>
-                            <td th:text="">B</td>
-                            <td th:text="">C</td>
-                            <td th:text="">D</td>
+                        <tbody th:each="testPager: ${testPagers}">
+                        <tr th:unless="${testPager.questiontype!='Radio'}">
+                            <td>1</td>
+                            <td th:text="${testPager.content}">内容</td>
+                            <td th:text="${testPager.radioA}">A</td>
+                            <td th:text="${testPager.radioB}">B</td>
+                            <td th:text="${testPager.radioC}">C</td>
+                            <td th:text="${testPager.radioD}">D</td>
                         </tr>
                         </tbody>
                         <td colspan="8"></td>
-                        <tr >
+                        <tr>
                             <td colspan="8"><h2>二、填空题</h2></td>
                         </tr>
                         <td colspan="8"></td>
@@ -139,14 +138,14 @@
                             <th>填空题题目</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr th:each="homeworkList:${homeworkLists}">
-                            <td colspan="1" th:text="${iterStat.count}">1</td>
-                            <td colspan="7" th:text="">内容</td>
+                        <tbody th:each="testPager: ${testPagers}">
+                        <tr th:unless="${testPager.questiontype!='TK'}">
+                            <td colspan="1">1</td>
+                            <td colspan="7" th:text="${testPager.content}">内容</td>
                         </tr>
                         </tbody>
                         <td colspan="8"></td>
-                        <tr >
+                        <tr>
                             <td colspan="8"><h2>三、解答题</h2></td>
                         </tr>
                         <td colspan="8"></td>
@@ -155,18 +154,21 @@
                             <th>解答题目</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr th:each="homeworkList:${homeworkLists}">
-                            <td colspan="1" th:text="${iterStat.count}">1</td>
-                            <td colspan="7" th:text="${blog.title}">内容</td>
+                        <tbody th:each="testPager: ${testPagers}">
+                        <tr th:unless="${testPager.questiontype!='JD'}">
+                            <td colspan="1">1</td>
+                            <td colspan="7" th:text="${testPager.content}">内容</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="ui error mini message"></div>
+                <div class="bottom">
+                    <button id="publish" class="ui button submit ">提交</button>
+                </div>
             </div>
         </form>
     </div>
-
 </div>
 
 <br>
@@ -210,11 +212,11 @@
     </div>
 </footer>
 
-
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui-calendar@0.0.8/dist/calendar.min.js"></script>
+<!--日历js-->
 <script>
     $(".menu.toggle").click(function () {
         $(".m-item").toggleClass("m-mobile-hide");
@@ -223,10 +225,21 @@
         on: 'hover'//鼠标移上去就触发
     });
     // $('#example1').calendar({type: 'date'});
-    $('#example1,#example2').calendar({
+    $('.starttime').calendar({
         type: 'datetime',
         initialDate: null,
+        endCalendar: $('.endtime'),
         on: null,
+        ampm : false,
+        text: {
+            days: ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+            months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            today: 'Today',
+            now: 'Now',
+            am: '上午',
+            pm: '下午'
+        },
         formatter: { // 自定义日期的格式
             date: function (date, settings) {
                 if (!date) return '';
@@ -239,10 +252,77 @@
             }
         }
     });
+    $('.endtime').calendar({
+        type: 'datetime',
+        initialDate: null,
+        startCalendar: $('.starttime'),
+        on: null,
+        ampm : false,
+        text: {
+            days: ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+            months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+            today: 'Today',
+            now: 'Now',
+            am: '上午',
+            pm: '下午'
+        },
+        formatter: { // 自定义日期的格式
+            date: function (date, settings) {
+                if (!date) return '';
+                var year = date.getFullYear();
+                var month = date.getMonth() + 1;
+                var day = date.getDate();
+                month = month < 10 ? '0' + month : month;
+                day = day < 10 ? '0' + day : day;
+                return year + '-' + month + '-' + day;
+            }
+        }
+    });
+
 </script>
 <script>
-    $("#note").click(function () {
-        $("#table-container").load(/*[[{/login/teacher/publishSearch}]]*/)
+    $("#zhanshi").hide();
+    $("#note1").click(function loaddata() {
+            $("#table-container").load(/*[[@{/login/teacher/publishSearch}]]*/"/login/teacher/publishSearch", {
+                note: $(".textnote").text(),
+            });
+        }
+   );
+    $("#note1").click(function(){
+        $("#zhanshi").show();
+    });
+    $('.ui.form').form({
+        fields : {
+            starttime : {
+                identifier: 'starttime',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入开始时间'
+                }]
+            },
+            endtime : {
+                identifier: 'endtime',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请输入截止时间'
+                }]
+            },
+            banji : {
+                identifier: 'banji',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请选择班级'
+                }]
+            },
+            note : {
+                identifier: 'note',
+                rules: [{
+                    type : 'empty',
+                    prompt: '请选择作业'
+                }]
+            }
+        }
     });
 </script>
 </body>

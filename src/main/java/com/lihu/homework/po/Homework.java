@@ -30,6 +30,8 @@ public class Homework {
     private Knowledge knowledge;
     @ManyToOne
     private PublishHomework publishHomework;//一题发布一次
+    @OneToOne
+    private Answer answer;
 
     public Homework() {
     }
@@ -160,6 +162,14 @@ public class Homework {
 
     public void setTk(String tk) {
         this.tk = tk;
+    }
+
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
     }
 
     @Override

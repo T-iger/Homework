@@ -42,9 +42,9 @@ public class AddHomeworkController {
     public String saveHomework(PublishHomework publishHomework, RedirectAttributes attributes) {
         PublishHomework publishHomework1 = publicHomeworkService.saveNotPublish(publishHomework);
         if (publishHomework1 == null) {
-            attributes.addFlashAttribute("message", "新增失败");
+            attributes.addFlashAttribute("message", "操作失败");
         } else {
-            attributes.addFlashAttribute("message", "新增成功");
+            attributes.addFlashAttribute("message", "操作成功");
         }
         return "redirect:/login/teacher/teacherHomework";
     }

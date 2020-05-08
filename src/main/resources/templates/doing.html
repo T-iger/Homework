@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>答题区</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-td-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">作业管理系统</h2>
+            <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
+            <div class="right item m-item m-mobile-hide">
+                <!--  inverted transparent 让搜索框变黑色-->
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400" th:text="${user}">
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="m-padded-tb-big m-container  loading">
+    <div class="ui container">
+        <div class="ui grid">
+            <!-top-->
+            <div class="  column">
+                <!--header-->
+                <div class="ui segment top attached">
+                    <div class="ui grid center aligned">
+                        <div class="column">
+                            <h2 class="ui teal header">xxx作业</h2>
+                        </div>
+
+                    </div>
+                </div>
+                <!--content--->
+                <div class="ui attached segment">
+                    <!--<div class="ui padded  segment vertical  m-padded-tb-big">-->
+                    <div class="ui padded  segment vertical  m-padded-tb-big ">
+                        <div id="table-container">
+                            <table  class="ui compact teal table">
+                                <thead>
+                                <tr>
+                                    <td colspan="8"><h2>一、单选题</h2></td>
+                                </tr>
+                                <td colspan="8"></td>
+                                <tr>
+                                    <th></th>
+                                    <th>单选题目</th>
+                                    <th>A选项</th>
+                                    <th>B选项</th>
+                                    <th>C选项</th>
+                                    <th>D选项</th>
+                                    <th>你的答案</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="testPager: ${testPagers}">
+                                <tr th:unless="${testPager.questiontype!='Radio'}">
+                                    <td>1</td>
+                                    <td th:text="${testPager.content}">内容</td>
+                                    <td th:text="${testPager.radioA}">A</td>
+                                    <td th:text="${testPager.radioB}">B</td>
+                                    <td th:text="${testPager.radioC}">C</td>
+                                    <td th:text="${testPager.radioD}">D</td>
+                                    <td class="ui  m-padded-mini">
+                                        <div class="ui search dropdown  selection ">
+                                            <input type="hidden" id="note" name="note">
+                                            <i class="dropdown icon"></i>
+                                            <div class="default text textnote">选择答案</div>
+                                            <div class="menu" id="note1">
+                                                <div class="item" data-value="A">
+                                                    A
+                                                </div>
+                                                <div class="item" data-value="B">
+                                                    B
+                                                </div>
+                                                <div class="item" data-value="C">
+                                                    C
+                                                </div>
+                                                <div class="item" data-value="D">
+                                                    D
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <td colspan="8"></td>
+                                <tr>
+                                    <td colspan="8"><h2>二、填空题</h2></td>
+                                </tr>
+                                <td colspan="8"></td>
+                                <tr>
+                                    <th></th>
+                                    <th>填空题题目</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>填空题答案</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="testPager: ${testPagers}">
+                                <tr th:unless="${testPager.questiontype!='TK'}">
+                                    <td colspan="1">1</td>
+                                    <td colspan="5" th:text="${testPager.content}">内容</td>
+                                    <td colspan="2">
+                                        <div class="ui input ">
+                                            <input class="fluid">
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <td colspan="8"></td>
+                                <tr>
+                                    <td colspan="8"><h2>三、解答题</h2></td>
+                                </tr>
+                                <td colspan="8"></td>
+                                <tr>
+                                    <th></th>
+                                    <th>解答题目</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>你的答案</th>
+                                </tr>
+                                </thead>
+                                <tbody th:each="testPager: ${testPagers}">
+                                <tr th:unless="${testPager.questiontype!='JD'}">
+                                    <td colspan="1">1</td>
+                                    <td colspan="5" th:text="${testPager.content}">内容</td>
+                                    <td colspan="2">
+                                        <div class="ui input ">
+                                            <textarea class="content1" name="content"
+                                                      id="content"></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--footer -->
+                <div class="ui attached segment">
+                    <div class="ui grid center aligned column">
+                        <div class="column">
+                            <button class="ui primary button">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">111</h4>
+                <p>希望。。。。。。</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">个人网站</p>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+    /*
+        $(".loading").load(/!*[[@{/login/student/showPublish}]]*!/"/login/student/showPublish", {});
+    */
+</script>
+
+</body>
+</html>

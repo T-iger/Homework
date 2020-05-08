@@ -39,6 +39,11 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<PublishHomework> publishHomeworks=new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Answer> answerList;
+
+
+
     public User() {
     }
 
@@ -128,6 +133,13 @@ public class User {
 
     public void setParentuser(User parentuser) {
         this.parentuser = parentuser;
+    }
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
     }
 
     @Override

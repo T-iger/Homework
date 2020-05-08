@@ -6,6 +6,8 @@ import com.lihu.homework.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Li
  **/
@@ -18,7 +20,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User checkUser(String username, String password) {
         User user=userRepository.findByUsernameAndPassword(username, MD5Utils.code(password));
-        System.out.println(username);
         return user;
+    }
+
+    @Override
+    public List<User> classUser(String banji) {
+        List<User> userList = userRepository.findByUserclass(banji);
+        return userList;
     }
 }

@@ -1,9 +1,14 @@
 package com.lihu.homework.webcontroller.login;
 
 import com.lihu.homework.po.User;
+import com.lihu.homework.service.PublicHomeworkService;
 import com.lihu.homework.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,25 +26,33 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PublicHomeworkService publicHomeworkService;
 
-    @GetMapping
+    @GetMapping("/login")
     public String loginPage() {
         return "/login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/loginpost")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
                         HttpSession session,
-                        RedirectAttributes attributes) {
+                        RedirectAttributes attributes,
+                        Model model,
+                        @PageableDefault(size = 5,sort = {"updatetime"},direction = Sort.Direction.DESC)
+                                    Pageable pageable) {
         User user = userService.checkUser(username, password);
         if (user != null) {
             String role = user.getRole();
-            user.setPassword(null);
+            /*user.setPassword(null);*/
             session.setAttribute("user", user);
             if ("teacher".equals(role)) {
+                model.addAttribute("user",user.getUsername());
                 return "/teacher/teacherindex";
             } else if ("student".equals(role)) {
+                model.addAttribute("user",user.getUsername());
+                model.addAttribute("page",publicHomeworkService.showListPublic(pageable,user.getId()));
                 return "/index";
             } else {
                 return "/";

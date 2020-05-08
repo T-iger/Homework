@@ -1,6 +1,7 @@
 package com.lihu.homework.webcontroller;
 
 
+import com.lihu.homework.po.User;
 import com.lihu.homework.service.HomeworkService;
 import com.lihu.homework.service.KnowledgeService;
 import com.lihu.homework.service.KnowledgeServiceImpl;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Li
@@ -48,8 +51,14 @@ public class TeacherController {
     }
 
     @GetMapping("/homeworkPublic")
-    public String homeworkPublic(Model model){
-        model.addAttribute("homeworks",homeworkService.findAll());
+    public String homeworkPublic(Model model, HttpSession session){
+        model.addAttribute("publishHomeworks",publicHomeworkService.findAll());
+        User user=(User)session.getAttribute("user");
+        String[] userclass = user.getUserclass().split(",");
+        for (String s : userclass) {
+            System.out.println(s);
+        }
+        model.addAttribute("userclass",userclass);
         return "/teacher/homeworkpublic";
     }
 
