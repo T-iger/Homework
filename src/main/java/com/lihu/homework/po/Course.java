@@ -19,6 +19,8 @@ public class Course {
     private List<PublishHomework> publishHomeworks=new ArrayList<>();
     @OneToMany(mappedBy = "course")
     private List<Knowledge> knowledges=new ArrayList<>();
+    @OneToMany(mappedBy = "course")
+    private List<User> userList=new ArrayList<>();
 
     public Course() {
     }

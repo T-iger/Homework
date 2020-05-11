@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<div class="m-container-small m-padded-tb-massive" style="max-width: 30em !important;">
+    <div class="ur container">
+        <div class="ui middle aligned center aligned grid">
+            <div class="column">
+                <h2 class="ui teal image header">
+                    <div class="content">
+                        作业管理系统
+                    </div>
+                </h2>
+            </div>
+        </div>
+        <form class="ui large form" method="post" action="#" th:action="@{/zhuce}">
+            <div class="ui  segment">
+                <div class="field required">
+                    <label>账号</label>
+                    <div class="ui left icon input field">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="用户名">
+                    </div>
+                </div>
+                <div class="field required ">
+                    <label>密码</label>
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" id="password" name="password" placeholder="密码">
+                        <nav class="ui attached">
+                            <div class="ui  menu secondary">
+                                <div class="item" id="eye" onclick="hideShowPsw()">
+                                    <i class=" eye icon" id="hideeye" style="display: none"></i>
+                                    <i class=" eye slash icon" id="showeye"></i>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>性别</label>
+                    <div class="inline fields">
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="sex" checked="checked" value="男">
+                                <label>男</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="sex" value="女">
+                                <label>女</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field required ">
+                    <label>班级</label>
+                    <div class="ui  search dropdown  selection dropdown">
+                        <input type="hidden" name="userclass">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">选择班级</div>
+                        <div class="menu">
+                            <div class="item" data-value="初一(1)班">
+                                初一(1)班
+                            </div>
+                            <div class="item" data-value="初一(2)班">
+                                初一(2)班
+                            </div>
+                            <div class="item" data-value="初二(1)班">
+                                初二(1)班
+                            </div>
+                            <div class="item" data-value="初二(2)班">
+                                初二(2)班
+                            </div>
+                            <div class="item" data-value="初二(3)班">
+                                初二(3)班
+                            </div>
+                            <div class="item" data-value="初二(1)班">
+                                初三(1)班
+                            </div>
+                            <div class="item" data-value="初二(2)班">
+                                初三(2)班
+                            </div>
+                            <div class="item" data-value="初二(3)班">
+                                初三(3)班
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>电话</label>
+                    <input type="text" name="phone" placeholder="电话">
+                </div>
+
+                <button class="ui fluid large teal submit button">注册</button>
+
+            </div>
+            <div class="ui error mini message"></div>
+        </form>
+    </div>
+</div>
+
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
+
+<script>
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+
+    var demoInput = document.getElementById("password");
+
+    function hideShowPsw() {
+        if (demoInput.type == "password") {
+            demoInput.type = "text";
+            $("#showeye").hide();
+            $("#hideeye").show();
+            demo_img.src = "invisible.png";
+        } else {
+            $("#showeye").show();
+            $("#hideeye").hide();
+            demoInput.type = "password";
+            demo_img.src = "visible.png";
+        }
+    }
+
+    $('.ui.form').form({
+        fields: {
+            username: {
+                identifier: 'username',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入用户名'
+                }]
+            },
+            password: {
+                identifier: 'password',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入密码'
+                }]
+            }, phone: {
+                identifier: 'phone',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入电话'
+                }]
+            },
+            userclass: {
+                identifier  : 'userclass',
+                rules: [
+                    {
+                        type   : 'empty',
+                        prompt : '请选择班级'
+                    }
+                ]
+            },
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -15,7 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/login/**")   //过滤/**请求路径
                 .addPathPatterns("/")
                 .excludePathPatterns("/loginpost")  //去除这个路径
-                .excludePathPatterns("/login");
+                .excludePathPatterns("/login")
+                .excludePathPatterns("/login/zhuce");
 
     }
 }

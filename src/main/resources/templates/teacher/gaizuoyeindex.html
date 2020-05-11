@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>布置作业</title>
+    <title>批改作业</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
@@ -15,9 +15,9 @@
             <h2 class="ui teal header item">教师管理页面</h2>
             <a href="#" th:href="@{/login/teacher/teacherIndex}" class=" m-item item m-mobile-hide"><i
                     class="home icon"></i>首页</a>
-            <a href="#" th:href="@{/login/teacher/teacherHomework}" class="active m-item item m-mobile-hide"><i
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class=" m-item item m-mobile-hide"><i
                     class="idea icon"></i>布置作业</a>
-            <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="m-item item m-mobile-hide"><i
+            <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="active m-item item m-mobile-hide"><i
                     class="clone icon"></i>批改作业</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
@@ -38,15 +38,6 @@
         <i class="sidebar icon"></i>
     </a>
 </nav>
-<div class="ui attached pointing menu">
-    <div class="ui container">
-        <div class="right menu">
-            <a href="#" th:href="@{/login/teacher/teacherHomework}" class=" active teal item">作业总览</a>
-            <a href="#" th:href="@{/login/teacher/homeworkPublic}" class=" item">下发作业</a>
-            <a href="#" th:href="@{/login/teacher/addHomework}" class="item ">编辑作业</a>
-        </div>
-    </div>
-</div>
 <!--中间内容-->
 <div class="m-padded-tb-big m-container">
     <div class="ui container">
@@ -56,45 +47,16 @@
             <p th:text="${message}">恭喜，操作成功！</p>
         </div>
         <!--查询表单-->
-        <form action="#" method="post" class="ui segment form">
-            <div class="inline fields center aligned">
-                <div class="field">
-                    <input type="text" name="title" placeholder="标题">
-                </div>
-                <div class="field">
-                    <div class="ui selection dropdown">
-                        <input type="hidden" name="type">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">状态</div>
-                        <div class="menu">
-                            <div class="item" data-value="1">已发布</div>
-                            <div class="item" data-value="2">未发布</div>
-                            <!--<div class="item" data-value="3">英语</div>-->
-                        </div>
-                    </div>
-                </div>
-                <!--<div class="filed">
-                    <div class="ui checkbox">
-                        <input type="checkbox" id="rx" name="rx">
-                        <label for="rx">推荐</label>
-                    </div>
-                </div>-->
-                <div class="filed">
-                    <button class="ui mini teal basic button"><i class="search icon"></i>搜索</button>
-                </div>
-            </div>
-        </form>
         <table class="ui celled table">
             <thead>
             <tr>
                 <th></th>
                 <th>标题</th>
-                <th>更新时间</th>
-                <th>状态</th>
+                <th>发布时间</th>
                 <th>开始时间</th>
                 <th>截止时间</th>
                 <th>..</th>
-                <th>操作</th>
+                <th class="center aligned">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -102,26 +64,21 @@
                 <td th:text="${iterStat.count}">1</td>
                 <td th:text="${homework.note}">1</td>
                 <td th:text="${homework.updatetime}">1</td>
-                <td th:text="${homework.ispublish}?'已发布':'未发布'" th:style="${homework.ispublish} ? 'color:green':'color:red'">未发布</td>
                 <td th:text="${homework.starttime}">..</td>
                 <td th:text="${homework.endtime}">..</td>
                 <td>..</td>
-                <td>
-                    <a href="#" th:href="@{/login/teacher/{id}/input(id=${homework.id})}" class="ui mini teal basic button">编辑</a>
-                    <a href="#" th:href="@{/login/teacher/{id}/publish(id=${homework.id})}"  class="ui mini orange basic button">发布</a>
-                    <a href="#" th:href="@{/login/teacher/{id}/delete(id=${homework.id})}" class="ui mini red basic button">删除</a>
+                <td class="center aligned">
+                    <a href="#" th:href="@{/login/teacher/pigai/{id}(id=${homework.id})}" class="ui mini teal basic button">批改</a>
                 </td>
             </tr>
             </tbody>
             <tfoot>
             <tr>
                 <th colspan="8">
-                    <div class="ui pagination menu">
-                        <a th:href="@{/login/teacher/teacherHomework(page=${page.number}-1)}" th:unless="${page.first}" class="item">上一页</a>
-                        <a th:href="@{/login/teacher/teacherHomework(page=${page.number}+1)}" th:unless="${page.last}" class="item">下一页</a>
+                    <div th:unless="${page.size}!=1" class="ui pagination menu">
+                        <a th:href="@{/login/teacher/gaizuoyeindex(page=${page.number}-1)}" th:unless="${page.first}" class="item">上一页</a>
+                        <a th:href="@{/login/teacher/gaizuoyeindex(page=${page.number}+1)}" th:unless="${page.last}" class="item">下一页</a>
                     </div>
-                    <a href="#" th:href="@{/login/teacher/addHomework}"
-                       class="ui  right floated teal basic button">新增</a>
                 </th>
             </tr>
             </tfoot>

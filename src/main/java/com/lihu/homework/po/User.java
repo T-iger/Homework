@@ -9,7 +9,7 @@ import java.util.List;
  * @author Li
  **/
 @Entity
-@Table(name="tb_user")
+@Table(name = "tb_user")
 public class User {
     @Id
     @GeneratedValue//构建规则
@@ -22,6 +22,7 @@ public class User {
     private String phone;  //用户手机号码
     private String userclass;  //用户班级
     private String photo;//头像地址
+    private Boolean status;//用户状态
 
     public String getPhoto() {
         return photo;
@@ -37,12 +38,16 @@ public class User {
     private User parentuser;
 
     @ManyToMany(mappedBy = "users")
-    private List<PublishHomework> publishHomeworks=new ArrayList<>();
+    private List<PublishHomework> publishHomeworks = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Answer> answerList;
 
+    @ManyToOne
+    private Course course;
 
+    @OneToMany(mappedBy = "userStatus")
+    private List<HomeworkStatus> homeworkStatusList=new ArrayList<>() ;
 
     public User() {
     }
@@ -134,6 +139,7 @@ public class User {
     public void setParentuser(User parentuser) {
         this.parentuser = parentuser;
     }
+
     public List<Answer> getAnswerList() {
         return answerList;
     }
@@ -142,18 +148,44 @@ public class User {
         this.answerList = answerList;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public List<HomeworkStatus> getHomeworkStatusList() {
+        return homeworkStatusList;
+    }
+
+    public void setHomeworkStatusList(List<HomeworkStatus> homeworkStatusList) {
+        this.homeworkStatusList = homeworkStatusList;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + id +
-                ", user_name='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", role='" + role + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
                 ", sex='" + sex + '\'' +
                 ", phone='" + phone + '\'' +
-                ", user_class='" + userclass + '\'' +
+                ", userclass='" + userclass + '\'' +
                 ", photo='" + photo + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

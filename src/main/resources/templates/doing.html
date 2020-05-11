@@ -13,7 +13,7 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">作业管理系统</h2>
-            <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/student/}" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
@@ -43,26 +43,40 @@
     </a>
 </nav>
 <!--中间内容-->
-<div class="m-padded-tb-big m-container  loading">
+<div class="m-padded-tb-big m-container-small">
     <div class="ui container">
-        <div class="ui grid">
-            <!-top-->
-            <div class="  column">
-                <!--header-->
-                <div class="ui segment top attached">
-                    <div class="ui grid center aligned">
-                        <div class="column">
-                            <h2 class="ui teal header">xxx作业</h2>
-                        </div>
-
+        <div class="ui top attached segment">
+            <div class="ui link list  horizontal">
+                <div class="item">
+                    <h5 class="content">发布者:</h5>
+                </div>
+                <div class="item">
+                    <img src="https://picsum.photos/id/1/100/100#1025" alt=""
+                         class="ui avatar image">
+                    <div class="content">
+                        <a href="#" class="header">数学老师1</a>
                     </div>
                 </div>
-                <!--content--->
-                <div class="ui attached segment">
+                <div class="item">
+                    <i class="calendar icon"></i>2020.4.1
+                </div>
+                <div class="item">
+                    <i class="eye icon"></i>200
+                </div>
+            </div>
+        </div>
+        <div class="ui segment attached">
+            考察点、详细信息
+        </div>
+        <div class="ui segment attached  padded attached">
+            内容
+            <form class="ui form large" th:action="@{/login/student/answer}" method="post">
+                <div class="ui attached   ">
+                    <input style="display:none;" id="publishid" name="publishid" th:value=" ${testPagers[0].publishHomework.id}">
                     <!--<div class="ui padded  segment vertical  m-padded-tb-big">-->
-                    <div class="ui padded  segment vertical  m-padded-tb-big ">
+                    <div class="ui padded  segment vertical   ">
                         <div id="table-container">
-                            <table  class="ui compact teal table">
+                            <table class="ui compact teal table">
                                 <thead>
                                 <tr>
                                     <td colspan="8"><h2>一、单选题</h2></td>
@@ -86,26 +100,28 @@
                                     <td th:text="${testPager.radioB}">B</td>
                                     <td th:text="${testPager.radioC}">C</td>
                                     <td th:text="${testPager.radioD}">D</td>
-                                    <td class="ui  m-padded-mini">
+                                    <td>
                                         <div class="ui search dropdown  selection ">
-                                            <input type="hidden" id="note" name="note">
+                                            <input type="hidden" name="radio" placeholder="单选">
                                             <i class="dropdown icon"></i>
-                                            <div class="default text textnote">选择答案</div>
-                                            <div class="menu" id="note1">
-                                                <div class="item" data-value="A">
+                                            <div class="default text" name="1">选择答案</div>
+                                            <div class="menu">
+                                                <div class="item" th:data-value="${testPager.id}+':'+A">
                                                     A
                                                 </div>
-                                                <div class="item" data-value="B">
+                                                <div class="item" data-value="B"
+                                                     th:data-value="${testPager.id}+':'+B">
                                                     B
                                                 </div>
-                                                <div class="item" data-value="C">
+                                                <div class="item" data-value="C"
+                                                     th:data-value="${testPager.id}+':'+C">
                                                     C
                                                 </div>
-                                                <div class="item" data-value="D">
+                                                <div class="item" data-value="D"
+                                                     th:data-value="${testPager.id}+':'+D">
                                                     D
                                                 </div>
                                             </div>
-
                                         </div>
                                     </td>
                                 </tr>
@@ -131,7 +147,9 @@
                                     <td colspan="5" th:text="${testPager.content}">内容</td>
                                     <td colspan="2">
                                         <div class="ui input ">
-                                            <input class="fluid">
+                                            <input type="hidden" th:attrprepend="value=${testPager.id}"
+                                                   name="tk-id">
+                                            <input class="fluid" name="tk-answer" placeholder="填空题作答区">
                                         </div>
                                     </td>
                                 </tr>
@@ -157,8 +175,10 @@
                                     <td colspan="5" th:text="${testPager.content}">内容</td>
                                     <td colspan="2">
                                         <div class="ui input ">
-                                            <textarea class="content1" name="content"
-                                                      id="content"></textarea>
+                                            <input type="hidden" th:attrprepend="value=${testPager.id}"
+                                                   name="jd-id">
+                                            <textarea class="content1" name="jd-answer"
+                                                      id="content" placeholder="解答题作答区"></textarea>
                                         </div>
                                     </td>
                                 </tr>
@@ -167,18 +187,184 @@
                         </div>
                     </div>
                 </div>
+                <div class="ui error mini message"></div>
                 <!--footer -->
-                <div class="ui attached segment">
-                    <div class="ui grid center aligned column">
-                        <div class="column">
-                            <button class="ui primary button">提交</button>
+                <!-- <div class="ui attached segment">
+                                        <div class="ui grid center aligned column">
+                                            <div class="column">
+                                                <button class="ui primary submit button">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                <div class="ui attached ">
+                    <div class="ui segment center aligned basic">
+                        <div class="ui orange basic  circular item button" onclick="myCheck()">保存</div>
+                        <div id="BT_submit" class="ui button item orange basic  circular">提交</div>
+                    </div>
+                    <div class="ui submit_Tip flowing popup transition hidden">
+                        <div class="ui  divided center aligned grid">
+                            <div class="segment ui basic ">
+                                <h4 class="ui header">是否提交</h4>
+                                <p>提交后不可修改</p>
+                                <p>请仔细检查</p>
+                                <div class="ui ">
+                                    <button class="ui primary submit button">提交</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
+<!--<div class="m-padded-tb-big m-container  loading">
+    <div class="ui container">
+        <div class="ui grid">
+            <!-top&ndash;&gt;
+            <div class="column">
+                &lt;!&ndash;header&ndash;&gt;
+                <div class="ui segment top attached">
+                    <div class="ui grid center aligned">
+                        <div class="column">
+                            <h2 class="ui teal header">xxx作业</h2>
+                        </div>
+                    </div>
+                </div>
+                &lt;!&ndash;content-&ndash;&gt;
+                &lt;!&ndash;
+                                <form class="ui form large" th:action="@{/login/student/answer}" method="post">
+                                    <div class="ui attached segment">
+                                        &lt;!&ndash;<div class="ui padded  segment vertical  m-padded-tb-big">&ndash;&gt;
+                                        <div class="ui padded  segment vertical  m-padded-tb-big ">
+                                            <div id="table-container">
+                                                <table class="ui compact teal table">
+                                                    <thead>
+                                                    <tr>
+                                                        <td colspan="8"><h2>一、单选题</h2></td>
+                                                    </tr>
+                                                    <td colspan="8"></td>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>单选题目</th>
+                                                        <th>A选项</th>
+                                                        <th>B选项</th>
+                                                        <th>C选项</th>
+                                                        <th>D选项</th>
+                                                        <th>你的答案</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody th:each="testPager: ${testPagers}">
+                                                    <tr th:unless="${testPager.questiontype!='Radio'}">
+                                                        <td>1</td>
+                                                        <td th:text="${testPager.content}">内容</td>
+                                                        <td th:text="${testPager.radioA}">A</td>
+                                                        <td th:text="${testPager.radioB}">B</td>
+                                                        <td th:text="${testPager.radioC}">C</td>
+                                                        <td th:text="${testPager.radioD}">D</td>
+                                                        <td>
+                                                            <div class="ui search dropdown  selection " >
+                                                                <input type="hidden" name="radio" placeholder="单选">
+                                                                <i class="dropdown icon"></i>
+                                                                <div class="default text" name="1">选择答案</div>
+                                                                <div class="menu">
+                                                                    <div class="item" th:data-value="${testPager.id}+':'+A">
+                                                                        A
+                                                                    </div>
+                                                                    <div class="item" data-value="B"
+                                                                         th:data-value="${testPager.id}+':'+B">
+                                                                        B
+                                                                    </div>
+                                                                    <div class="item" data-value="C"
+                                                                         th:data-value="${testPager.id}+':'+C">
+                                                                        C
+                                                                    </div>
+                                                                    <div class="item" data-value="D"
+                                                                         th:data-value="${testPager.id}+':'+D">
+                                                                        D
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <td colspan="8"></td>
+                                                    <tr>
+                                                        <td colspan="8"><h2>二、填空题</h2></td>
+                                                    </tr>
+                                                    <td colspan="8"></td>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>填空题题目</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>填空题答案</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody th:each="testPager: ${testPagers}">
+                                                    <tr th:unless="${testPager.questiontype!='TK'}">
+                                                        <td colspan="1">1</td>
+                                                        <td colspan="5" th:text="${testPager.content}">内容</td>
+                                                        <td colspan="2">
+                                                            <div class="ui input ">
+                                                                <input type="hidden" th:attrprepend="value=${testPager.id}"
+                                                                       name="tk-id">
+                                                                <input class="fluid" name="tk-answer">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <td colspan="8"></td>
+                                                    <tr>
+                                                        <td colspan="8"><h2>三、解答题</h2></td>
+                                                    </tr>
+                                                    <td colspan="8"></td>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>解答题目</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th></th>
+                                                        <th>你的答案</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody th:each="testPager: ${testPagers}">
+                                                    <tr th:unless="${testPager.questiontype!='JD'}">
+                                                        <td colspan="1">1</td>
+                                                        <td colspan="5" th:text="${testPager.content}">内容</td>
+                                                        <td colspan="2">
+                                                            <div class="ui input ">
+                                                                <input type="hidden" th:attrprepend="value=${testPager.id}"
+                                                                       name="jd-id">
+                                                                <textarea class="content1" name="jd-answer"
+                                                                          id="content"></textarea>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui error mini message"></div>
+                                    &lt;!&ndash;footer &ndash;&gt;
+                                    <div class="ui attached segment">
+                                        <div class="ui grid center aligned column">
+
+                                            <div class="column">
+                                                <button class="ui primary submit button">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                &ndash;&gt;
+            </div>
+        </div>
+    </div>
+</div>-->
 <br>
 <br>
 <br>
@@ -237,9 +423,36 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'//鼠标移上去就触发
     });
-    /*
-        $(".loading").load(/!*[[@{/login/student/showPublish}]]*!/"/login/student/showPublish", {});
-    */
+    $('#BT_submit').popup({
+        popup: $('.submit_Tip.popup'),
+        on: 'click',
+        position: 'bottom center'
+    });
+    $('.ui.form').form({
+        fields: {
+            radio: {
+                identifier: 'radio',
+                rules: [{
+                    type: 'empty',
+                    prompt: '选择题全未作答，请仔细检查'
+                }]
+            },
+            tk: {
+                identifier: 'tk-answer',
+                rules: [{
+                    type: 'empty',
+                    prompt: '填空题全未作答，请仔细检查'
+                }]
+            },
+            jd: {
+                identifier: 'jd-answer',
+                rules: [{
+                    type: 'empty',
+                    prompt: '解答题全未作答，请仔细检查'
+                }]
+            },
+        }
+    });
 </script>
 
 </body>

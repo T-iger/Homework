@@ -3,6 +3,7 @@ package com.lihu.homework.webcontroller.login;
 import com.lihu.homework.po.User;
 import com.lihu.homework.service.PublicHomeworkService;
 import com.lihu.homework.service.UserService;
+import com.lihu.homework.util.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -39,9 +40,8 @@ public class LoginController {
                         @RequestParam("password") String password,
                         HttpSession session,
                         RedirectAttributes attributes,
-                        Model model,
-                        @PageableDefault(size = 5,sort = {"updatetime"},direction = Sort.Direction.DESC)
-                                    Pageable pageable) {
+                        Model model
+                        ) {
         User user = userService.checkUser(username, password);
         if (user != null) {
             String role = user.getRole();
@@ -51,9 +51,7 @@ public class LoginController {
                 model.addAttribute("user",user.getUsername());
                 return "/teacher/teacherindex";
             } else if ("student".equals(role)) {
-                model.addAttribute("user",user.getUsername());
-                model.addAttribute("page",publicHomeworkService.showListPublic(pageable,user.getId()));
-                return "/index";
+                return "redirect:/login/student/";
             } else {
                 return "/";
             }
@@ -68,5 +66,19 @@ public class LoginController {
         session.removeAttribute("user");
         return "redirect:/";
     }
+    @GetMapping("/login/zhuce")
+    public String zhuCe() {
+        return "/zhuce";
+    }
+    @PostMapping("/zhuce")
+    public String zhuCePost(Model model,User user){
+        user.setRole("student");
+        user.setStatus(false);//用户未通过申请
+        user.setPassword(MD5Utils.code(user.getPassword()));
+        userService.add(user);
+        model.addAttribute("message","注册成功,等待老师允许进入班级");
+        return "/login";
+    }
+
 
 }

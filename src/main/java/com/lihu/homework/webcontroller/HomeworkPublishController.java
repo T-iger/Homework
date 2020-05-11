@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,7 +47,8 @@ public class HomeworkPublishController {
                                   @RequestParam("banji") String banji,
                                   @RequestParam("starttime") String starttime,
                                   @RequestParam("endtime") String endtime,
-                                  @RequestParam("note") String note) {
+                                  @RequestParam("note") String note,
+                                  HttpSession session) {
         SimpleDateFormat start=new SimpleDateFormat("yyyy-MM-dd HH:mm");
         PublishHomework publishHomework = new PublishHomework();
         List<User> userList = userService.classUser(banji);
@@ -56,6 +57,8 @@ public class HomeworkPublishController {
             Date date1=start.parse(starttime);
             Date date2=start.parse(endtime);
             publishHomework.setStarttime(date1);
+            User user=(User)session.getAttribute("user");
+            publishHomework.setUsername(user.getUsername());
             publishHomework.setEndtime(date2);
             publishHomework.setNote(split[0]);
             publishHomework.setId(Long.valueOf(split[1]));

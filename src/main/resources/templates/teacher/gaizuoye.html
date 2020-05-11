@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>批改区</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-td-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">教师管理页面</h2>
+            <a href="#" th:href="@{/login/teacher/teacherIndex}" class=" m-item item m-mobile-hide"><i
+                    class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/teacher/teacherHomework}" class=" m-item item m-mobile-hide"><i
+                    class="idea icon"></i>布置作业</a>
+            <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="m-item active item m-mobile-hide"><i
+                    class="clone icon"></i>批改作业</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400" th:text="${user}">Username01
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="m-padded-tb-big">
+    <div class="ui container">
+        <div id="message" class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}">恭喜，操作成功！</p>
+        </div>
+        <div class="ui grid">
+            <input style="display: none" th:value="${publishid}" id="publishid">
+            <div class="thirteen wide column" id="shijuan">
+                <div class="ui top attached segment">
+                    <div class="ui link list  horizontal">
+                        <div class="item">
+                            <h5 class="content">学生姓名:</h5>
+                        </div>
+                        <div class="item">
+                            <!--<img src="https://picsum.photos/id/1/100/100#1025" alt=""
+                                 class="ui avatar image">-->
+                            <div class="content">
+                                <span class="header">学生A</span>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <i class="calendar icon"></i><span>完成时间：2020.4.1</span>
+                        </div>
+                        <div class="item m-black">
+                            <i class="eye icon"></i><span>作业名称</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui segment attached  padded attached">
+                    <form class="ui form large" method="post" th:action="@{/login/teacher/pigaipost}">
+                        <div class="ui attached   ">
+                            <div class="ui padded  segment vertical ">
+                                <div id="table-container">
+                                    <table class="ui compact teal table" th:fragment="homeworkList">
+                                        <thead>
+                                        <tr>
+                                            <td colspan="10"><h2>一、单选题</h2></td>
+                                        </tr>
+                                        <td colspan="10"></td>
+                                        <tr>
+                                            <th></th>
+                                            <th>单选题目</th>
+                                            <th>A选项</th>
+                                            <th>B选项</th>
+                                            <th>C选项</th>
+                                            <th>D选项</th>
+                                            <th>分值</th>
+                                            <th>学生的答案</th>
+                                            <th></th>
+                                            <th>得分</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody th:each="testPager: ${testPagers} ">
+                                        <tr th:unless="${testPager.questiontype!='Radio'}">
+                                            <td>1</td>
+                                            <td th:text="${testPager.content}">内容</td>
+                                            <td th:text="${testPager.radioA}">A</td>
+                                            <td th:text="${testPager.radioB}">B</td>
+                                            <td th:text="${testPager.radioC}">C</td>
+                                            <td th:text="${testPager.radioD}">D</td>
+                                            <td th:text="${testPager.score}">分值</td>
+                                            <td colspan="2" th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:text="${answer.studentradio}">A
+                                            </td>
+                                            <td th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:text="${answer.score}">10分
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <td colspan="10"></td>
+                                        <tr>
+                                            <td colspan="10"><h2>二、填空题</h2></td>
+                                        </tr>
+                                        <td colspan="10"></td>
+                                        <tr>
+                                            <th></th>
+                                            <th>填空题题目</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>分值</th>
+                                            <th>学生的答案</th>
+                                            <th></th>
+                                            <th>得分</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody th:each="testPager: ${testPagers}">
+                                        <tr th:unless="${testPager.questiontype!='TK'}">
+                                            <td colspan="1">1</td>
+                                            <td colspan="5" th:text="${testPager.content}">内容</td>
+                                            <td colspan="1" th:text="${testPager.score}">分值</td>
+                                            <td colspan="2" th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:text="${answer.studenttk}">学生答案
+                                            </td>
+                                            <td colspan="1" th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:text="${answer.score}">10分
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <td colspan="10"></td>
+                                        <tr>
+                                            <td colspan="10"><h2>三、解答题</h2></td>
+                                        </tr>
+                                        <td colspan="10"></td>
+                                        <tr>
+                                            <th></th>
+                                            <th>解答题目</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th>分值</th>
+                                            <th>学生的答案</th>
+                                            <th></th>
+                                            <th>得分</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody th:each="testPager: ${testPagers}">
+                                        <tr th:unless="${testPager.questiontype!='JD'}">
+                                            <td colspan="1">1</td>
+                                            <td colspan="5" th:text="${testPager.content}">内容</td>
+                                            <td colspan="1" th:text="${testPager.score}">分值</td>
+                                            <td colspan="2" th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:text="${answer.studentanswer}">学生答案
+                                            </td>
+                                            <td th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}" style="display:none;"
+                                                th:value="${answer.id}">
+                                                <input name="answerid" id="answerid" th:value="${answer.id}">
+                                            </td>
+                                            <td colspan="1" th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:unless="${answer.score!=0}">
+                                                <div class="ui mini input">
+                                                    <input type="number" id="score" autocomplete="off" name="score"
+                                                           placeholder="分值">
+                                                </div>
+                                            </td>
+                                            <td th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:unless="${answer.score==0}"
+                                                th:text="${answer.score}"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui error mini message"></div>
+                        <!--footer -->
+                        <div class="ui attached ">
+                            <div class="ui segment center aligned basic">
+                                <div class="ui orange basic  circular item button" onclick="myCheck()">保存</div>
+                                <div id="BT_submit" class="ui button item orange basic  circular">提交</div>
+                            </div>
+                            <div class="ui submit_Tip flowing popup transition hidden">
+                                <div class="ui  divided center aligned grid">
+                                    <div class="segment ui basic ">
+                                        <h4 class="ui header">是否提交</h4>
+                                        <p>提交后不可修改</p>
+                                        <p>请仔细检查</p>
+                                        <div class="ui ">
+                                            <button id="score_bt" class="ui primary submit button">提交</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="three wide column">
+
+                <!-完成名单--->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>名单
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <div class="ui menu fluid vertical">
+                            <a th:each="user : ${users}" th:data-value="${user.id}" class="item"
+                               onclick="loaddata(this)">
+                                <span th:text="${user.username}">学生A</span>
+                                <div th:each="stu:${scoreList}" th:if="${user.id} eq ${stu.user.id}" class="ui  label"
+                                     th:text="${stu.score}+'分'" th:classappend="${stu.score == 0} ? 'red' : 'teal' ">12
+                                </div>
+                            </a>
+                            <!--/*-->
+                            <a href="#" class="item">
+                                学生B
+                            </a>
+                            <a href="#" class="item">
+                                学生C
+                            </a>
+                            <!--*/-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">111</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                    <a href="#" class="item">xxx</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">111</h4>
+                <p>希望。。。。。。</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">个人网站</p>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+    $('#BT_submit').popup({
+        popup: $('.submit_Tip.popup'),
+        on: 'click',
+        position: 'bottom center'
+    });
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+
+    $("#shijuan").hide();
+
+    function loaddata(id) {
+        $("#shijuan").show();
+        $("#table-container").load(/*[[@{/login/teacher/pigaiid}]]*/"/login/teacher/pigaiid", {
+            id: id.getAttribute("data-value"),
+            publishid: $("#publishid").val()
+        });
+    }
+
+    $('.ui.form').form({
+        fields: {
+            radio: {
+                identifier: 'radio',
+                rules: [{
+                    type: 'empty',
+                    prompt: '选择题全未作答，请仔细检查'
+                }]
+            },
+            tk: {
+                identifier: 'tk-answer',
+                rules: [{
+                    type: 'empty',
+                    prompt: '填空题全未作答，请仔细检查'
+                }]
+            },
+            jd: {
+                identifier: 'jd-answer',
+                rules: [{
+                    type: 'empty',
+                    prompt: '解答题全未作答，请仔细检查'
+                }]
+            },
+        }
+    });
+</script>
+
+</body>
+</html>

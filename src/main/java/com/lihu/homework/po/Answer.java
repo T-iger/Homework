@@ -15,11 +15,14 @@ public class Answer {
     private String studentanswer; //学生回答主观题的答案
     private String studenttk; //学生回答主观题的答案
     private String studentradio; //学生回答的单选题答案
+    private int score;//分值
 
     @OneToOne
     private Homework homework;
     @ManyToOne
     private User user;
+    @ManyToOne
+    private PublishHomework publishHomework;
 
     public Answer() {
     }
@@ -64,12 +67,28 @@ public class Answer {
         this.homework = homework;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public PublishHomework getPublishHomework() {
+        return publishHomework;
+    }
+
+    public void setPublishHomework(PublishHomework publishHomework) {
+        this.publishHomework = publishHomework;
     }
 
     @Override
@@ -79,6 +98,7 @@ public class Answer {
                 ", studentanswer='" + studentanswer + '\'' +
                 ", studenttk='" + studenttk + '\'' +
                 ", studentradio='" + studentradio + '\'' +
+                ", score=" + score +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package com.lihu.homework.service;
 
 import com.lihu.homework.dao.HomeworkRepository;
 import com.lihu.homework.po.Homework;
+import com.lihu.homework.po.PublishHomework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,10 @@ public class HomeworkServiceImpl implements HomeworkService {
         return set;
     }
 
+    @Override
+    public List<Homework> findPublish(PublishHomework publishHomework) {
+        return homeworkRepository.findByPublishHomework(publishHomework);
+    }
     /*    @Transactional
     @Override
     public Page<Homework> listHomework(Pageable pageable) {

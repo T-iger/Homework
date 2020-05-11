@@ -10,8 +10,6 @@ import java.util.List;
  * @author Li
  **/
 public interface UserRepository extends JpaRepository<User,Long> {
-
-
     User findByUsernameAndPassword(String username, String password);
     List<User> findByUserclass(String banji);
 

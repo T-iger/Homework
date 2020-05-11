@@ -13,13 +13,11 @@ public class Homework {
     @GeneratedValue
     private Long id;
     private String questiontype; //问题类型（单选、主观题）
-    private String content;  //题目内容
+    private String content;  //题目内容(填空和解答题)
     private String radioA;
     private String radioB;
     private String radioC;
     private String radioD;
-    private String studentanswer; //学生回答主观题的答案
-    private String studentradio; //学生回答的单选题答案
     private String radio; //单选正确答案
     private String tk; //填空正确答案
     private int initialscore; //题目初始分值
@@ -60,21 +58,6 @@ public class Homework {
         this.content = content;
     }
 
-    public String getStudentanswer() {
-        return studentanswer;
-    }
-
-    public void setStudentanswer(String studentanswer) {
-        this.studentanswer = studentanswer;
-    }
-
-    public String getStudentradio() {
-        return studentradio;
-    }
-
-    public void setStudentradio(String studentradio) {
-        this.studentradio = studentradio;
-    }
 
     public String getRadio() {
         return radio;
@@ -182,8 +165,6 @@ public class Homework {
                 ", radioB='" + radioB + '\'' +
                 ", radioC='" + radioC + '\'' +
                 ", radioD='" + radioD + '\'' +
-                ", studentanswer='" + studentanswer + '\'' +
-                ", studentradio='" + studentradio + '\'' +
                 ", radio='" + radio + '\'' +
                 ", tk='" + tk + '\'' +
                 ", initialscore=" + initialscore +

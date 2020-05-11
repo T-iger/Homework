@@ -24,6 +24,7 @@ public class PublishHomework {
     private Date endtime;  //截止时间
     private String note;  //记录名称
     private boolean ispublish;  //是否发布
+    private String username;//发布者姓名
 
     @ManyToOne
     private Course course;
@@ -31,6 +32,10 @@ public class PublishHomework {
     private List<User> users=new ArrayList<>();
     @OneToMany(mappedBy = "publishHomework")
     private List<Homework> homeworks =new ArrayList<>();
+    @OneToMany(mappedBy = "publishHomework")
+    private List<HomeworkStatus> statusList=new ArrayList<>();
+    @OneToMany(mappedBy = "publishHomework")
+    private List<Answer> answerList=new ArrayList<>();
 
     public PublishHomework() {
     }
@@ -115,16 +120,41 @@ public class PublishHomework {
         this.homeworks = homeworks;
     }
 
+    public List<HomeworkStatus> getStatusList() {
+        return statusList;
+    }
+
+    public void setStatusList(List<HomeworkStatus> statusList) {
+        this.statusList = statusList;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
+    }
+
     @Override
     public String toString() {
         return "PublishHomework{" +
                 "id=" + id +
-                ", public_name='" + publicname + '\'' +
-                ", update_time=" + updatetime +
-                ", start_time=" + starttime +
-                ", end_time=" + endtime +
+                ", publicname='" + publicname + '\'' +
+                ", updatetime=" + updatetime +
+                ", starttime=" + starttime +
+                ", endtime=" + endtime +
                 ", note='" + note + '\'' +
-                ", is_publish=" + ispublish +
+                ", ispublish=" + ispublish +
+                ", username='" + username + '\'' +
                 '}';
     }
 }

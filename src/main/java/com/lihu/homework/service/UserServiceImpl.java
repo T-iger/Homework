@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userRepository.findByUserclass(banji);
         return userList;
     }
+
+    @Override
+    public User add(User user) {
+        return userRepository.save(user);
+    }
 }
