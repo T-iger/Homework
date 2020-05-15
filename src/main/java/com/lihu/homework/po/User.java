@@ -24,14 +24,6 @@ public class User {
     private String photo;//头像地址
     private Boolean status;//用户状态
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
     @OneToMany(mappedBy = "parentuser")
     private List<User> replayusers;
     @ManyToOne
@@ -66,6 +58,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getRole() {

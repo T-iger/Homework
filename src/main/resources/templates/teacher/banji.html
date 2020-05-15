@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>批改作业</title>
+    <title>班级管理</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
@@ -17,13 +17,13 @@
                     class="home icon"></i>首页</a>
             <a href="#" th:href="@{/login/teacher/teacherHomework}" class=" m-item item m-mobile-hide"><i
                     class="idea icon"></i>布置作业</a>
-            <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="active m-item item m-mobile-hide"><i
+            <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="m-item item m-mobile-hide"><i
                     class="clone icon"></i>批改作业</a>
-            <a href="#" th:href="@{/login/teacher/banji}"  class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
+            <a href="#" th:href="@{/login/teacher/banji}"  class="active m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
-                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400"><span th:text="${user}">Username01</span>
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400" th:text="${user}">
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -41,50 +41,54 @@
 <!--中间内容-->
 <div class="m-padded-tb-big m-container">
     <div class="ui container">
-        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
-            <i class="close icon"></i>
-            <div class="header">提示：</div>
-            <p th:text="${message}">恭喜，操作成功！</p>
-        </div>
-        <!--查询表单-->
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th></th>
-                <th>标题</th>
-                <th>发布时间</th>
-                <th>开始时间</th>
-                <th>截止时间</th>
-                <th>..</th>
-                <th class="center aligned">操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="homework,iterStat : ${page.content}">
-                <td th:text="${iterStat.count}">1</td>
-                <td th:text="${homework.note}">1</td>
-                <td th:text="${homework.updatetime}">1</td>
-                <td th:text="${homework.starttime}">..</td>
-                <td th:text="${homework.endtime}">..</td>
-                <td>..</td>
-                <td class="center aligned">
-                    <a href="#" th:href="@{/login/teacher/pigai/{id}(id=${homework.id})}" class="ui mini teal basic button">批改</a>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th colspan="8">
-                    <div th:unless="${page.size}!=1" class="ui pagination menu">
-                        <a th:href="@{/login/teacher/gaizuoyeindex(page=${page.number}-1)}" th:unless="${page.first}" class="item">上一页</a>
-                        <a th:href="@{/login/teacher/gaizuoyeindex(page=${page.number}+1)}" th:unless="${page.last}" class="item">下一页</a>
+        <div class="ui segment basic">
+            <div class="ui grid ">
+                <div class="ui segment top attached">
+                    <div class="ui padded  segment vertical  m-padded-tb-big">
+                        <div class="ui mobile reversed stackable grid center aligned">
+                            <from>
+                                <table class="ui celled table">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>用户名</th>
+                                        <th>申请班级</th>
+                                        <th>性别</th>
+                                        <th>状态</th>
+                                        <th>电话号码</th>
+                                        <th>..</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="user:${userList}">
+                                        <td >1</td>
+                                        <td th:text="${user.username}">1</td>
+                                        <td th:text="${user.userclass}">1</td>
+                                        <td th:text="${user.sex}">1</td>
+                                        <td th:text="${user.status}?'已通过':'等待审核'" th:style="${user.status} ? 'color:green':'color:red'">未通过</td>
+                                        <td th:text="${user.phone}">..</td>
+                                        <td>..</td>
+                                        <td>
+                                            <a href="#" th:href="@{/login/teacher/shenhe/{id}(id=${user.id})}" th:unless="${user.status}" class="ui mini teal basic button">通过</a>
+                                            <a href="#" th:href="@{/login/teacher/T/{id}(id=${user.id})}"  class="ui mini red orange basic button">不允许进入</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </from>
+                        </div>
                     </div>
-                </th>
-            </tr>
-            </tfoot>
-        </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui grid">
+
+        </div>
     </div>
 </div>
+
 <br>
 <br>
 
@@ -114,7 +118,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
 
 <script>
@@ -124,15 +128,6 @@
     $('.ui.dropdown').dropdown({
         on: 'hover'//鼠标移上去就触发
     });
-    //消息提示关闭初始化
-    $('.message .close')
-        .on('click', function () {
-            $(this)
-                .closest('.message')
-                .transition('fade');
-        });
-
 </script>
-<!--<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>-->
 </body>
 </html>

@@ -19,11 +19,11 @@
                     class="idea icon"></i>布置作业</a>
             <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="m-item active item m-mobile-hide"><i
                     class="clone icon"></i>批改作业</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
+            <a href="#" th:href="@{/login/teacher/banji}" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
-                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400" th:text="${user}">Username01
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400"><span th:text="${user}">Username01</span>
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -48,6 +48,38 @@
         </div>
         <div class="ui grid">
             <input style="display: none" th:value="${publishid}" id="publishid">
+            <div class="three wide column">
+                <!-完成名单--->
+                <div class="ui segments">
+                    <div class="ui secondary segment">
+                        <div class="ui two column grid">
+                            <div class="column">
+                                <i class="idea icon"></i>名单
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui teal segment">
+                        <div class="ui menu fluid vertical">
+                            <a th:each="user : ${users}" th:data-value="${user.id}" class="item"
+                               onclick="loaddata(this)">
+                                <span th:text="${user.username}">学生A</span>
+                                <div th:each="stu:${scoreList}" th:if="${user.id} eq ${stu.user.id}" class="ui  label"
+                                     th:text="${stu.score}+'分'" th:classappend="${stu.score == 0} ? 'red' : 'teal' ">12
+                                </div>
+                            </a>
+                            <!--/*-->
+                            <a href="#" class="item">
+                                学生B
+                            </a>
+                            <a href="#" class="item">
+                                学生C
+                            </a>
+                            <!--*/-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="thirteen wide column" id="shijuan">
                 <div class="ui top attached segment">
                     <div class="ui link list  horizontal">
@@ -199,8 +231,12 @@
                         <!--footer -->
                         <div class="ui attached ">
                             <div class="ui segment center aligned basic">
-                                <div class="ui orange basic  circular item button" onclick="myCheck()">保存</div>
-                                <div id="BT_submit" class="ui button item orange basic  circular">提交</div>
+                                <div th:each="answer :${answers}"
+                                     th:if="${testPager.id} eq ${answer.homework.id}"
+                                     th:unless="${answer.score==0}" class="ui orange basic  circular item button" onclick="myCheck()">保存</div>
+                                <div id="BT_submit" th:each="answer :${answers}"
+                                     th:if="${testPager.id} eq ${answer.homework.id}"
+                                     th:unless="${answer.score==0}" class="ui button item orange basic  circular">提交</div>
                             </div>
                             <div class="ui submit_Tip flowing popup transition hidden">
                                 <div class="ui  divided center aligned grid">
@@ -218,40 +254,7 @@
                     </form>
                 </div>
             </div>
-            <div class="three wide column">
-
-                <!-完成名单--->
-                <div class="ui segments">
-                    <div class="ui secondary segment">
-                        <div class="ui two column grid">
-                            <div class="column">
-                                <i class="idea icon"></i>名单
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui teal segment">
-                        <div class="ui menu fluid vertical">
-                            <a th:each="user : ${users}" th:data-value="${user.id}" class="item"
-                               onclick="loaddata(this)">
-                                <span th:text="${user.username}">学生A</span>
-                                <div th:each="stu:${scoreList}" th:if="${user.id} eq ${stu.user.id}" class="ui  label"
-                                     th:text="${stu.score}+'分'" th:classappend="${stu.score == 0} ? 'red' : 'teal' ">12
-                                </div>
-                            </a>
-                            <!--/*-->
-                            <a href="#" class="item">
-                                学生B
-                            </a>
-                            <a href="#" class="item">
-                                学生C
-                            </a>
-                            <!--*/-->
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-
     </div>
 </div>
 <br>
@@ -269,36 +272,23 @@
     <div class="ui center aligned container">
         <div class="ui grid divided stackable inverted">
             <div class="three wide  column">
-                <h4 class="ui inverted header">111</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">xxx</a>
-                    <a href="#" class="item">xxx</a>
-                    <a href="#" class="item">xxx</a>
-                </div>
+                <h4 class="ui inverted header">关于</h4>
             </div>
             <div class="three wide  column">
-                <h4 class="ui inverted header">111</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">xxx</a>
-                    <a href="#" class="item">xxx</a>
-                    <a href="#" class="item">xxx</a>
-                </div>
+                <h4 class="ui inverted header">地址</h4>
+                <p>安徽省合肥市</p>
             </div>
             <div class="three wide  column">
-                <h4 class="ui inverted header">111</h4>
-                <div class="ui inverted link list">
-                    <a href="#" class="item">xxx</a>
-                    <a href="#" class="item">xxx</a>
-                    <a href="#" class="item">xxx</a>
-                </div>
+                <h4 class="ui inverted header">所属权：</h4>
+                <p>LH</p>
             </div>
             <div class="seven wide column">
-                <h4 class="ui inverted header">111</h4>
-                <p>希望。。。。。。</p>
+                <h4 class="ui inverted header"></h4>
+                <p>@2020</p>
             </div>
         </div>
         <div class="ui inverted section divider"></div>
-        <p class="m-text-thin m-text-spaced">个人网站</p>
+        <p class="m-text-thin m-text-spaced">邮编：231131 电话：xxx QQ：885515333 E-mail：885515333@qq.com</p>
     </div>
 </footer>
 

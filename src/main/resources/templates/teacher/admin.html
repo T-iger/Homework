@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-td-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">admin管理页面</h2>
+            <a href="#"   class="active m-item item m-mobile-hide"><i class="idea icon"></i>账号管理</a>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400" th:text="${user}">
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="m-padded-tb-big m-container">
+    <div class="ui container">
+        <div class="ui segment basic">
+            <div class="ui grid ">
+                <div class="ui segment top attached">
+                    <div class="ui padded  segment vertical  m-padded-tb-big">
+                        <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                            <i class="close icon"></i>
+                            <div class="header">提示：</div>
+                            <p th:text="${message}">恭喜，操作成功！</p>
+                        </div>
+                        <div class="ui mobile reversed stackable grid center aligned">
+                            <from>
+                                <table class="ui celled table">
+                                    <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>用户名</th>
+                                        <th>所属班级</th>
+                                        <th>性别</th>
+                                        <th>状态</th>
+                                        <th>电话号码</th>
+                                        <th>所授课程</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="user,iterStat : ${UserPage.content}" th:unless="${#strings.isEmpty(user.role)}">
+                                        <td th:text="${iterStat.count}">1</td>
+                                        <td th:text="${user.username}">1</td>
+                                        <td th:text="${user.userclass}" th:style="${user.status} ? 'color:green':'color:red'">1</td>
+                                        <td th:text="${user.sex}">1</td>
+                                        <td th:text="${user.status}?'正常':'等待审核'" th:style="${user.status} ? 'color:green':'color:red'">未通过</td>
+                                        <td th:text="${user.phone}">..</td>
+                                        <td th:text="${#strings.isEmpty(user.course)} ? ' ':${user.course.coursename}">..</td>
+                                        <td>
+                                            <a href="#" th:href="@{/login/admin/password/{id}(id=${user.id})}"  class="ui mini teal basic button">重置密码</a>
+                                            <a href="#" th:href="@{/login/admin/delete/{id}(id=${user.id})}"  class="ui mini red orange basic button">删除账号</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="8">
+                                            <div class="ui pagination menu">
+                                                <a th:href="@{/login/admin(page=${UserPage.number}-1)}" th:unless="${UserPage.first}" class="item">上一页</a>
+                                                <a th:href="@{/login/admin(page=${UserPage.number}+1)}" th:unless="${UserPage.last}" class="item">下一页</a>
+                                            </div>
+                                            <a href="#" th:href="@{/login/teacher/addHomework}"
+                                               class="ui  right floated teal basic button">新增</a>
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </from>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">关于</h4>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">地址</h4>
+                <p>安徽省合肥市</p>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">所属权：</h4>
+                <p>LH</p>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header"></h4>
+                <p>@2020</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">邮编：231131 电话：xxx QQ：885515333 E-mail：885515333@qq.com</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
+
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+
+</script>
+</body>
+</html>

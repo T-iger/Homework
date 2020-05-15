@@ -50,7 +50,9 @@ public class StudentController {
 
     @GetMapping("/doing/{id}")
     public String doing(@PathVariable Long id,
-                        Model model) {
+                        Model model,HttpSession httpSession) {
+        User user=(User)httpSession.getAttribute("user");
+        model.addAttribute("user" ,user.getUsername());
         model.addAttribute("testPagers", publicHomeworkService.listHomework(publicHomeworkService.getPublishHomework(id).get().getNote()));
         return "doing";
     }
