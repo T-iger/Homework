@@ -1,6 +1,7 @@
 package com.lihu.homework.service;
 
 import com.lihu.homework.po.Answer;
+import com.lihu.homework.po.HomeworkStatus;
 import com.lihu.homework.po.PublishHomework;
 import com.lihu.homework.po.User;
 
@@ -17,4 +18,9 @@ public interface AnswerService {
 
     List<Answer> getScore(Long id, List<User> piGai);
 
+    HomeworkStatus setComment(String comment,User user,PublishHomework publishHomework);
+
+    HomeworkStatus getHomeworkStatus(User user,PublishHomework publishHomework);
+
+    List<HomeworkStatus> findUndoHomework(User user);
 }

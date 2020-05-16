@@ -54,11 +54,11 @@
                     <img src="https://picsum.photos/id/1/100/100#1025" alt=""
                          class="ui avatar image">
                     <div class="content">
-                        <a href="#" class="header">数学老师1</a>
+                        <a  class="header"><span  th:each="testPager ,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'发布老师：'+${testPager.publishHomework.username}">数学老师1</span></a>
                     </div>
                 </div>
                 <div class="item">
-                    <i class="calendar icon"></i>2020.4.1
+                    <i class="calendar icon" ></i><span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'更新时间：'+${testPager.publishHomework.updatetime}">2020.4.1</span>
                 </div>
                 <div class="item">
                     <i class="eye icon"></i>200
@@ -66,10 +66,10 @@
             </div>
         </div>
         <div class="ui segment attached">
-            考察点、详细信息
+            <span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'截止时间：'+${testPager.publishHomework.endtime}">截止时间：</span>
         </div>
         <div class="ui segment attached  padded attached">
-            内容
+            <span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="${testPager.note}">作业标题</span>
             <form class="ui form large" th:action="@{/login/student/answer}" method="post">
                 <div class="ui attached   ">
                     <input style="display:none;" id="publishid" name="publishid" th:value=" ${testPagers[0].publishHomework.id}">

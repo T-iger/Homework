@@ -88,7 +88,7 @@ public class PublishHomework {
         this.note = note;
     }
 
-    public boolean isIspublish() {
+    public boolean getIspublish() {
         return ispublish;
     }
 

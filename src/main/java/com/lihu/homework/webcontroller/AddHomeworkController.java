@@ -44,7 +44,9 @@ public class AddHomeworkController {
 
 
     @PostMapping("/saveNotPublish")
-    public String saveHomework(PublishHomework publishHomework, RedirectAttributes attributes) {
+    public String saveHomework(PublishHomework publishHomework, RedirectAttributes attributes,HttpSession httpSession) {
+        User user=(User)httpSession.getAttribute("user");
+        publishHomework.setUsername(user.getUsername());
         PublishHomework publishHomework1 = publicHomeworkService.saveNotPublish(publishHomework);
         if (publishHomework1 == null) {
             attributes.addFlashAttribute("message", "操作失败");

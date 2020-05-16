@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,28 +45,37 @@ public class HomeworkPublishController {
 
     @PostMapping("/publish")
     public String homeworkPublish(RedirectAttributes attributes,
-                                  @RequestParam("banji") String banji,
+                                  @RequestParam("banji") String banjis,
                                   @RequestParam("starttime") String starttime,
                                   @RequestParam("endtime") String endtime,
                                   @RequestParam("note") String note,
-                                  HttpSession session) {
+                                  HttpSession httpSession) {
         SimpleDateFormat start=new SimpleDateFormat("yyyy-MM-dd HH:mm");
         PublishHomework publishHomework = new PublishHomework();
-        List<User> userList = userService.classUser(banji);
-        String[] split = note.split(",");
+        User u=(User)httpSession.getAttribute("user");
+        String[] banji = banjis.split(",");
+        List<User> users=new ArrayList<>();
+        for (String s : banji) {
+            List<User> userList = userService.classUser(s);
+            for (User user : userList) {
+                if (user.getRole().equals("student")&&user.getStatus()){//必须是这个班的合法用户
+                    users.add(user);
+                }
+            }
+        }
         try {
             Date date1=start.parse(starttime);
             Date date2=start.parse(endtime);
             publishHomework.setStarttime(date1);
-            User user=(User)session.getAttribute("user");
-            publishHomework.setUsername(user.getUsername());
+            publishHomework.setUsername(u.getUsername());
             publishHomework.setEndtime(date2);
-            publishHomework.setNote(split[0]);
-            publishHomework.setId(Long.valueOf(split[1]));
-            publishHomework.setUsers(userList);
+            publishHomework.setNote(note);
+            publishHomework.setId(publicHomeworkService.findOne(note).getId());
+            publishHomework.setUsers(users);
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        publishHomework.setCourse(u.getCourse());
         PublishHomework publishHomework1 = publicHomeworkService.savePublish(publishHomework);
         if (publishHomework1==null) {
             attributes.addFlashAttribute("message", "操作失败");

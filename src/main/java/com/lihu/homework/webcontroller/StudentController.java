@@ -5,6 +5,7 @@ import com.lihu.homework.po.Homework;
 import com.lihu.homework.po.PublishHomework;
 import com.lihu.homework.po.User;
 import com.lihu.homework.service.AnswerService;
+import com.lihu.homework.service.HomeworkService;
 import com.lihu.homework.service.PublicHomeworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -29,14 +30,16 @@ public class StudentController {
     private PublicHomeworkService publicHomeworkService;
     @Autowired
     private AnswerService answerService;
+    @Autowired
+    private HomeworkService homeworkService;
     @GetMapping("/")
-    public  String student( HttpSession session,Model model, @PageableDefault(size = 5,sort = {"updatetime"},direction = Sort.Direction.DESC)
+    public  String student( HttpSession session,Model model, @PageableDefault(size = 6,sort = {"updatetime"},direction = Sort.Direction.DESC)
             Pageable pageable){
         User user=(User)session.getAttribute("user");
         model.addAttribute("user",user.getUsername());
 //        model.addAttribute("page",publicHomeworkService.showListPublic(pageable,user.getId()));
         model.addAttribute("page", publicHomeworkService.showListPublic(pageable, user.getId()));
-
+        model.addAttribute("undo",answerService.findUndoHomework(user));
         return "/index";
     }
 
@@ -59,54 +62,71 @@ public class StudentController {
 
     @PostMapping("/answer")
     public String answer(@RequestParam("publishid") String publishid,
-                         @RequestParam("radio") String radio,
-                         @RequestParam("tk-id") String tk_id,
-                         @RequestParam("tk-answer")String tk_answer,
-                         @RequestParam("jd-id")String jd_id,
-                         @RequestParam("jd-answer")String jd_answer,
+                         @RequestParam(value = "radio",required = false) String radio,
+                         @RequestParam(value = "tk-id",required = false) String tk_id,
+                         @RequestParam(value = "tk-answer",required = false)String tk_answer,
+                         @RequestParam(value = "jd-id",required = false)String jd_id,
+                         @RequestParam(value = "jd-answer",required = false)String jd_answer,
                          HttpSession session) {
-        String[] radios = radio.split(",");
-        String[] tkid = tk_id.split(",");
-        String[] tkanswer = tk_answer.split(",");
-        String[] jdid = jd_id.split(",");
-        String[] jdanswer = jd_answer.split(",");
         User user=(User)session.getAttribute("user");
         List<Answer> answerList=new ArrayList<>();
         PublishHomework publishHomework=new PublishHomework();
         publishHomework.setId(Long.valueOf(publishid));
-        for (int i = 0; i < radios.length; i++) {
-            Answer answer=new Answer();
-            Homework homework=new Homework();
-            String[] split = radios[i].split(":");
-            homework.setId(Long.valueOf(split[0]));
-            answer.setHomework(homework);
-            answer.setStudentradio(split[1]);
-            answer.setUser(user);
-            answer.setPublishHomework(publishHomework);
-            answerList.add(answer);
+        if (radio!=null){
+            String[] radios = radio.split(",");
+            for (int i = 0; i < radios.length; i++) {
+                Answer answer=new Answer();
+                Homework homework=new Homework();
+                String[] split = radios[i].split(":");
+                homework.setId(Long.valueOf(split[0]));
+                answer.setHomework(homework);
+                answer.setStudentradio(split[1]);
+                answer.setUser(user);
+                answer.setPublishHomework(publishHomework);
+                answerList.add(answer);
+            }
         }
-        for (int i = 0; i < tkid.length; i++) {
-            Answer answer=new Answer();
-            Homework homework=new Homework();
-            homework.setId(Long.valueOf(tkid[i]));
-            answer.setHomework(homework);
-            answer.setStudenttk(tkanswer[i]);
-            answer.setUser(user);
-            answer.setPublishHomework(publishHomework);
-            answerList.add(answer);
+
+        if (tk_id!=null){
+            String[] tkid = tk_id.split(",");
+            String[] tkanswer = tk_answer.split(",");
+            for (int i = 0; i < tkid.length; i++) {
+                Answer answer=new Answer();
+                Homework homework=new Homework();
+                homework.setId(Long.valueOf(tkid[i]));
+                answer.setHomework(homework);
+                answer.setStudenttk(tkanswer[i]);
+                answer.setUser(user);
+                answer.setPublishHomework(publishHomework);
+                answerList.add(answer);
+            }
         }
-        for (int i = 0; i < jdid.length; i++) {
-            Answer answer=new Answer();
-            Homework homework=new Homework();
-            homework.setId(Long.valueOf(jdid[i]));
-            answer.setHomework(homework);
-            answer.setStudentanswer(jdanswer[i]);
-            answer.setUser(user);
-            answer.setPublishHomework(publishHomework);
-            answerList.add(answer);
-        }
+       if(jd_id!=null){
+           String[] jdid = jd_id.split(",");
+           String[] jdanswer = jd_answer.split(",");
+           for (int i = 0; i < jdid.length; i++) {
+               Answer answer=new Answer();
+               Homework homework=new Homework();
+               homework.setId(Long.valueOf(jdid[i]));
+               answer.setHomework(homework);
+               answer.setStudentanswer(jdanswer[i]);
+               answer.setUser(user);
+               answer.setPublishHomework(publishHomework);
+               answerList.add(answer);
+           }
+       }
         answerService.save(answerList);
         return "redirect:/login/student/";
     }
 
+    @GetMapping("/show/{id}")
+    public String show(@PathVariable Long id,Model model,HttpSession httpSession){
+        PublishHomework publishHomework=new PublishHomework();
+        User user=(User)httpSession.getAttribute("user");
+        publishHomework.setId(id);
+        model.addAttribute("testPagers", homeworkService.findPublish(publishHomework));
+        model.addAttribute("answers", answerService.findAnswer(user, publishHomework));
+        model.addAttribute("Comment",answerService.getHomeworkStatus(user,publishHomework));
+        return "show";
+    }
 }

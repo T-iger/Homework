@@ -27,7 +27,7 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                       <!-- <a href="#" class="item"><i class="user icon"></i>个人中心</a>-->
                         <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
                     </div>
                 </div>
@@ -107,9 +107,9 @@
                             <div class="ui padded  segment vertical ">
                                 <div id="table-container">
                                     <table class="ui compact teal table" th:fragment="homeworkList">
-                                        <thead>
+                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
                                         <tr>
-                                            <td colspan="10"><h2>一、单选题</h2></td>
+                                            <td colspan="10"><h2>单选题</h2></td>
                                         </tr>
                                         <td colspan="10"></td>
                                         <tr>
@@ -120,36 +120,38 @@
                                             <th>C选项</th>
                                             <th>D选项</th>
                                             <th>分值</th>
+                                            <th>正确答案</th>
                                             <th>学生的答案</th>
-                                            <th></th>
                                             <th>得分</th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="testPager: ${testPagers} ">
-                                        <tr th:unless="${testPager.questiontype!='Radio'}">
+                                        <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
+                                        <tr >
                                             <td>1</td>
-                                            <td th:text="${testPager.content}">内容</td>
-                                            <td th:text="${testPager.radioA}">A</td>
-                                            <td th:text="${testPager.radioB}">B</td>
-                                            <td th:text="${testPager.radioC}">C</td>
-                                            <td th:text="${testPager.radioD}">D</td>
-                                            <td th:text="${testPager.score}">分值</td>
-                                            <td colspan="2" th:each="answer :${answers}"
+                                            <td th:text="${testPager.content}" style="color:brown;">内容</td>
+                                            <td th:text="${testPager.radioA}" style="color:brown;">A</td>
+                                            <td th:text="${testPager.radioB}" style="color:brown;">B</td>
+                                            <td th:text="${testPager.radioC}" style="color:brown;">C</td>
+                                            <td th:text="${testPager.radioD}" style="color:brown;">D</td>
+                                            <td th:text="${testPager.score}" style="color:brown;">分值</td>
+                                            <td th:text="${testPager.radio}" style="color:brown;">正确答案</td>
+                                            <td th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}"
-                                                th:text="${answer.studentradio}">A
+                                                th:text="${answer.studentradio}" style="color:blue;">A
                                             </td>
                                             <td th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}"
-                                                th:text="${answer.score}">10分
+                                                th:text="${answer.score}" style="color:green;">10分
                                             </td>
                                         </tr>
                                         </tbody>
+                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
                                         <td colspan="10"></td>
                                         <tr>
-                                            <td colspan="10"><h2>二、填空题</h2></td>
+                                            <td colspan="10"><h2>填空题</h2></td>
                                         </tr>
                                         <td colspan="10"></td>
-                                        <tr>
+                                        <tr >
                                             <th></th>
                                             <th>填空题题目</th>
                                             <th></th>
@@ -157,29 +159,31 @@
                                             <th></th>
                                             <th></th>
                                             <th>分值</th>
+                                            <th>正确答案</th>
                                             <th>学生的答案</th>
-                                            <th></th>
                                             <th>得分</th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="testPager: ${testPagers}">
-                                        <tr th:unless="${testPager.questiontype!='TK'}">
+                                        <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
+                                        <tr>
                                             <td colspan="1">1</td>
-                                            <td colspan="5" th:text="${testPager.content}">内容</td>
-                                            <td colspan="1" th:text="${testPager.score}">分值</td>
-                                            <td colspan="2" th:each="answer :${answers}"
+                                            <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
+                                            <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
+                                            <td colspan="1" th:text="${testPager.tk}" style="color:brown;">正确答案</td>
+                                            <td colspan="1" th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}"
-                                                th:text="${answer.studenttk}">学生答案
+                                                th:text="${answer.studenttk}" style="color:blue;">学生答案
                                             </td>
                                             <td colspan="1" th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}"
-                                                th:text="${answer.score}">10分
+                                                th:text="${answer.score}" style="color:green;">10分
                                             </td>
                                         </tr>
                                         </tbody>
+                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
                                         <td colspan="10"></td>
                                         <tr>
-                                            <td colspan="10"><h2>三、解答题</h2></td>
+                                            <td colspan="10"><h2>解答题</h2></td>
                                         </tr>
                                         <td colspan="10"></td>
                                         <tr>
@@ -195,14 +199,14 @@
                                             <th>得分</th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="testPager: ${testPagers}">
-                                        <tr th:unless="${testPager.questiontype!='JD'}">
+                                        <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
+                                        <tr >
                                             <td colspan="1">1</td>
-                                            <td colspan="5" th:text="${testPager.content}">内容</td>
-                                            <td colspan="1" th:text="${testPager.score}">分值</td>
+                                            <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
+                                            <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
                                             <td colspan="2" th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}"
-                                                th:text="${answer.studentanswer}">学生答案
+                                                th:text="${answer.studentanswer}" style="color:blue;">学生答案
                                             </td>
                                             <td th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}" style="display:none;"
@@ -214,43 +218,64 @@
                                                 th:unless="${answer.score!=0}">
                                                 <div class="ui mini input">
                                                     <input type="number" id="score" autocomplete="off" name="score"
-                                                           placeholder="分值">
+                                                           placeholder="分值" th:max="${answer.homework.score}">
                                                 </div>
                                             </td>
                                             <td th:each="answer :${answers}"
                                                 th:if="${testPager.id} eq ${answer.homework.id}"
                                                 th:unless="${answer.score==0}"
-                                                th:text="${answer.score}"></td>
+                                                th:text="${answer.score}" style="color:green;">
+                                            </td>
+                                            <td style="display: none" th:each="answer :${answers}"
+                                                th:if="${testPager.id} eq ${answer.homework.id}"
+                                                th:unless="${answer.score==0}">
+                                                <input type="hidden" name="score" th:value="${answer.score}">
+                                            </td>
+
                                         </tr>
                                         </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="10">
+                                                <div class="ui attached ">
+                                                    <div class="ui segment center aligned basic">
+                                                        <h5>评语</h5>
+                                                        <textarea th:each="c: ${Comment}" th:text="${c.comment}" id="comment" name="comment"></textarea>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="ui error mini message"></div>
-                        <!--footer -->
-                        <div class="ui attached ">
-                            <div class="ui segment center aligned basic">
-                                <div th:each="answer :${answers}"
-                                     th:if="${testPager.id} eq ${answer.homework.id}"
-                                     th:unless="${answer.score==0}" class="ui orange basic  circular item button" onclick="myCheck()">保存</div>
-                                <div id="BT_submit" th:each="answer :${answers}"
-                                     th:if="${testPager.id} eq ${answer.homework.id}"
-                                     th:unless="${answer.score==0}" class="ui button item orange basic  circular">提交</div>
-                            </div>
-                            <div class="ui submit_Tip flowing popup transition hidden">
-                                <div class="ui  divided center aligned grid">
-                                    <div class="segment ui basic ">
-                                        <h4 class="ui header">是否提交</h4>
-                                        <p>提交后不可修改</p>
-                                        <p>请仔细检查</p>
-                                        <div class="ui ">
-                                            <button id="score_bt" class="ui primary submit button">提交</button>
+                                <div class="ui attached">
+                                    <div class="ui segment center aligned basic">
+                                        <div class="ui orange basic  circular item button"
+                                             onclick="myCheck()">保存
+                                        </div>
+                                        <div id="BT_submit"
+                                             class="ui button item orange basic  circular">提交
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui submit_Tip flowing popup transition hidden">
+                                    <div class="ui  divided center aligned grid">
+                                        <div class="segment ui basic ">
+                                            <h4 class="ui header">是否提交</h4>
+                                            <p>提交后不可修改</p>
+                                            <p>请仔细检查</p>
+                                            <div class="ui ">
+                                                <button id="score_bt"
+                                                        class="ui primary submit button">提交
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="ui error mini message"></div>
+                        <!--footer -->
                     </form>
                 </div>
             </div>
@@ -346,6 +371,13 @@
                 rules: [{
                     type: 'empty',
                     prompt: '解答题全未作答，请仔细检查'
+                }]
+            },
+            comment: {
+                identifier: 'jd-comment',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请填写评语，请仔细检查'
                 }]
             },
         }

@@ -67,8 +67,11 @@
                         <div class="ui middle aligned mobile reversed stackable grid">
                             <div class="eleven wide column">
                                 <h3 class="ui header">
-                                    <a href="#" th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="m-black" th:text="${publish.note}">2020.4.1
-                                        数学作业 </a><label th:text="${publish.statusList[0].status}?'(已完成)':'(未完成)'"></label>
+                                    <a href="#" th:unless="${publish.statusList[0].status}" th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="m-black" th:text="${publish.note}">2020.4.1
+                                        数学作业 </a>
+                                    <a href="#" th:if="${publish.statusList[0].status}" th:href="@{/login/student/show/{id}(id=${publish.id})}" class="m-black" th:text="${publish.note}">2020.4.1
+                                        数学作业 </a>
+                                    <label th:text="${publish.statusList[0].status}?'(已完成)':'(未完成)'"></label>
                                 </h3>
                                 <p class="m-text" th:text="'开始时间:'+${publish.starttime}">开始时间：2020.4.2 12：00</p>
                                 <p class="m-text" th:text="'截止时间:'+${publish.endtime}">完成截止时间：2020.4.2 12：00</p>
@@ -99,7 +102,8 @@
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="" th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                        <a href="#" th:unless="${publish.statusList[0].status}" target="" th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                        <a href="#" th:if="${publish.statusList[0].status}" th:href="@{/login/student/show/{id}(id=${publish.id})}" target=""  class="ui teal basic label m-padded-td-tiny">任务详情</a>
                                     </div>
                                 </div>
                             </div>
@@ -239,12 +243,14 @@
 
                 <!--footer -->
                 <div class="ui attached segment">
-                    <div class="ui grid two column">
+                    <div class="ui grid two column" th:if="${page.totalPages}>1">
                         <div class="column">
-                            <a href="#" class="ui button teal basic mini">上一页</a>
+                            <a th:href="@{/login/student/(page=${page.number}-1)}"
+                               th:unless="${page.first}" href="#" class="ui button teal basic mini" >上一页</a>
                         </div>
                         <div class="column right aligned">
-                            <a href="#" class="ui button teal basic mini">下一页</a>
+                            <a th:href="@{/login/student/(page=${page.number}+1)}"
+                               th:unless="${page.first}" href="#" class="ui button teal basic mini">下一页</a>
                         </div>
                     </div>
                 </div>
@@ -297,10 +303,11 @@
                     </div>
                     <div class="ui teal segment">
                         <div class="ui menu fluid vertical">
-                            <a href="#" class="item">
-                                数学(未做)
-                                <div class="ui teal  label">12</div>
+                            <a href="#" class="item" th:each="un:${undo}" th:href="@{/login/student/doing/{id}(id=${un.publishHomework.id})}">
+                                <span th:text="${un.publishHomework.course.coursename}+':'+${un.publishHomework.note}+'(未做)'">数学(未做)</span>
+                               <!-- <div class="ui teal  label">12</div>-->
                             </a>
+                            <!--/*-->
                             <a href="#" class="item">
                                 语文(未做)
                                 <div class="ui teal  label">11</div>
@@ -309,6 +316,7 @@
                                 英语(未做)
                                 <div class="ui teal  label">10</div>
                             </a>
+                            <!--*/-->
                         </div>
                     </div>
                 </div>

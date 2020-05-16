@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.awt.print.Pageable;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -14,6 +15,7 @@ import java.util.Optional;
 public interface PublicHomeworkRepository extends JpaRepository<PublishHomework,Long>, JpaSpecificationExecutor<PublishHomework> {
 
     PublishHomework findByNote(String note);
+    List<PublishHomework> findByUsernameAndIspublish(String username,Boolean b);
 
 
 }

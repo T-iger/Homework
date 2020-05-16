@@ -3,6 +3,7 @@ package com.lihu.homework.service;
 import com.lihu.homework.dao.AnswerRepository;
 import com.lihu.homework.dao.HomeworkRepository;
 import com.lihu.homework.dao.HomeworkStatusRepository;
+import com.lihu.homework.dao.UserRepository;
 import com.lihu.homework.po.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,8 @@ public class AnswerServiceImpl implements AnswerService {
     private HomeworkStatusRepository homeworkStatusRepository;
     @Autowired
     private HomeworkRepository homeworkRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<Answer> save(List<Answer> answerList) {
@@ -37,24 +40,21 @@ public class AnswerServiceImpl implements AnswerService {
     @Override
     public List<Answer> findAnswer(User user, PublishHomework publishHomework) {
         List<Answer> answerList = answerRepository.findByUserAndPublishHomework(user, publishHomework);
-        for (Answer answer : answerList) {
+        for (int i = 0; i < answerList.size(); i++) {
+            Answer answer = answerList.get(i);
             Optional<Homework> homework = homeworkRepository.findById(answer.getHomework().getId());
             if (answer.getStudentradio() != null && answer.getStudentradio().equals(homework.get().getRadio())) {
-                answer.setScore(homework.get().getScore());
-                answerRepository.save(answer);
-            } else if(answer.getStudentradio() != null){
-                answer.setScore(0);
-                answerRepository.save(answer);
+                answerList.get(i).setScore(homework.get().getScore());
+            } else if (answer.getStudentradio() != null) {
+                answerList.get(i).setScore(0);
             }
-            if (answer.getStudenttk() != null &&answer.getStudenttk().equals(homework.get().getTk())) {
-                answer.setScore(homework.get().getScore());
-                answerRepository.save(answer);
-            }else if (answer.getStudenttk() != null){
-                answer.setScore(0);
-                answerRepository.save(answer);
+            if (answer.getStudenttk() != null && answer.getStudenttk().equals(homework.get().getTk())) {
+                answerList.get(i).setScore(homework.get().getScore());
+            } else if (answer.getStudenttk() != null) {
+                answerList.get(i).setScore(0);
             }
         }
-        return answerRepository.findByUserAndPublishHomework(user, publishHomework);
+        return answerList;
     }
 
     @Override
@@ -65,21 +65,46 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
+    public HomeworkStatus setComment(String comment, User user, PublishHomework publishHomework) {
+        HomeworkStatus homeworkStatus = homeworkStatusRepository.findByUserStatusAndPublishHomework(user, publishHomework);
+        homeworkStatus.setComment(comment);
+        List<Answer> answerList = answerRepository.findByUserAndPublishHomework(user, publishHomework);
+        for (Answer answer : answerList) {
+            Optional<Homework> homework = homeworkRepository.findById(answer.getHomework().getId());
+            if (answer.getStudentradio() != null && answer.getStudentradio().equals(homework.get().getRadio())) {
+                answer.setScore(homework.get().getScore());
+                answerRepository.save(answer);
+            } else if (answer.getStudentradio() != null) {
+                answer.setScore(0);
+                answerRepository.save(answer);
+            }
+            if (answer.getStudenttk() != null && answer.getStudenttk().equals(homework.get().getTk())) {
+                answer.setScore(homework.get().getScore());
+                answerRepository.save(answer);
+            } else if (answer.getStudenttk() != null) {
+                answer.setScore(0);
+                answerRepository.save(answer);
+            }
+        }
+        return homeworkStatusRepository.save(homeworkStatus);
+    }
+
+    @Override
     public List<Answer> getScore(Long id, List<User> users) {
-        List<Answer> scoreList=new ArrayList<>();
+        List<Answer> scoreList = new ArrayList<>();
         for (User user : users) {
-            PublishHomework publishHomework=new PublishHomework();
+            PublishHomework publishHomework = new PublishHomework();
             publishHomework.setId(id);
             List<Answer> answerList = answerRepository.findByUserAndPublishHomework(user, publishHomework);
-            Integer sum=0;
-            Answer an=new Answer();
+            Integer sum = 0;
+            Answer an = new Answer();
             for (Answer answer : answerList) {
-                    sum += answer.getScore();
+                sum += answer.getScore();
             }
             //推荐不会的知识点
-            if(sum!=0){
+            if (sum != 0) {
                 for (Answer answer : answerList) {
-                    if(answer.getScore()==0){//读取分值为0的题目
+                    if (answer.getScore() == 0) {//读取分值为0的题目
                         answer.getHomework().getKnowledge().getObject();
                     }
                 }
@@ -90,5 +115,17 @@ public class AnswerServiceImpl implements AnswerService {
             scoreList.add(an);
         }
         return scoreList;
+    }
+
+    //取作业状态（评语和系统评语）
+    @Override
+    public HomeworkStatus getHomeworkStatus(User user, PublishHomework publishHomework) {
+        return homeworkStatusRepository.findByUserStatusAndPublishHomework(user, publishHomework);
+    }
+
+    //查询未完成的作业
+    @Override
+    public List<HomeworkStatus> findUndoHomework(User user) {
+        return homeworkStatusRepository.findByUserStatusAndStatus(user,false);
     }
 }

@@ -40,12 +40,32 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
 
     @Transactional
     @Override//查询作业列表
-    public Page<PublishHomework> listPublic(Pageable pageable) {
-        return publicHomeworkRepository.findAll(pageable);
+    public Page<PublishHomework> listPublic(Pageable pageable,PublishHomework publishHomework,String isPublish) {
+        return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
+            @Override
+            public Predicate toPredicate(Root<PublishHomework> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates=new ArrayList<>();
+                if (!"".equals(publishHomework.getNote())&&publishHomework.getNote()!=null){
+                    predicates.add(cb.like(root.<String>get("note"), publishHomework.getNote()));
+                }
+                if("".equals(isPublish)&&isPublish!=null){
+                    if ("1".equals(isPublish)){
+                        predicates.add(cb.equal(root.<Boolean>get("ispublish"), true));
+                    }
+                    if ("2".equals(isPublish)){
+                        predicates.add(cb.equal(root.<Boolean>get("ispublish"), false));
+                    }
+                }
+                predicates.add(cb.equal(root.<String>get("username"), publishHomework.getUsername()));
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
     }
 
+
     @Override
-    public Page<PublishHomework> listPublicGai(Pageable pageable,String username ) {
+    public Page<PublishHomework> listPublicGai(Pageable pageable,String username) {
         return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
             @Override
             public Predicate toPredicate(Root<PublishHomework> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
@@ -94,13 +114,13 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
     }
 
     @Override
-    public List<PublishHomework> findAll() {
-        return publicHomeworkRepository.findAll();
+    public List<PublishHomework> findNoPublish(String userName) {
+        return publicHomeworkRepository.findByUsernameAndIspublish(userName,false);
     }
 
     @Override
     public PublishHomework savePublish(PublishHomework publishHomework) {
-        publishHomework.setId(publicHomeworkRepository.findByNote(publishHomework.getNote()).getId());
+//        publishHomework.setId(publicHomeworkRepository.findByNote(publishHomework.getNote()).getId());
         publishHomework.setIspublish(true);
         publishHomework.setUpdatetime(new Date());
         for (User user : publishHomework.getUsers()) {
@@ -113,8 +133,25 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
         List<Homework> byNote = homeworkRepository.findByNote(publishHomework.getNote());
         for (Homework homework : byNote) {
             homework.setPublishHomework(publishHomework);
+            homeworkRepository.save(homework);
         }
-        homeworkRepository.saveAll(byNote);
+
         return publicHomeworkRepository.save(publishHomework);
+    }
+
+    @Override
+    public PublishHomework findOne(Long id) {
+        return  publicHomeworkRepository.findById(id).get();
+    }
+
+    @Override
+    public PublishHomework deleteOne(PublishHomework publishHomework) {
+        publishHomework.setUsers(null);
+        return publicHomeworkRepository.save(publishHomework);
+    }
+
+    @Override
+    public PublishHomework findOne(String note) {
+        return publicHomeworkRepository.findByNote(note);
     }
 }

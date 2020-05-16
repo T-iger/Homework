@@ -16,7 +16,7 @@ public interface PublicHomeworkService {
 
     Optional<PublishHomework> getPublishHomework(Long id);
 
-    Page<PublishHomework> listPublic(Pageable pageable);
+    Page<PublishHomework> listPublic(Pageable pageable,PublishHomework publishHomework,String isPublish);
 
     Page<PublishHomework> listPublicGai(Pageable pageable,String username);
 
@@ -26,9 +26,15 @@ public interface PublicHomeworkService {
 
     List<Homework> listHomework(String note);
 
-    List<PublishHomework> findAll();
+    List<PublishHomework> findNoPublish(String userName);
 
     PublishHomework savePublish(PublishHomework publishHomework);
 
     List<User> findPiGai(Long id);
+
+    PublishHomework findOne(Long id);
+
+    PublishHomework deleteOne(PublishHomework publishHomework);
+
+    PublishHomework findOne(String note);
 }

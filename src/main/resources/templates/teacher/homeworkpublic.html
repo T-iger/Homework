@@ -20,11 +20,11 @@
                     class="idea icon"></i>布置作业</a>
             <a href="#" th:href="@{/login/teacher/gaizuoyeindex}" class="m-item item m-mobile-hide"><i
                     class="clone icon"></i>批改作业</a>
-            <a href="#" th:href="@{/login/teacher/banji}"  class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
+            <a href="#" th:href="@{/login/teacher/banji}" class="m-item item m-mobile-hide"><i class="idea icon"></i>班级管理</a>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
-                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400" ><span th:text="${user}">Username01</span>
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400"><span th:text="${user}">Username01</span>
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -68,7 +68,7 @@
                     <label>截止时间：</label>
                     <div class="ui input left icon">
                         <i class="calendar icon"></i>
-                        <input autocomplete="off" id="endtime" name="endtime" type="text" placeholder="Date" >
+                        <input autocomplete="off" id="endtime" name="endtime" type="text" placeholder="Date">
                     </div>
                 </div>
                 <div class="ui  m-padded-mini">
@@ -89,18 +89,20 @@
             <div class="ui segment attached center aligned">
                 <div class="ui  m-padded-mini">
                     <label>作业标题：</label>
-                    <div class="ui search dropdown  selection ">
+                    <div th:if="${#strings.isEmpty(Note)}" class="ui search dropdown  selection">
                         <input type="hidden" id="note" name="note">
                         <i class="dropdown icon"></i>
-                        <div class="default text textnote">选择作业</div>
+                        <div class="default text">选择作业</div>
                         <div class="menu" id="note1">
-                            <div th:each="publish : ${publishHomeworks}" th:data-value="${publish.note}+','+${publish.id}"
+                            <div th:each="publish : ${publishHomeworks}"
+                                 th:data-value="${publish.note}+','+${publish.id}"
                                  th:text="${publish.note}" class="item" data-value="af">
                                 Afghanistan
                             </div>
                         </div>
-
                     </div>
+                    <input th:unless="${#strings.isEmpty(Note)}" style="display: none" name="note" th:value="${Note}" onload="loaddata()">
+                    <span th:unless="${#strings.isEmpty(Note)}" th:value="${Note}" th:text="${Note}" ></span>
                 </div>
                 <div id="table-container">
                     <table id="zhanshi" th:fragment="homeworkList" class="ui compact teal table">
@@ -216,7 +218,7 @@
         initialDate: null,
         endCalendar: $('.endtime'),
         on: null,
-        ampm : false,
+        ampm: false,
         text: {
             days: ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
             months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
@@ -243,7 +245,7 @@
         initialDate: null,
         startCalendar: $('.starttime'),
         on: null,
-        ampm : false,
+        ampm: false,
         text: {
             days: ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
             months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
@@ -269,42 +271,47 @@
 </script>
 <script>
     $("#zhanshi").hide();
-    $("#note1").click(function loaddata() {
-            $("#table-container").load(/*[[@{/login/teacher/publishSearch}]]*/"/login/teacher/publishSearch", {
-                note: $(".textnote").text(),
-            });
-        }
-   );
-    $("#note1").click(function(){
+
+    $("#note1").click(
+        loaddata()
+    );
+
+    function loaddata() {
+        $("#table-container").load(/*[[@{/login/teacher/publishSearch}]]*/"/login/teacher/publishSearch", {
+            note: $("[name='note']").val(),
+        });
+    }
+
+    $("#note1").click(function () {
         $("#zhanshi").show();
     });
     $('.ui.form').form({
-        fields : {
-            starttime : {
+        fields: {
+            starttime: {
                 identifier: 'starttime',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '请输入开始时间'
                 }]
             },
-            endtime : {
+            endtime: {
                 identifier: 'endtime',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '请输入截止时间'
                 }]
             },
-            banji : {
+            banji: {
                 identifier: 'banji',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '请选择班级'
                 }]
             },
-            note : {
+            note: {
                 identifier: 'note',
                 rules: [{
-                    type : 'empty',
+                    type: 'empty',
                     prompt: '请选择作业'
                 }]
             }

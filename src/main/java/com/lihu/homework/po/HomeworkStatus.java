@@ -8,12 +8,14 @@ import java.util.List;
  * @author Li
  **/
 @Entity
-@Table(name = "tb_status")
+@Table(name = "tb_homeworkstatus")
 public class HomeworkStatus {
 
     @Id
     @GeneratedValue
     private Long id;
+    private String comment;//评语
+    private String XtComment;//系统评语
 
     private Boolean status;
     @OneToOne
@@ -56,10 +58,29 @@ public class HomeworkStatus {
         this.userStatus = user_status;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getXtComment() {
+        return XtComment;
+    }
+
+    public void setXtComment(String xtcComment) {
+        XtComment = xtcComment;
+    }
+
     @Override
     public String toString() {
         return "HomeworkStatus{" +
-                "status=" + status +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                ", XtcComment='" + XtComment + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

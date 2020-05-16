@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>展示区</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+</head>
+<body>
+<!--导航-->
+<nav class="ui inverted attached segment m-padded-td-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">作业管理系统</h2>
+            <a href="#" th:href="@{/login/student/}" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
+            <div class="right item m-item m-mobile-hide">
+                <!--  inverted transparent 让搜索框变黑色-->
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+            <div class="right menu m-item m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400"  ><span th:text="${user}">Username01</span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle button black m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+<!--中间内容-->
+<div class="m-padded-tb-big m-container-small">
+    <div class="ui container">
+        <div class="ui top attached segment">
+            <div class="ui link list  horizontal">
+                <div class="item">
+                    <h5 class="content">发布者:</h5>
+                </div>
+                <div class="item">
+                    <img src="https://picsum.photos/id/1/100/100#1025" alt=""
+                         class="ui avatar image">
+                    <div class="content">
+                        <a href="#" class="header">数学老师1</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="calendar icon"></i>2020.4.1
+                </div>
+                <div class="item">
+                    <i class="eye icon"></i>200
+                </div>
+            </div>
+        </div>
+        <div class="ui segment attached">
+            考察点、详细信息
+        </div>
+        <div class="ui segment attached  padded attached">
+            内容
+            <table class="ui compact teal table">
+                <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
+                <tr>
+                    <td colspan="10"><h2>单选题</h2></td>
+                </tr>
+                <td colspan="10"></td>
+                <tr>
+                    <th></th>
+                    <th>单选题目</th>
+                    <th>A选项</th>
+                    <th>B选项</th>
+                    <th>C选项</th>
+                    <th>D选项</th>
+                    <th>分值</th>
+                    <th>正确答案</th>
+                    <th>你的答案</th>
+                    <th>得分</th>
+                </tr>
+                </thead>
+                <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
+                <tr >
+                    <td>1</td>
+                    <td th:text="${testPager.content}" style="color:brown;">内容</td>
+                    <td th:text="${testPager.radioA}" style="color:brown;">A</td>
+                    <td th:text="${testPager.radioB}" style="color:brown;">B</td>
+                    <td th:text="${testPager.radioC}" style="color:brown;">C</td>
+                    <td th:text="${testPager.radioD}" style="color:brown;">D</td>
+                    <td th:text="${testPager.score}" style="color:brown;">分值</td>
+                    <td th:text="${testPager.radio}" style="color:brown;">正确答案</td>
+                    <td th:each="answer :${answers}"
+                        th:if="${testPager.id} eq ${answer.homework.id}"
+                        th:text="${answer.studentradio}" style="color:blue;">A
+                    </td>
+                    <td th:each="answer :${answers}"
+                        th:if="${testPager.id} eq ${answer.homework.id}"
+                        th:text="${answer.score}" style="color:green;">10分
+                    </td>
+                </tr>
+                </tbody>
+                <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
+                <td colspan="10"></td>
+                <tr>
+                    <td colspan="10"><h2>填空题</h2></td>
+                </tr>
+                <td colspan="10"></td>
+                <tr >
+                    <th></th>
+                    <th>填空题题目</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>分值</th>
+                    <th>正确答案</th>
+                    <th>你的答案</th>
+                    <th>得分</th>
+                </tr>
+                </thead>
+                <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
+                <tr>
+                    <td colspan="1">1</td>
+                    <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
+                    <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
+                    <td colspan="1" th:text="${testPager.tk}" style="color:brown;">正确答案</td>
+                    <td colspan="1" th:each="answer :${answers}"
+                        th:if="${testPager.id} eq ${answer.homework.id}"
+                        th:text="${answer.studenttk}" style="color:blue;">学生答案
+                    </td>
+                    <td colspan="1" th:each="answer :${answers}"
+                        th:if="${testPager.id} eq ${answer.homework.id}"
+                        th:text="${answer.score}" style="color:green;">10分
+                    </td>
+                </tr>
+                </tbody>
+                <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
+                <td colspan="10"></td>
+                <tr>
+                    <td colspan="10"><h2>解答题</h2></td>
+                </tr>
+                <td colspan="10"></td>
+                <tr>
+                    <th></th>
+                    <th>解答题目</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>分值</th>
+                    <th>你的的答案</th>
+                    <th></th>
+                    <th>得分</th>
+                </tr>
+                </thead>
+                <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
+                <tr >
+                    <td colspan="1">1</td>
+                    <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
+                    <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
+                    <td colspan="2" th:each="answer :${answers}"
+                        th:if="${testPager.id} eq ${answer.homework.id}"
+                        th:text="${answer.studentanswer}" style="color:blue;">你的答案
+                    </td>
+                    <td th:each="answer :${answers}"
+                        th:if="${testPager.id} eq ${answer.homework.id}"
+                        th:unless="${answer.score==0}"
+                        th:text="${answer.score}" style="color:green;">
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="10">
+                        <div class="ui attached ">
+                            <div class="ui teal segment center aligned basic">
+                                <h5>老师评语</h5>
+                                <h4 style="color: red" th:each="c: ${Comment}" th:text="${c.comment}"  name="comment"></h4>
+                            </div>
+                            <div class="ui teal segment center aligned basic">
+                                <h5>系统建议</h5>
+                                <h4 style="color: red" th:each="c: ${Comment}" th:text="${c.XtComment}"  name="comment"></h4>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<!--底部footer-->
+<footer class="ui inverted segment vertical m-padded-tb-massive">
+    <div class="ui center aligned container">
+        <div class="ui grid divided stackable inverted">
+            <div class="three wide  column">
+                <h4 class="ui inverted header">关于</h4>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">地址</h4>
+                <p>安徽省合肥市</p>
+            </div>
+            <div class="three wide  column">
+                <h4 class="ui inverted header">所属权：</h4>
+                <p>LH</p>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header"></h4>
+                <p>@2020</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced">邮编：231131 电话：xxx QQ：885515333 E-mail：885515333@qq.com</p>
+    </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $(".menu.toggle").click(function () {
+        $(".m-item").toggleClass("m-mobile-hide");
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'//鼠标移上去就触发
+    });
+</script>
+</body>
+</html>
