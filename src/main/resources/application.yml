@@ -3,7 +3,7 @@ spring:
     mode: HTML
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/lihu?useSSL=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/lihu?useSSL=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
     username: root
     password: root
   jpa:

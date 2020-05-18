@@ -29,7 +29,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginPage() {
-        return "/login";
+        return "login";
     }
 
     @PostMapping("/loginpost")
@@ -60,8 +60,8 @@ public class LoginController {
                 return "/";
             }
         } else {
-            attributes.addFlashAttribute("message", "用户名和密码错误");
-            return "redirect:/";
+            attributes.addFlashAttribute("message", "用户名或密码错误");
+            return "redirect:/login";
         }
     }
 

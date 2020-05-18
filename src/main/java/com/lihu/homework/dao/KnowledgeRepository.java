@@ -9,5 +9,8 @@ import java.util.List;
  * @author Li
  **/
 public interface KnowledgeRepository extends JpaRepository<Knowledge, Long> {
+    List<Knowledge> findByPropertyAndObject(String property,String object);
+
+    List<Knowledge> findByPropertyAndSubject(String property,String subject);
 
 }

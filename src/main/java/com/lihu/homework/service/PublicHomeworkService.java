@@ -22,6 +22,10 @@ public interface PublicHomeworkService {
 
     Page<PublishHomework> showListPublic(Pageable pageable,Long userId);
 
+    Page<PublishHomework> showFinishListPublic(Pageable pageable,Long userId);
+
+    Page<PublishHomework> showUndoListPublic(Pageable pageable,Long userId);
+
     PublishHomework saveNotPublish(PublishHomework publishHomework);
 
     List<Homework> listHomework(String note);
@@ -37,4 +41,8 @@ public interface PublicHomeworkService {
     PublishHomework deleteOne(PublishHomework publishHomework);
 
     PublishHomework findOne(String note);
+
+    Page<PublishHomework> undoListPublic(Pageable pageable,User user,String course);
+
+    Page<PublishHomework> FinishListPublic(Pageable pageable,User user,String course);
 }

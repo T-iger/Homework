@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class HomeworkPublishController {
                                   @RequestParam("endtime") String endtime,
                                   @RequestParam("note") String note,
                                   HttpSession httpSession) {
-        SimpleDateFormat start=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat start=new SimpleDateFormat("yyyy-MM-dd HH:mm");
         PublishHomework publishHomework = new PublishHomework();
         User u=(User)httpSession.getAttribute("user");
         String[] banji = banjis.split(",");

@@ -16,8 +16,11 @@ public class HomeworkStatus {
     private Long id;
     private String comment;//评语
     private String XtComment;//系统评语
-
+    @Lob
+    @Column(columnDefinition="text")
+    public String tuijian;//存储构造图像的数据
     private Boolean status;
+
     @OneToOne
     private PublishHomework publishHomework;
     @OneToOne
@@ -74,12 +77,21 @@ public class HomeworkStatus {
         XtComment = xtcComment;
     }
 
+    public String getTuijian() {
+        return tuijian;
+    }
+
+    public void setTuijian(String tuijian) {
+        this.tuijian = tuijian;
+    }
+
     @Override
     public String toString() {
         return "HomeworkStatus{" +
                 "id=" + id +
                 ", comment='" + comment + '\'' +
-                ", XtcComment='" + XtComment + '\'' +
+                ", XtComment='" + XtComment + '\'' +
+                ", tuijian='" + tuijian + '\'' +
                 ", status=" + status +
                 '}';
     }

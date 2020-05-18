@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +69,7 @@ public class AnswerServiceImpl implements AnswerService {
     public HomeworkStatus setComment(String comment, User user, PublishHomework publishHomework) {
         HomeworkStatus homeworkStatus = homeworkStatusRepository.findByUserStatusAndPublishHomework(user, publishHomework);
         homeworkStatus.setComment(comment);
+        HashSet<String> set = new HashSet<>();
         List<Answer> answerList = answerRepository.findByUserAndPublishHomework(user, publishHomework);
         for (Answer answer : answerList) {
             Optional<Homework> homework = homeworkRepository.findById(answer.getHomework().getId());
@@ -76,6 +78,7 @@ public class AnswerServiceImpl implements AnswerService {
                 answerRepository.save(answer);
             } else if (answer.getStudentradio() != null) {
                 answer.setScore(0);
+                set.add(answer.getHomework().getKnowledge().getSubject());//存储错误的知识点
                 answerRepository.save(answer);
             }
             if (answer.getStudenttk() != null && answer.getStudenttk().equals(homework.get().getTk())) {
@@ -83,9 +86,12 @@ public class AnswerServiceImpl implements AnswerService {
                 answerRepository.save(answer);
             } else if (answer.getStudenttk() != null) {
                 answer.setScore(0);
+                set.add(answer.getHomework().getKnowledge().getSubject());
                 answerRepository.save(answer);
             }
         }
+        System.out.println(set);
+
         return homeworkStatusRepository.save(homeworkStatus);
     }
 
@@ -126,6 +132,11 @@ public class AnswerServiceImpl implements AnswerService {
     //查询未完成的作业
     @Override
     public List<HomeworkStatus> findUndoHomework(User user) {
-        return homeworkStatusRepository.findByUserStatusAndStatus(user,false);
+        return homeworkStatusRepository.findByUserStatusAndStatus(user, false);
+    }
+    //查询已完成作业
+    @Override
+    public List<HomeworkStatus> findFinishHomework(User user) {
+        return homeworkStatusRepository.findByUserStatusAndStatus(user, true);
     }
 }

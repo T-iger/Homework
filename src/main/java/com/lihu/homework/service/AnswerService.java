@@ -23,4 +23,6 @@ public interface AnswerService {
     HomeworkStatus getHomeworkStatus(User user,PublishHomework publishHomework);
 
     List<HomeworkStatus> findUndoHomework(User user);
+
+    List<HomeworkStatus> findFinishHomework(User user);
 }

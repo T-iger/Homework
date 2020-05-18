@@ -14,16 +14,16 @@
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">作业管理系统</h2>
             <a href="#" th:href="@{/login/student/}" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="#" th:href="@{/login/student/undo}"  class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
+            <a href="#" th:href="@{/login/student/finish}"  class="m-item item m-mobile-hide"><i class="idea icon"></i>已完成</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
-            <div class="right item m-item m-mobile-hide">
-                <!--  inverted transparent 让搜索框变黑色-->
+            <!--<div class="right item m-item m-mobile-hide">
+                &lt;!&ndash;  inverted transparent 让搜索框变黑色&ndash;&gt;
                 <div class="ui icon inverted transparent input">
                     <input type="text" placeholder="Search...">
                     <i class="search link icon"></i>
                 </div>
-            </div>
+            </div>-->
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -63,7 +63,7 @@
                 <!--content--->
                 <div class="ui attached segment">
                     <!--<div class="ui padded  segment vertical  m-padded-tb-big">-->
-                    <div class="ui padded  segment vertical  m-padded-tb-big" th:each="publish : ${page.content}">
+                    <div class="ui padded  segment vertical  m-padded-tb-big" th:each="publish : ${page.content}" th:if="${#dates.format(new java.util.Date().getTime())} > '${#dates.format(publish.starttime)}'">
                         <div class="ui middle aligned mobile reversed stackable grid">
                             <div class="eleven wide column">
                                 <h3 class="ui header">
@@ -73,8 +73,8 @@
                                         数学作业 </a>
                                     <label th:text="${publish.statusList[0].status}?'(已完成)':'(未完成)'"></label>
                                 </h3>
-                                <p class="m-text" th:text="'开始时间:'+${publish.starttime}">开始时间：2020.4.2 12：00</p>
-                                <p class="m-text" th:text="'截止时间:'+${publish.endtime}">完成截止时间：2020.4.2 12：00</p>
+                                <p class="m-text" th:text="'开始时间:'+${#dates.format(publish.starttime,'yyyy-MM-dd HH:mm')}">开始时间：2020.4.2 12：00</p>
+                                <p class="m-text" th:text="'截止时间:'+${#dates.format(publish.endtime,'yyyy-MM-dd HH:mm')}">完成截止时间：2020.4.2 12：00</p>
                                 <br>
                                 <div class="ui grid">
                                     <div class="eleven wide column">
@@ -91,11 +91,11 @@
                                             </div>
                                             <div class="item">
                                                 <i class="calendar icon"></i>
-                                                <span th:text="${#dates.format(publish.updatetime,'yyyy-MM-dd')}">2020.4.1</span>
+                                                <span th:text="${#dates.format(publish.updatetime,'yyyy-MM-dd HH:mm')}">2020.4.1</span>
                                             </div>
-                                            <div class="item">
+                                            <!--<div class="item">
                                                 <i class="eye icon"></i>200
-                                            </div>
+                                            </div>-->
                                             <div class="item">
                                                 <span  th:text="${publish.course.coursename}"></span>
                                             </div>
@@ -261,7 +261,7 @@
             <div class="five wide column">
 
                 <!-分类--->
-                <div class="ui segments">
+              <!--  <div class="ui segments">
                     <div class="ui secondary segment">
                         <div class="ui two column grid">
                             <div class="column">
@@ -288,7 +288,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-待完成项--->
                 <div class="ui segments">
                     <div class="ui secondary segment">
@@ -297,7 +297,7 @@
                                 <i class="idea icon"></i>待完成
                             </div>
                             <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" th:href="@{/login/student/undo}" target="_blank">more <i class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>

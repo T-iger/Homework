@@ -71,11 +71,10 @@
         <div class="ui segment attached  padded attached">
             内容
             <table class="ui compact teal table">
-                <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
+                <thead th:if="${hasRadio}">
                 <tr>
                     <td colspan="10"><h2>单选题</h2></td>
                 </tr>
-                <td colspan="10"></td>
                 <tr>
                     <th></th>
                     <th>单选题目</th>
@@ -109,12 +108,10 @@
                     </td>
                 </tr>
                 </tbody>
-                <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
-                <td colspan="10"></td>
+                <thead th:if="${hasTK}">
                 <tr>
                     <td colspan="10"><h2>填空题</h2></td>
                 </tr>
-                <td colspan="10"></td>
                 <tr >
                     <th></th>
                     <th>填空题题目</th>
@@ -144,12 +141,10 @@
                     </td>
                 </tr>
                 </tbody>
-                <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
-                <td colspan="10"></td>
+                <thead th:if="${hasJD}">
                 <tr>
                     <td colspan="10"><h2>解答题</h2></td>
                 </tr>
-                <td colspan="10"></td>
                 <tr>
                     <th></th>
                     <th>解答题目</th>

@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <i class="calendar icon" ></i><span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'更新时间：'+${testPager.publishHomework.updatetime}">2020.4.1</span>
+                    <i class="calendar icon" ></i><span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'更新时间：'+${#dates.format(testPager.publishHomework.updatetime,'yyyy-MM-dd HH:mm')}">2020.4.1</span>
                 </div>
                 <div class="item">
                     <i class="eye icon"></i>200
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="ui segment attached">
-            <span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'截止时间：'+${testPager.publishHomework.endtime}">截止时间：</span>
+            <span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="'截止时间：'+${#dates.format(testPager.publishHomework.endtime,'yyyy-MM-dd HH:mm')}">截止时间：</span>
         </div>
         <div class="ui segment attached  padded attached">
             <span th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}" th:text="${testPager.note}">作业标题</span>
@@ -77,11 +77,10 @@
                     <div class="ui padded  segment vertical   ">
                         <div id="table-container">
                             <table class="ui compact teal table">
-                                <thead>
+                                <thead th:if="${hasRadio}">
                                 <tr>
-                                    <td colspan="8"><h2>一、单选题</h2></td>
+                                    <td colspan="8"><h2>单选题</h2></td>
                                 </tr>
-                                <td colspan="8"></td>
                                 <tr>
                                     <th></th>
                                     <th>单选题目</th>
@@ -126,11 +125,10 @@
                                     </td>
                                 </tr>
                                 </tbody>
-                                <td colspan="8"></td>
+                                <thead th:if="${hasTK}">
                                 <tr>
-                                    <td colspan="8"><h2>二、填空题</h2></td>
+                                    <td colspan="8"><h2>填空题</h2></td>
                                 </tr>
-                                <td colspan="8"></td>
                                 <tr>
                                     <th></th>
                                     <th>填空题题目</th>
@@ -154,11 +152,10 @@
                                     </td>
                                 </tr>
                                 </tbody>
-                                <td colspan="8"></td>
+                                <thead th:if="${hasJD}">
                                 <tr>
-                                    <td colspan="8"><h2>三、解答题</h2></td>
+                                    <td colspan="8"><h2>解答题</h2></td>
                                 </tr>
-                                <td colspan="8"></td>
                                 <tr>
                                     <th></th>
                                     <th>解答题目</th>

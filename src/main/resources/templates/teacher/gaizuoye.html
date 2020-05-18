@@ -27,7 +27,7 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                       <!-- <a href="#" class="item"><i class="user icon"></i>个人中心</a>-->
+                        <!-- <a href="#" class="item"><i class="user icon"></i>个人中心</a>-->
                         <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
                     </div>
                 </div>
@@ -107,11 +107,14 @@
                             <div class="ui padded  segment vertical ">
                                 <div id="table-container">
                                     <table class="ui compact teal table" th:fragment="homeworkList">
-                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
+                                        <input name="publishId" style="display:none;"
+                                               th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}"
+                                               th:value="${testPager.publishHomework.id}"></td>
+                                        <!--                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">-->
+                                        <thead th:if="${hasRadio}">
                                         <tr>
                                             <td colspan="10"><h2>单选题</h2></td>
                                         </tr>
-                                        <td colspan="10"></td>
                                         <tr>
                                             <th></th>
                                             <th>单选题目</th>
@@ -125,9 +128,10 @@
                                             <th>得分</th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
-                                        <tr >
-                                            <td>1</td>
+                                        <tbody th:each="testPager,itor: ${testPagers}"
+                                               th:unless="${testPager.questiontype!='Radio'}">
+                                        <tr>
+                                            <td th:text="${itor.count}">1</td>
                                             <td th:text="${testPager.content}" style="color:brown;">内容</td>
                                             <td th:text="${testPager.radioA}" style="color:brown;">A</td>
                                             <td th:text="${testPager.radioB}" style="color:brown;">B</td>
@@ -145,13 +149,12 @@
                                             </td>
                                         </tr>
                                         </tbody>
-                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
-                                        <td colspan="10"></td>
+                                        <!--<thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">-->
+                                        <thead th:if="${hasTK}">
                                         <tr>
                                             <td colspan="10"><h2>填空题</h2></td>
                                         </tr>
-                                        <td colspan="10"></td>
-                                        <tr >
+                                        <tr>
                                             <th></th>
                                             <th>填空题题目</th>
                                             <th></th>
@@ -164,9 +167,10 @@
                                             <th>得分</th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
+                                        <tbody th:each="testPager,itor: ${testPagers}"
+                                               th:unless="${testPager.questiontype!='TK'}">
                                         <tr>
-                                            <td colspan="1">1</td>
+                                            <td colspan="1" th:text="${itor.count}">1</td>
                                             <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
                                             <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
                                             <td colspan="1" th:text="${testPager.tk}" style="color:brown;">正确答案</td>
@@ -180,12 +184,10 @@
                                             </td>
                                         </tr>
                                         </tbody>
-                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
-                                        <td colspan="10"></td>
+                                        <thead th:if="${hasJD}">
                                         <tr>
                                             <td colspan="10"><h2>解答题</h2></td>
                                         </tr>
-                                        <td colspan="10"></td>
                                         <tr>
                                             <th></th>
                                             <th>解答题目</th>
@@ -199,9 +201,10 @@
                                             <th>得分</th>
                                         </tr>
                                         </thead>
-                                        <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
-                                        <tr >
-                                            <td colspan="1">1</td>
+                                        <tbody th:each="testPager,itor: ${testPagers}"
+                                               th:unless="${testPager.questiontype!='JD'}">
+                                        <tr>
+                                            <td colspan="1" th:text="${itor.count}">1</td>
                                             <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
                                             <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
                                             <td colspan="2" th:each="answer :${answers}"
@@ -231,7 +234,6 @@
                                                 th:unless="${answer.score==0}">
                                                 <input type="hidden" name="score" th:value="${answer.score}">
                                             </td>
-
                                         </tr>
                                         </tbody>
                                         <tfoot>
@@ -240,7 +242,8 @@
                                                 <div class="ui attached ">
                                                     <div class="ui segment center aligned basic">
                                                         <h5>评语</h5>
-                                                        <textarea th:each="c: ${Comment}" th:text="${c.comment}" id="comment" name="comment"></textarea>
+                                                        <textarea th:each="c: ${Comment}" th:text="${c.comment}"
+                                                                  id="comment" name="comment"></textarea>
                                                     </div>
                                                 </div>
                                             </td>
