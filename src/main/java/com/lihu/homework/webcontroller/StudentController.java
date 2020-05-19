@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -145,6 +146,7 @@ public class StudentController {
                 model.addAttribute("hasJD",true);
             }
         }
+        model.addAttribute("score",answerService.getOneScore(user,publishHomework));
         model.addAttribute("answers", answerService.findAnswer(user, publishHomework));
         model.addAttribute("Comment", answerService.getHomeworkStatus(user, publishHomework));
         return "show";
@@ -211,6 +213,7 @@ public class StudentController {
         model.addAttribute("sum", math + chinese + English);
         return "finish";
     }
+
     @PostMapping("/finishPost")
     public String finishPost(HttpSession httpSession, Model model, @PageableDefault(size = 6, sort = {"updatetime"}, direction = Sort.Direction.DESC)
             Pageable pageable,@RequestParam("course")String course) {
@@ -218,5 +221,13 @@ public class StudentController {
         model.addAttribute("page", publicHomeworkService.FinishListPublic(pageable, user,course));
         return "undo::publishList";
     }
+    @PostMapping("/TuiJan")
+    public ResponseEntity<?> TuiJan(@RequestParam("userID")String userID, @RequestParam("publishID")String publishID) {
+
+        return ResponseEntity.ok(answerService.findTuXian(userID, publishID));
+    }
 
 }
+
+
+

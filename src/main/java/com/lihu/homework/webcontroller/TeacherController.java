@@ -173,6 +173,7 @@ public class TeacherController {
         user.setId(Long.valueOf(userid));
         model.addAttribute("answers", answerService.findAnswer(user, publishHomework));
         model.addAttribute("Comment", answerService.getHomeworkStatus(user, publishHomework));
+        model.addAttribute("userid",user.getId());
         return "/teacher/gaizuoye :: homeworkList";
     }
 
@@ -182,6 +183,7 @@ public class TeacherController {
                             @RequestParam(value = "answerid", required = false) String answerid,
                             @RequestParam("comment") String comment,
                             @RequestParam("publishId") String publishId,
+                            @RequestParam("userid") String userid,
                             RedirectAttributes redirectAttributes,
                             HttpSession httpSession) {
         User user = (User) httpSession.getAttribute("user");
@@ -201,7 +203,9 @@ public class TeacherController {
         } else {
             PublishHomework publishHomework = new PublishHomework();
             publishHomework.setId(Long.valueOf(publishId));
-            HomeworkStatus homeworkStatus = answerService.setComment(comment, user, publishHomework);
+            User user1=new User();
+            user1.setId(Long.valueOf(userid));
+            HomeworkStatus homeworkStatus = answerService.setComment(comment, user1, publishHomework);
             Long id = homeworkStatus.getPublishHomework().getId();
             String stu = "redirect:/login/teacher/pigai/" + id;
             return stu;

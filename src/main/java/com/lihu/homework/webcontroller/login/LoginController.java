@@ -56,7 +56,7 @@ public class LoginController {
             } else if ("admin".equals(role)) {
                 return "redirect:/login/admin";
             } else {
-                model.addAttribute("message","账号有问题，请联系管理员");
+                model.addAttribute("message", "账号有问题，请联系管理员");
                 return "/";
             }
         } else {
@@ -67,10 +67,10 @@ public class LoginController {
 
     //管理页面
     @GetMapping("/login/admin")
-    public String admin(Model model, @PageableDefault(size = 5) Pageable pageable,HttpSession httpSession) {
+    public String admin(Model model, @PageableDefault(size = 5) Pageable pageable, HttpSession httpSession) {
         model.addAttribute("UserPage", userService.findAllUser(pageable));
-        User user=(User)httpSession.getAttribute("user");
-        model.addAttribute("user" ,user.getUsername());
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user", user.getUsername());
         return "/teacher/admin";
     }
 
@@ -80,14 +80,14 @@ public class LoginController {
         User user = userService.findUser(id);
         user.setPassword(MD5Utils.code("111111"));
         userService.add(user);
-        redirectAttributes.addFlashAttribute("message", ""+user.getUsername()+"：密码重置成功");
+        redirectAttributes.addFlashAttribute("message", "" + user.getUsername() + "：密码重置成功");
         return "redirect:/login/admin";
     }
 
     @GetMapping("/login/admin/delete/{id}")
     public String delete(RedirectAttributes redirectAttributes, @PathVariable Long id) {
         User user = userService.findUser(id);
-        redirectAttributes.addFlashAttribute("message", ""+user.getUsername()+"：删除成功");
+        redirectAttributes.addFlashAttribute("message", "" + user.getUsername() + "：删除成功");
         userService.deleteUser(user);
         return "redirect:/login/admin";
     }
@@ -131,5 +131,24 @@ public class LoginController {
         return "/login";
     }
 
+    @GetMapping("/login/person") //请求
+    public String person(HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user", userService.findUser(user));
+        return "person";
+    }
+
+    @PostMapping("/login/person") //请求
+    public String personPost(HttpSession httpSession, Model model,
+                             @RequestParam(value = "password") String password,
+                             @RequestParam(value = "phone") String phone) {
+        User user = (User) httpSession.getAttribute("user");
+        User user1 = userService.findUser(user);
+        user1.setPassword(password);
+        user1.setPhone(phone);
+        model.addAttribute("user",userService.add(user1));
+        model.addAttribute("message","修改成功");
+        return "person";
+    }
 
 }

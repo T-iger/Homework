@@ -16,4 +16,5 @@ public interface UserService {
     User findUser(Long id);
     Page<User> findAllUser(Pageable pageable);
     Boolean deleteUser(User user);
+    User findUser(User user);
 }

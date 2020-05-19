@@ -4,18 +4,17 @@ import com.lihu.homework.dao.HomeworkRepository;
 import com.lihu.homework.dao.HomeworkStatusRepository;
 import com.lihu.homework.dao.PublicHomeworkRepository;
 import com.lihu.homework.po.*;
+import com.lihu.homework.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author Li
@@ -95,17 +94,25 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
     @Transactional
     @Override
     public Page<PublishHomework> showFinishListPublic(Pageable pageable, Long userId) {
-        return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
+        User user = new User();
+        user.setId(userId);
+        List<PublishHomework> publishHomeworkList = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
+        List<HomeworkStatus> byUserStatusAndStatus = homeworkStatusRepository.findByUserStatusAndStatus(user, true);
+        for (HomeworkStatus homeworkStatus : byUserStatusAndStatus) {
+            Optional<PublishHomework> byId = publicHomeworkRepository.findById(homeworkStatus.getPublishHomework().getId());
+            publishHomeworkList.add(byId.get());
+            ids.add(homeworkStatus.getPublishHomework().getId());
+        }
+        Page<PublishHomework> pageFromList = PageUtil.createPageFromList(publicHomeworkRepository.findAllById(ids), pageable);
+        return pageFromList;
+   /*     return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
             @Override
             public Predicate toPredicate(Root<PublishHomework> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
                 Predicate fp = cb.conjunction();
                 //查询这个用户的publishHomework
                 Predicate p1 = cb.equal(root.get("users"), userId);
-/*
-                cb.equal(root.get("userStatus").get(""),)
-*/
-
                 Join join = root.join("users");
                 Join join1=root.join("statusList");
                 predicates.add(cb.lessThanOrEqualTo(root.<Date>get("starttime"), new Date()));
@@ -115,26 +122,25 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
             }
-        }, pageable);
+        }, pageable);*/
     }
 
     /*查询未完成的作业*/
     @Transactional
     @Override
     public Page<PublishHomework> showUndoListPublic(Pageable pageable, Long userId) {
-        return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
-            @Override
-            public Predicate toPredicate(Root<PublishHomework> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
-                List<Predicate> predicates = new ArrayList<>();
-                Join join = root.join("users");
-                Join join1 = root.join("statusList");
-                predicates.add(cb.lessThanOrEqualTo(root.<Date>get("starttime"), new Date()));
-                predicates.add(cb.equal(join.get("id"), userId));
-                predicates.add(cb.equal(join1.get("status"), false));
-                cq.where(predicates.toArray(new Predicate[predicates.size()]));
-                return null;
-            }
-        }, pageable);
+        User user = new User();
+        user.setId(userId);
+        List<PublishHomework> publishHomeworkList = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
+        List<HomeworkStatus> byUserStatusAndStatus = homeworkStatusRepository.findByUserStatusAndStatus(user, false);
+        for (HomeworkStatus homeworkStatus : byUserStatusAndStatus) {
+            Optional<PublishHomework> byId = publicHomeworkRepository.findById(homeworkStatus.getPublishHomework().getId());
+            publishHomeworkList.add(byId.get());
+            ids.add(homeworkStatus.getPublishHomework().getId());
+        }
+        Page<PublishHomework> pageFromList = PageUtil.createPageFromList(publicHomeworkRepository.findAllById(ids), pageable);
+        return pageFromList;
     }
 
     /*未完成界面，查询未完成  xxx 课程的作业*/

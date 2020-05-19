@@ -38,10 +38,4 @@ public class HomeworkServiceImpl implements HomeworkService {
     public List<Homework> findPublish(PublishHomework publishHomework) {
         return homeworkRepository.findByPublishHomework(publishHomework);
     }
-    /*    @Transactional
-    @Override
-    public Page<Homework> listHomework(Pageable pageable) {
-        return homeworkRepository.findAll(pageable);
-    }*/
-
 }

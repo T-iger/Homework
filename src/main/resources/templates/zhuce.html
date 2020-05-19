@@ -145,14 +145,14 @@
             password: {
                 identifier: 'password',
                 rules: [{
-                    type: 'empty',
-                    prompt: '请输入密码'
+                    type: 'regExp[/^[a-z0-9_-]{6,11}$/]',
+                    prompt: '密码长度为6-11'
                 }]
             }, phone: {
                 identifier: 'phone',
                 rules: [{
-                    type: 'empty',
-                    prompt: '请输入电话'
+                    type: 'regExp[/^[0-9_-]{11}$/]',
+                    prompt: '电话格式不对'
                 }]
             },
             userclass: {
@@ -167,6 +167,5 @@
         }
     });
 </script>
-
 </body>
 </html>

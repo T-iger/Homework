@@ -33,6 +33,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         HashSet<String> hasPostSet = new HashSet<>();
         note.append("[{" + "name:'" + subject + "',des:'当前欠缺知识点:" +subject + "',symbolSize:50,category:0" + "}");
         link.append("[");
+        hashSet.add(subject);
         if (!hasPostKOwlList.isEmpty()) {
             for (Knowledge knowledge : hasPostKOwlList) {
                 //查询不能为空
@@ -78,7 +79,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
                 if (!knowledge.getObject().isEmpty() && hasPreKSet.add(knowledge.getObject())) {
                     //判断subject和Object是否相同，和是否为最后一个
                     if (!knowledge.getSubject().equals(knowledge.getObject()) && hashSet.add(knowledge.getObject())) {
-                        note.append(",{" + "name:'" + knowledge.getObject() + "',des:'" + knowledge.getObject() + "',symbolSize:50,category:2" + "}");
+                        note.append(",{" + "name:'" + knowledge.getObject() + "',des:'" + knowledge.getObject() + "',symbolSize:50,category:1" + "}");
                         link.append(",{" + "source:'" + knowledge.getSubject() + "',target:'" + knowledge.getObject() + "',name:'前序知识点'" + ",lineStyle: {normal: { curveness: 0.1 }}}");
                     } else if (!knowledge.getSubject().equals(knowledge.getObject())) {
                         link.append(",{" + "source:'" + knowledge.getSubject() + "',target:'" + knowledge.getObject() + "',name:'前序知识点'" + ",lineStyle: {normal: { curveness: 0.1 }}}");
@@ -98,7 +99,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
                             //判断subject和Object是否相同，和是否为最后一个
                             if (!knowledge.getSubject().equals(knowledge.getObject()) && hashSet.add(knowledge.getObject())) {
                                 count.add(knowledge.getObject());
-                                note.append(",{" + "name:'" + knowledge.getObject() + "',des:'" + knowledge.getObject() + "',symbolSize:50,category:2" + "}");
+                                note.append(",{" + "name:'" + knowledge.getObject() + "',des:'" + knowledge.getObject() + "',symbolSize:50,category:1" + "}");
                                 link.append(",{" + "source:'" + knowledge.getSubject() + "',target:'" + knowledge.getObject() + "',name:'前序知识点'" + ",lineStyle: {normal: { curveness: 0.1 }}}");
                             } else if (!knowledge.getSubject().equals(knowledge.getObject())) {
                                 link.append(",{" + "source:'" + knowledge.getSubject() + "',target:'" + knowledge.getObject() + "',name:'前序知识点'" + ",lineStyle: {normal: { curveness: 0.1 }}}");
@@ -119,6 +120,9 @@ public class KnowledgeServiceImpl implements KnowledgeService {
             StringBuilder link2 = new StringBuilder();
             link2.append("["+link.toString().substring(2,link.length())+"]");
             link=link2;
+        }
+        if (link.toString().length()==1){
+            link.append("]");
         }
 
         String a = note.substring(0, note.length());

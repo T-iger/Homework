@@ -77,7 +77,7 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" th:href="@{/login/person}" class="item"><i class="user icon"></i>个人中心</a>
                         <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
                     </div>
                 </div>
@@ -127,7 +127,7 @@
                         <th>正确答案</th>
                         <th>分值</th>
                         <th>涉及的知识点</th>
-                        <th>操作</th>
+
                     </tr>
                     </thead>
                     <tbody id="danxuan"></tbody>
@@ -148,7 +148,7 @@
                         <th>答案</th>
                         <th>分值</th>
                         <th>涉及的知识点</th>
-                        <th>操作</th>
+
                     </tr>
                     </thead>
                     <tbody id="tiankong"></tbody>
@@ -167,7 +167,7 @@
                         <th>解答题内容</th>
                         <th>分值</th>
                         <th>涉及的知识点</th>
-                        <th>操作</th>
+                        <!--<th>操作</th>-->
                     </tr>
                     </thead>
                     <tbody id="jieda"></tbody>
@@ -265,7 +265,7 @@
                 <tr class="radio_style">
                     <td colspan="2">
                         <div class="ui selection dropdown">
-                            <input type="hidden" class="answerRadio" name="radio">
+                            <input type="hidden" class="answerRadio" name="radio" >
                             <i class="dropdown icon"></i>
                             <div class="default text radiotext"></div>
                             <div class="menu" id="studentradio">
@@ -295,10 +295,9 @@
                     <input class="score1" name="score" type="number" placeholder="分值">
                     <div class="ui  label">主要知识点:</div>
                     <div class="ui search dropdown fluid  selection ">
-                        <input type="hidden" name="knowledge.id">
+                        <input type="hidden" name="knowledge.id" class="knowledge">
                         <i class="dropdown icon"></i>
                         <div class="default text text1">选择知识点</div>
-
                         <div class="menu">
                             <div th:each="knowledge : ${knowledges}" th:data-value="${knowledge.id}" th:text="${knowledge.subject}" class="item" data-value="af">Afghanistan</div>
                         </div>
@@ -496,7 +495,7 @@
     });
     //点击增加单选题
     $("#Radio1").click(function () {
-        if ($(".content1").val() === "" || $(".radioA1").val() === "" || $(".radioB1").val() === "" || $(".radioC1").val() === "" || $(".radioD1").val() === "" || $(".score1").val() === "") {
+        if ($(".content1").val() === "" || $(".radioA1").val() === "" || $(".radioB1").val() === "" || $(".radioC1").val() === "" || $(".radioD1").val() === "" || $(".score1").val() === ""||$(".knowledge").val() === ""||$(".answerRadio").val() === "") {
             alert("输入值不能为空");
             return false;
         }
@@ -510,7 +509,7 @@
         var zhishi=$(".text1").text();
         var tr = $("<tr></tr>");
         count++;
-        tr.html("<td>" + count + "</td><td>" + td1 + "</td><td>" + td2 + "</td><td>" + td3 + "</td><td>" + td4 + "</td><td>" + td5 + "</td><td>" + td6 + "</td><td>" + td7 + "</td><td>" + zhishi + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+        tr.html("<td>" + count + "</td><td>" + td1 + "</td><td>" + td2 + "</td><td>" + td3 + "</td><td>" + td4 + "</td><td>" + td5 + "</td><td>" + td6 + "</td><td>" + td7 + "</td><td>" + zhishi + "</td>");
         $("#danxuan").append(tr);
         tr.find("a").click(function () {
             $(this).parent("td").parent("tr").remove();
@@ -522,7 +521,7 @@
 
     //点击增加填空题
     $("#TK1").click(function () {
-        if ($(".content1").val() === "" || $(".tk1").val() === "" || $(".score1").val() === "") {
+        if ($(".content1").val() === "" || $(".tk1").val() === "" || $(".score1").val() === ""||$(".knowledge").val() === "") {
             alert("输入值不能为空");
             return false;
         }
@@ -532,7 +531,7 @@
         var zhishi=$(".text1").text();
         var tr = $("<tr></tr>");
         count++;
-        tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td>" + TK2 + "</td><td>" + TKscore + "</td><td>" + zhishi + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+        tr.html("<td>" + count + "</td><td>" + TK1 + "</td><td>" + TK2 + "</td><td>" + TKscore + "</td><td>" + zhishi + "</td>");
         $("#tiankong").append(tr);
         tr.find("a").click(function () {
             $(this).parent("td").parent("tr").remove();
@@ -545,7 +544,7 @@
 
     //点击增加解答题
     $("#JD1").click(function () {
-        if ($(".content1").val() == "" || $(".score1").val() === "") {
+        if ($(".content1").val() == "" || $(".score1").val() === ""||$(".knowledge").val() === "") {
             alert("输入值不能为空");
             return false;
         }
@@ -554,7 +553,7 @@
         var zhishi=$(".text1").text();
         var tr = $("<tr></tr>");
         count++;
-        tr.html("<td>" + count + "</td><td>" + JD1 + "</td><td>" + JDsocre + "</td><td>" + zhishi + "</td><td><a href='javascript:void(0)'>删除</a></td>");
+        tr.html("<td>" + count + "</td><td>" + JD1 + "</td><td>" + JDsocre + "</td><td>" + zhishi + "</td>");
         $("#jieda").append(tr);
         tr.find("a").click(function () {
             $(this).parent("td").parent("tr").remove();

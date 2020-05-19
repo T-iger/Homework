@@ -8,10 +8,7 @@ import com.lihu.homework.po.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author Li
@@ -26,6 +23,8 @@ public class AnswerServiceImpl implements AnswerService {
     private HomeworkRepository homeworkRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private KnowledgeService knowledgeService;
 
     @Override
     public List<Answer> save(List<Answer> answerList) {
@@ -90,8 +89,8 @@ public class AnswerServiceImpl implements AnswerService {
                 answerRepository.save(answer);
             }
         }
-        System.out.println(set);
-
+        HashMap<String, String> hashMap = knowledgeService.TuiJan(set.iterator().next());
+        homeworkStatus.setTuijian(hashMap.toString());//存储这个套题的图像数据
         return homeworkStatusRepository.save(homeworkStatus);
     }
 
@@ -123,6 +122,17 @@ public class AnswerServiceImpl implements AnswerService {
         return scoreList;
     }
 
+    @Override
+    public Integer getOneScore(User user, PublishHomework publishHomework) {
+        List<Answer> answerList = answerRepository.findByUserAndPublishHomework(user, publishHomework);
+        Integer sum = 0;
+        Answer an = new Answer();
+        for (Answer answer : answerList) {
+            sum += answer.getScore();
+        }
+        return sum;
+    }
+
     //取作业状态（评语和系统评语）
     @Override
     public HomeworkStatus getHomeworkStatus(User user, PublishHomework publishHomework) {
@@ -134,9 +144,53 @@ public class AnswerServiceImpl implements AnswerService {
     public List<HomeworkStatus> findUndoHomework(User user) {
         return homeworkStatusRepository.findByUserStatusAndStatus(user, false);
     }
+
     //查询已完成作业
     @Override
     public List<HomeworkStatus> findFinishHomework(User user) {
         return homeworkStatusRepository.findByUserStatusAndStatus(user, true);
     }
+
+    /*查询图像信息*/
+    @Override
+    public HashMap<String, String> findTuXian(String userId, String publishId) {
+        User user = new User();
+        PublishHomework publishHomework = new PublishHomework();
+        user.setId(Long.valueOf(userId));
+        publishHomework.setId(Long.valueOf(publishId));
+        String tuijian = homeworkStatusRepository.findByUserStatusAndPublishHomework(user, publishHomework).getTuijian();
+        /*getStringToMap(tuijian);*/
+        /*homeworkStatusRepository.findByUserStatusAndPublishHomework(user,publishHomework);*/
+        return  getStringToMap(tuijian);
+    }
+
+    public static HashMap<String, String> getStringToMap(String str) {
+      /*  //根据逗号截取字符串数组
+        String[] str1 = str.split(",");
+        //创建Map对象
+        HashMap<String, String> map = new HashMap<>();
+        //循环加入map集合
+        for (int i = 0; i < str1.length; i++) {
+            //根据":"截取字符串数组
+            String[] str2 = str1[i].split(":");
+            //str2[0]为KEY,str2[1]为值
+            map.put(str2[0], str2[1]);
+        }*/
+        str = str.substring(1, str.length() - 1);
+        String[] strs = str.split("], ");
+        HashMap<String, String> map = new HashMap<String, String>();
+        for (String string : strs) {
+            String key = string.split("=")[0];
+            String value=null;
+            if(string.endsWith("]")){
+               value = string.split("=")[1];
+            }else{
+                value = string.split("=")[1]+"]";
+            }
+
+            map.put(key, value);
+        }
+        return map;
+    }
+
 }

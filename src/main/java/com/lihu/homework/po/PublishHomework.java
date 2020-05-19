@@ -18,11 +18,9 @@ public class PublishHomework {
     private Long id;
 
     private String publicname;  //发布名称
-   /* @Temporal(TemporalType.TIMESTAMP)*/
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatetime;  //一套作业更新时间
-  /*  @Temporal(TemporalType.TIMESTAMP)*/
     private Date starttime;  //发布时间
-    /*@Temporal(TemporalType.TIMESTAMP)*/
     private Date endtime;  //截止时间
     private String note;  //记录名称
     private boolean ispublish;  //是否发布
@@ -32,13 +30,10 @@ public class PublishHomework {
     private Course course;
     @ManyToMany
     private List<User> users=new ArrayList<>();
-
     @OneToMany(mappedBy = "publishHomework")
     private List<Homework> homeworks =new ArrayList<>();
-
-    @OneToOne(mappedBy = "publishHomework")
+    @OneToMany(mappedBy = "publishHomework")
     private List<HomeworkStatus> statusList=new ArrayList<>();
-
     @OneToMany(mappedBy = "publishHomework")
     private List<Answer> answerList=new ArrayList<>();
 

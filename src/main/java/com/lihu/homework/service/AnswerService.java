@@ -5,6 +5,7 @@ import com.lihu.homework.po.HomeworkStatus;
 import com.lihu.homework.po.PublishHomework;
 import com.lihu.homework.po.User;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -25,4 +26,8 @@ public interface AnswerService {
     List<HomeworkStatus> findUndoHomework(User user);
 
     List<HomeworkStatus> findFinishHomework(User user);
+
+    Integer getOneScore(User user,PublishHomework publishHomework);
+
+    HashMap<String, String> findTuXian(String userId, String publishId );
 }

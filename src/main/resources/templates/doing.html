@@ -17,13 +17,6 @@
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
-            <div class="right item m-item m-mobile-hide">
-                <!--  inverted transparent 让搜索框变黑色-->
-                <div class="ui icon inverted transparent input">
-                    <input type="text" placeholder="Search...">
-                    <i class="search link icon"></i>
-                </div>
-            </div>
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
@@ -31,7 +24,7 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="#" class="item"><i class="user icon"></i>个人中心</a>
+                        <a href="#" th:href="@{/login/person}" class="item"><i class="user icon"></i>个人中心</a>
                         <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
                     </div>
                 </div>

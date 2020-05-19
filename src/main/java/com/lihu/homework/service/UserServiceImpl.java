@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return true;
     }
+
+    @Override
+    public User findUser(User user) {
+        return userRepository.findById(user.getId()).get();
+    }
 }

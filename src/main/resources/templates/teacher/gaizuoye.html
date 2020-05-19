@@ -27,7 +27,7 @@
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <!-- <a href="#" class="item"><i class="user icon"></i>个人中心</a>-->
+                         <a href="#" th:href="@{/login/person}" class="item"><i class="user icon"></i>个人中心</a>
                         <a href="#" class="item" th:href="@{/logout}"><i class="sign-out icon"></i>注销</a>
                     </div>
                 </div>
@@ -109,7 +109,8 @@
                                     <table class="ui compact teal table" th:fragment="homeworkList">
                                         <input name="publishId" style="display:none;"
                                                th:each="testPager,iterStat: ${testPagers}" th:if="${iterStat.first}"
-                                               th:value="${testPager.publishHomework.id}"></td>
+                                               th:value="${testPager.publishHomework.id}">
+                                        <input name="userid" style="display:none;"th:value="${userid}" >
                                         <!--                                        <thead th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">-->
                                         <thead th:if="${hasRadio}">
                                         <tr>
