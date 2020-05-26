@@ -13,7 +13,7 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">作业管理系统</h2>
-            <a href="#" th:href="@{/login/student/}" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/student/}" class=" m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
             <a href="#" th:href="@{/login/student/undo}" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
             <a href="#" th:href="@{/login/student/finish}" class="m-item item m-mobile-hide"><i class="clone icon"></i>已完成</a>
 <!--            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>-->
@@ -91,9 +91,9 @@
                     <th>得分</th>
                 </tr>
                 </thead>
-                <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
+                <tbody th:each="testPager,itor: ${testPagers}" th:unless="${testPager.questiontype!='Radio'}">
                 <tr >
-                    <td>1</td>
+                    <td th:text="${itor.count}">1</td>
                     <td th:text="${testPager.content}" style="color:brown;">内容</td>
                     <td th:text="${testPager.radioA}" style="color:brown;">A</td>
                     <td th:text="${testPager.radioB}" style="color:brown;">B</td>
@@ -128,9 +128,9 @@
                     <th>得分</th>
                 </tr>
                 </thead>
-                <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
+                <tbody th:each="testPager,itor: ${testPagers}" th:unless="${testPager.questiontype!='TK'}">
                 <tr>
-                    <td colspan="1">1</td>
+                    <td colspan="1" th:text="${itor.count}">1</td>
                     <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
                     <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
                     <td colspan="1" th:text="${testPager.tk}" style="color:brown;">正确答案</td>
@@ -161,9 +161,9 @@
                     <th>得分</th>
                 </tr>
                 </thead>
-                <tbody th:each="testPager: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
+                <tbody th:each="testPager,itor: ${testPagers}" th:unless="${testPager.questiontype!='JD'}">
                 <tr >
-                    <td colspan="1">1</td>
+                    <td colspan="1" th:text="${itor.count}">1</td>
                     <td colspan="5" th:text="${testPager.content}" style="color:brown;">内容</td>
                     <td colspan="1" th:text="${testPager.score}" style="color:brown;">分值</td>
                     <td colspan="2" th:each="answer :${answers}"

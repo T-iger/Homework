@@ -42,7 +42,7 @@ public class TeacherController {
     public String teacherIndex(Model model, HttpSession httpSession) {
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user", user.getUsername());
-        return "/teacher/teacherindex";
+        return "teacher/teacherindex";
     }
 
     //作业展示首页
@@ -54,7 +54,7 @@ public class TeacherController {
         model.addAttribute("user", user.getUsername());
         publishHomework.setUsername(user.getUsername());
         model.addAttribute("page", publicHomeworkService.listPublic(pageable, publishHomework, null));
-        return "/teacher/homework";
+        return "teacher/homework";
     }
 
     //查询作业
@@ -85,7 +85,7 @@ public class TeacherController {
             }
         }*/
         model.addAttribute("mm", "操作成功");
-        return "/teacher/homework::publishList";
+        return "teacher/homework::publishList";
     }
 
     //删除某个发布或者未发布的作业
@@ -106,7 +106,7 @@ public class TeacherController {
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user", user.getUsername());
         model.addAttribute("knowledges", knowledgeService.listKnowledge());
-        return "/teacher/homeworkinput";
+        return "teacher/homeworkinput";
     }
 
     //作业发布界面
@@ -120,7 +120,7 @@ public class TeacherController {
             System.out.println(s);
         }
         model.addAttribute("userclass", userclass);
-        return "/teacher/homeworkpublic";
+        return "teacher/homeworkpublic";
     }
 
     //发布按钮
@@ -137,7 +137,7 @@ public class TeacherController {
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user", user.getUsername());
         model.addAttribute("page", publicHomeworkService.listPublicGai(pageable, user.getUsername()));
-        return "/teacher/gaizuoyeindex";
+        return "teacher/gaizuoyeindex";
     }
 
     //查询某个人的试卷
@@ -148,7 +148,7 @@ public class TeacherController {
         model.addAttribute("users", publicHomeworkService.findPiGai(id));
         model.addAttribute("publishid", id);
         model.addAttribute("scoreList", answerService.getScore(id, publicHomeworkService.findPiGai(id)));
-        return "/teacher/gaizuoye";
+        return "teacher/gaizuoye";
     }
 
     //查询被批改的试卷，
@@ -174,7 +174,7 @@ public class TeacherController {
         model.addAttribute("answers", answerService.findAnswer(user, publishHomework));
         model.addAttribute("Comment", answerService.getHomeworkStatus(user, publishHomework));
         model.addAttribute("userid",user.getId());
-        return "/teacher/gaizuoye :: homeworkList";
+        return "teacher/gaizuoye :: homeworkList";
     }
 
     //作业批改的提交
@@ -230,7 +230,7 @@ public class TeacherController {
             }
         }
         model.addAttribute("userList", users);
-        return "/teacher/banji";
+        return "teacher/banji";
     }
 
     //通过学生审核进入班级
@@ -251,4 +251,25 @@ public class TeacherController {
         userService.add(user);
         return "redirect:/login/teacher/banji";
     }
+    @GetMapping("/person") //请求
+    public String person(HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("user");
+        model.addAttribute("user", userService.findUser(user));
+        return "teacher/person";
+    }
+
+    @PostMapping("/person") //请求
+    public String personPost(HttpSession httpSession, Model model,
+                             @RequestParam(value = "password") String password,
+                             @RequestParam(value = "phone") String phone) {
+        User user = (User) httpSession.getAttribute("user");
+        User user1 = userService.findUser(user);
+        user1.setPassword(password);
+        user1.setPhone(phone);
+        model.addAttribute("user",userService.add(user1));
+        model.addAttribute("message","修改成功");
+        return "teacher/person";
+    }
 }
+
+

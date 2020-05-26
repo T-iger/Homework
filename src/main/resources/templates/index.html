@@ -14,9 +14,9 @@
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">作业管理系统</h2>
             <a href="#" th:href="@{/login/student/}" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
-            <a href="#" th:href="@{/login/student/undo}"  class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
-            <a href="#" th:href="@{/login/student/finish}"  class="m-item item m-mobile-hide"><i class="idea icon"></i>已完成</a>
-            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
+            <a href="#" th:href="@{/login/student/undo}" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
+            <a href="#" th:href="@{/login/student/finish}" class="m-item item m-mobile-hide"><i class="idea icon"></i>已完成</a>
+            <!--            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>-->
             <!--<div class="right item m-item m-mobile-hide">
                 &lt;!&ndash;  inverted transparent 让搜索框变黑色&ndash;&gt;
                 <div class="ui icon inverted transparent input">
@@ -27,7 +27,7 @@
             <div class="right menu m-item m-mobile-hide">
                 <div class="ui dropdown item">
                     <div class="text">
-                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400"  ><span th:text="${user}">Username01</span>
+                        <img class="ui avatar image" src="https://picsum.photos/id/112/400/400"><span th:text="${user}">Username01</span>
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
@@ -63,18 +63,27 @@
                 <!--content--->
                 <div class="ui attached segment">
                     <!--<div class="ui padded  segment vertical  m-padded-tb-big">-->
-                    <div class="ui padded  segment vertical  m-padded-tb-big" th:each="publish : ${page.content}" th:if="${#dates.format(new java.util.Date().getTime())} > '${#dates.format(publish.starttime)}'">
+                    <div class="ui padded  segment vertical  m-padded-tb-big" th:each="publish : ${page.content}"
+                         th:if="${#dates.format(new java.util.Date().getTime())} > '${#dates.format(publish.starttime)}'">
                         <div class="ui middle aligned mobile reversed stackable grid">
                             <div class="eleven wide column">
                                 <h3 class="ui header">
-                                    <a href="#" th:unless="${publish.statusList[0].status}" th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="m-black" th:text="${publish.note}">2020.4.1
+                                    <a href="#" th:unless="${publish.statusList[1].status}"
+                                       th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="m-black"
+                                       th:text="${publish.note}">2020.4.1
                                         数学作业 </a>
-                                    <a href="#" th:if="${publish.statusList[0].status}" th:href="@{/login/student/show/{id}(id=${publish.id})}" class="m-black" th:text="${publish.note}">2020.4.1
+                                    <a href="#" th:if="${publish.statusList[1].status}"
+                                       th:href="@{/login/student/show/{id}(id=${publish.id})}" class="m-black"
+                                       th:text="${publish.note}">2020.4.1
                                         数学作业 </a>
-                                    <label th:text="${publish.statusList[0].status}?'(已完成)':'(未完成)'"></label>
+                                    <label th:text="${publish.statusList[1].status}?'(已完成)':'(未完成)'"></label>
                                 </h3>
-                                <p class="m-text" th:text="'开始时间:'+${#dates.format(publish.starttime,'yyyy-MM-dd HH:mm')}">开始时间：2020.4.2 12：00</p>
-                                <p class="m-text" th:text="'截止时间:'+${#dates.format(publish.endtime,'yyyy-MM-dd HH:mm')}">完成截止时间：2020.4.2 12：00</p>
+                                <p class="m-text"
+                                   th:text="'开始时间:'+${#dates.format(publish.starttime,'yyyy-MM-dd HH:mm')}">
+                                    开始时间：2020.4.2 12：00</p>
+                                <p class="m-text"
+                                   th:text="'截止时间:'+${#dates.format(publish.endtime,'yyyy-MM-dd HH:mm')}">
+                                    完成截止时间：2020.4.2 12：00</p>
                                 <br>
                                 <div class="ui grid">
                                     <div class="eleven wide column">
@@ -97,13 +106,17 @@
                                                 <i class="eye icon"></i>200
                                             </div>-->
                                             <div class="item">
-                                                <span  th:text="${publish.course.coursename}"></span>
+                                                <span th:text="${publish.course.coursename}"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" th:unless="${publish.statusList[0].status}" target="" th:href="@{/login/student/doing/{id}(id=${publish.id})}" class="ui teal basic label m-padded-td-tiny">任务详情</a>
-                                        <a href="#" th:if="${publish.statusList[0].status}" th:href="@{/login/student/show/{id}(id=${publish.id})}" target=""  class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                        <a href="#" th:unless="${publish.statusList[1].status}" target=""
+                                           th:href="@{/login/student/doing/{id}(id=${publish.id})}"
+                                           class="ui teal basic label m-padded-td-tiny">任务详情</a>
+                                        <a href="#"  th:if="${publish.statusList[1].status}"
+                                           th:href="@{/login/student/show/{id}(id=${publish.id})}" target=""
+                                           class="ui teal basic label m-padded-td-tiny">任务详情</a>
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +259,7 @@
                     <div class="ui grid two column" th:if="${page.totalPages}>1">
                         <div class="column">
                             <a th:href="@{/login/student/(page=${page.number}-1)}"
-                               th:unless="${page.first}" href="#" class="ui button teal basic mini" >上一页</a>
+                               th:unless="${page.first}" href="#" class="ui button teal basic mini">上一页</a>
                         </div>
                         <div class="column right aligned">
                             <a th:href="@{/login/student/(page=${page.number}+1)}"
@@ -261,34 +274,34 @@
             <div class="five wide column">
 
                 <!-分类--->
-              <!--  <div class="ui segments">
-                    <div class="ui secondary segment">
-                        <div class="ui two column grid">
-                            <div class="column">
-                                <i class="idea icon"></i>分类
-                            </div>
-                            <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui teal segment">
-                        <div class="ui menu fluid vertical">
-                            <a href="#" class="item">
-                                数学
-                                <div class="ui teal  label">12</div>
-                            </a>
-                            <a href="#" class="item">
-                                语文
-                                <div class="ui teal  label">11</div>
-                            </a>
-                            <a href="#" class="item">
-                                英语
-                                <div class="ui teal  label">10</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>-->
+                <!--  <div class="ui segments">
+                      <div class="ui secondary segment">
+                          <div class="ui two column grid">
+                              <div class="column">
+                                  <i class="idea icon"></i>分类
+                              </div>
+                              <div class="right aligned column">
+                                  <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="ui teal segment">
+                          <div class="ui menu fluid vertical">
+                              <a href="#" class="item">
+                                  数学
+                                  <div class="ui teal  label">12</div>
+                              </a>
+                              <a href="#" class="item">
+                                  语文
+                                  <div class="ui teal  label">11</div>
+                              </a>
+                              <a href="#" class="item">
+                                  英语
+                                  <div class="ui teal  label">10</div>
+                              </a>
+                          </div>
+                      </div>
+                  </div>-->
                 <!-待完成项--->
                 <div class="ui segments">
                     <div class="ui secondary segment">
@@ -297,15 +310,17 @@
                                 <i class="idea icon"></i>待完成
                             </div>
                             <div class="right aligned column">
-                                <a href="#" th:href="@{/login/student/undo}" target="_blank">more <i class="angle double right icon"></i></a>
+                                <a href="#" th:href="@{/login/student/undo}" target="_blank">more <i
+                                        class="angle double right icon"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="ui teal segment">
                         <div class="ui menu fluid vertical">
-                            <a href="#" class="item" th:each="un:${undo}" th:href="@{/login/student/doing/{id}(id=${un.publishHomework.id})}">
+                            <a href="#" class="item" th:each="un:${undo}"
+                               th:href="@{/login/student/doing/{id}(id=${un.publishHomework.id})}">
                                 <span th:text="${un.publishHomework.course.coursename}+':'+${un.publishHomework.note}+'(未做)'">数学(未做)</span>
-                               <!-- <div class="ui teal  label">12</div>-->
+                                <!-- <div class="ui teal  label">12</div>-->
                             </a>
                             <!--/*-->
                             <a href="#" class="item">
@@ -321,53 +336,57 @@
                     </div>
                 </div>
                 <!-常错题-->
-                <div class="ui segments">
-                    <div class="ui secondary segment">
-                        <div class="ui two column grid">
-                            <div class="column">
-                                <i class="idea icon"></i>常错标签
-                            </div>
-                            <div class="right aligned column">
-                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui teal segment">
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                            知识点
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                            知识点
-                            <div class="detail">23</div>
-                        </a>
-                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
-                            知识点
-                            <div class="detail">23</div>
-                        </a>
-                    </div>
-                </div>
+                <!--
+                                <div class="ui segments">
+                                    <div class="ui secondary segment">
+                                        <div class="ui two column grid">
+                                            <div class="column">
+                                                <i class="idea icon"></i>常错标签
+                                            </div>
+                                            <div class="right aligned column">
+                                                <a href="#" target="_blank">more <i class="angle double right icon"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui teal segment">
+                                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                            知识点
+                                            <div class="detail">23</div>
+                                        </a>
+                                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                            知识点
+                                            <div class="detail">23</div>
+                                        </a>
+                                        <a href="#" target="_blank" class="ui teal basic left pointing label m-margin-tb-tiny">
+                                            知识点
+                                            <div class="detail">23</div>
+                                        </a>
+                                    </div>
+                                </div>
+                -->
                 <!-推荐-->
-                <div class="ui segments">
-                    <div class="ui secondary segment ">
-                        <i class="bookmark icon"></i>推荐
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="m-black m-text-thin">1、1231231</a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="m-black m-text-thin">2、</a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
-                    </div>
-                    <div class="ui segment">
-                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
-                    </div>
-                </div>
+                <!--
+                                <div class="ui segments">
+                                    <div class="ui secondary segment ">
+                                        <i class="bookmark icon"></i>推荐
+                                    </div>
+                                    <div class="ui segment">
+                                        <a href="#" target="_blank" class="m-black m-text-thin">1、1231231</a>
+                                    </div>
+                                    <div class="ui segment">
+                                        <a href="#" target="_blank" class="m-black m-text-thin">2、</a>
+                                    </div>
+                                    <div class="ui segment">
+                                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
+                                    </div>
+                                    <div class="ui segment">
+                                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
+                                    </div>
+                                    <div class="ui segment">
+                                        <a href="#" target="_blank" class="m-black m-text-thin">3、</a>
+                                    </div>
+                                </div>
+                -->
             </div>
         </div>
     </div>

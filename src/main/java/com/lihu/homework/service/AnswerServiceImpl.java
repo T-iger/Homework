@@ -89,6 +89,13 @@ public class AnswerServiceImpl implements AnswerService {
                 answerRepository.save(answer);
             }
         }
+        if(set.isEmpty()){
+            HashMap<String, String> hashMap=new HashMap<>();
+            hashMap.put("NOTE","[]");
+            hashMap.put("LINK","[]");
+            homeworkStatus.setTuijian(hashMap.toString());
+            return homeworkStatusRepository.save(homeworkStatus);
+        }
         HashMap<String, String> hashMap = knowledgeService.TuiJan(set.iterator().next());
         homeworkStatus.setTuijian(hashMap.toString());//存储这个套题的图像数据
         return homeworkStatusRepository.save(homeworkStatus);
@@ -105,7 +112,7 @@ public class AnswerServiceImpl implements AnswerService {
             Answer an = new Answer();
             for (Answer answer : answerList) {
                 sum += answer.getScore();
-            }
+               }
             //推荐不会的知识点
             if (sum != 0) {
                 for (Answer answer : answerList) {
@@ -113,6 +120,9 @@ public class AnswerServiceImpl implements AnswerService {
                         answer.getHomework().getKnowledge().getObject();
                     }
                 }
+            }
+            if(answerList.isEmpty()){
+                sum=-1;//没做
             }
 
             an.setScore(sum);
@@ -130,6 +140,7 @@ public class AnswerServiceImpl implements AnswerService {
         for (Answer answer : answerList) {
             sum += answer.getScore();
         }
+
         return sum;
     }
 

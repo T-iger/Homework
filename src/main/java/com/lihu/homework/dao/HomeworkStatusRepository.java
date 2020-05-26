@@ -14,4 +14,5 @@ import java.util.List;
 public interface HomeworkStatusRepository extends JpaRepository<HomeworkStatus,Long> {
     HomeworkStatus findByUserStatusAndPublishHomework(User user,PublishHomework publishHomework);
     List<HomeworkStatus> findByUserStatusAndStatus(User user,Boolean b);
+    List<HomeworkStatus> findByUserStatus(User user);
 }

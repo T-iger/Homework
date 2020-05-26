@@ -41,7 +41,7 @@ public class HomeworkPublishController {
         for (Homework homework1 : homework) {
             System.out.println(homework1.getQuestiontype());
         }*/
-        return "/teacher/homeworkpublic :: homeworkList";
+        return "teacher/homeworkpublic :: homeworkList";
     }
 
     @PostMapping("/publish")

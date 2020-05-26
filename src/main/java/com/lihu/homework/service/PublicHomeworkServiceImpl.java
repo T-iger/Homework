@@ -147,9 +147,19 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
     @Transactional
     @Override
     public Page<PublishHomework> undoListPublic(Pageable pageable, User user, String course) {
-        List<User> userList = new ArrayList<>();
-        userList.add(user);
-        return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
+        List<PublishHomework> publishHomeworkList = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
+        List<HomeworkStatus> byUserStatusAndStatus = homeworkStatusRepository.findByUserStatusAndStatus(user, false);
+        for (HomeworkStatus homeworkStatus : byUserStatusAndStatus) {
+            if (homeworkStatus.getPublishHomework().getCourse().getCoursename().equals(course)){
+                Optional<PublishHomework> byId = publicHomeworkRepository.findById(homeworkStatus.getPublishHomework().getId());
+                publishHomeworkList.add(byId.get());
+                ids.add(homeworkStatus.getPublishHomework().getId());
+            }
+        }
+        Page<PublishHomework> pageFromList = PageUtil.createPageFromList(publicHomeworkRepository.findAllById(ids), pageable);
+        return pageFromList;
+        /*return publicHomeworkRepository.findAll(new Specification<PublishHomework>() {
             @Override
             public Predicate toPredicate(Root<PublishHomework> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
@@ -161,7 +171,7 @@ public class PublicHomeworkServiceImpl implements PublicHomeworkService {
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
             }
-        }, pageable);
+        }, pageable);*/
     }
 
     /*未完成界面，查询已完成  xxx 课程的作业*/

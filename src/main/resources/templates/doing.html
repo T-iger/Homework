@@ -13,7 +13,7 @@
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">作业管理系统</h2>
-            <a href="#" th:href="@{/login/student/}" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" th:href="@{/login/student/}" class=" m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>待完成</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
             <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>掌握不牢的知识点</a>
@@ -84,9 +84,9 @@
                                     <th>你的答案</th>
                                 </tr>
                                 </thead>
-                                <tbody th:each="testPager: ${testPagers}">
+                                <tbody th:each="testPager,itor: ${testPagers}">
                                 <tr th:unless="${testPager.questiontype!='Radio'}">
-                                    <td>1</td>
+                                    <td th:text="${itor.count}">1</td>
                                     <td th:text="${testPager.content}">内容</td>
                                     <td th:text="${testPager.radioA}">A</td>
                                     <td th:text="${testPager.radioB}">B</td>
@@ -132,9 +132,9 @@
                                     <th>填空题答案</th>
                                 </tr>
                                 </thead>
-                                <tbody th:each="testPager: ${testPagers}">
+                                <tbody th:each="testPager,itor: ${testPagers}">
                                 <tr th:unless="${testPager.questiontype!='TK'}">
-                                    <td colspan="1">1</td>
+                                    <td colspan="1" th:text="${itor.count}">1</td>
                                     <td colspan="5" th:text="${testPager.content}">内容</td>
                                     <td colspan="2">
                                         <div class="ui input ">
@@ -159,9 +159,9 @@
                                     <th>你的答案</th>
                                 </tr>
                                 </thead>
-                                <tbody th:each="testPager: ${testPagers}">
+                                <tbody th:each="testPager,itor: ${testPagers}">
                                 <tr th:unless="${testPager.questiontype!='JD'}">
-                                    <td colspan="1">1</td>
+                                    <td colspan="1" th:text="${itor.count}">1</td>
                                     <td colspan="5" th:text="${testPager.content}">内容</td>
                                     <td colspan="2">
                                         <div class="ui input ">
@@ -188,7 +188,7 @@
                                     </div>-->
                 <div class="ui attached ">
                     <div class="ui segment center aligned basic">
-                        <div class="ui orange basic  circular item button" onclick="myCheck()">保存</div>
+<!--                        <div class="ui orange basic  circular item button" onclick="myCheck()">保存</div>-->
                         <div id="BT_submit" class="ui button item orange basic  circular">提交</div>
                     </div>
                     <div class="ui submit_Tip flowing popup transition hidden">

@@ -17,4 +17,4 @@ logging:
   file:
     name: log/homework.log
 server:
-  port: 8888
+  port: 8090

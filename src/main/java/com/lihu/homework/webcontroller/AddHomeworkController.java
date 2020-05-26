@@ -39,7 +39,7 @@ public class AddHomeworkController {
     public String home(Model model, HttpSession httpSession){
         User user=(User)httpSession.getAttribute("user");
         model.addAttribute("user" ,user.getUsername());
-        return "/teacher/homework";
+        return "teacher/homework";
     }
 
 

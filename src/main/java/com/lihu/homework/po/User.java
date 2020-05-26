@@ -17,11 +17,11 @@ public class User {
     private String username;  //用户姓名
     private String role;  //用户身份
     private String password;  //用户密码
-    private Date birthday;  //用户生日
+    private Date birthday;  //用户生日--
     private String sex;  //用户性别
     private String phone;  //用户手机号码
     private String userclass;  //用户班级
-    private String photo;//头像地址
+    private String photo;//头像地址--
     private Boolean status;//用户状态
 
     @OneToMany(mappedBy = "parentuser")

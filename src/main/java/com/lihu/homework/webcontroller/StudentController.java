@@ -39,7 +39,7 @@ public class StudentController {
 //        model.addAttribute("page",publicHomeworkService.showListPublic(pageable,user.getId()));
         model.addAttribute("page", publicHomeworkService.showListPublic(pageable, user.getId()));
         model.addAttribute("undo", answerService.findUndoHomework(user));
-        return "/index";
+        return "index";
     }
 
     @PostMapping("/showPublish")
@@ -47,7 +47,7 @@ public class StudentController {
                                       Pageable pageable, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("page", publicHomeworkService.showListPublic(pageable, user.getId()));
-        return "/student/index :: publishList";
+        return "student/index :: publishList";
     }
 
     @GetMapping("/doing/{id}")

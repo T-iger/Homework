@@ -13,7 +13,7 @@ public class Answer {
     private Long id;
 
     private String studentanswer; //学生回答主观题的答案
-    private String studenttk; //学生回答主观题的答案
+    private String studenttk; //学生回答填空题的答案
     private String studentradio; //学生回答的单选题答案
     private int score;//分值
 

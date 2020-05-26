@@ -46,7 +46,7 @@ public class LoginController {
             session.setAttribute("user", user);
             if ("teacher".equals(role)) {
                 model.addAttribute("user", user.getUsername());
-                return "/teacher/teacherindex";
+                return "teacher/teacherindex";
             } else if ("student".equals(role)) {
                 if (user.getStatus()) {
                     return "redirect:/login/student/";
@@ -57,7 +57,7 @@ public class LoginController {
                 return "redirect:/login/admin";
             } else {
                 model.addAttribute("message", "账号有问题，请联系管理员");
-                return "/";
+                return "login";
             }
         } else {
             attributes.addFlashAttribute("message", "用户名或密码错误");
@@ -71,7 +71,7 @@ public class LoginController {
         model.addAttribute("UserPage", userService.findAllUser(pageable));
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user", user.getUsername());
-        return "/teacher/admin";
+        return "teacher/admin";
     }
 
     //初始化密码
@@ -97,7 +97,7 @@ public class LoginController {
     public String studentClass(HttpSession httpSession, Model model) {
         User user = (User) httpSession.getAttribute("user");
         model.addAttribute("user", userService.findUser(user.getId()));
-        return "/studentclass";
+        return "studentclass";
     }
 
     //重新申请进入班级
@@ -118,7 +118,7 @@ public class LoginController {
 
     @GetMapping("/login/zhuce")
     public String zhuCe() {
-        return "/zhuce";
+        return "zhuce";
     }
 
     @PostMapping("/zhuce")
@@ -128,7 +128,7 @@ public class LoginController {
         user.setPassword(MD5Utils.code(user.getPassword()));
         userService.add(user);
         model.addAttribute("message", "注册成功,等待老师允许进入班级");
-        return "/login";
+        return "login";
     }
 
     @GetMapping("/login/person") //请求
@@ -150,5 +150,6 @@ public class LoginController {
         model.addAttribute("message","修改成功");
         return "person";
     }
+
 
 }
